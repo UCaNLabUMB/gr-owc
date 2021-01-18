@@ -9,7 +9,10 @@
 
 %{
 #include "owc/OWC_Channel_relative.h"
+#include "owc/OWC_Channel_absolute.h"
 %}
 
 %include "owc/OWC_Channel_relative.h"
 GR_SWIG_BLOCK_MAGIC2(owc, OWC_Channel_relative);
+%include "owc/OWC_Channel_absolute.h"
+GR_SWIG_BLOCK_MAGIC2(owc, OWC_Channel_absolute);
