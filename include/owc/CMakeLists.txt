@@ -23,5 +23,5 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/owc
+    OWC_Channel_relative.h DESTINATION include/owc
 )

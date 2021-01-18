@@ -23,7 +23,7 @@
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
 list(APPEND owc_sources
-    )
+    OWC_Channel_relative_impl.cc )
 
 set(owc_sources "${owc_sources}" PARENT_SCOPE)
 if(NOT owc_sources)
