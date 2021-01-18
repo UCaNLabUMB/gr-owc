@@ -5,7 +5,7 @@ This installation guide assumes that GNU Radio has been installed using PyBOMBS.
 
 To download and install, follow the steps below:
 
-1-) First of all download this repository by cloning with git clone <url>
+1-) First of all download this repository by cloning with git clone (url)
 
 2-) Source the setup of the desired GNU Radio prefix in the terminal
 
