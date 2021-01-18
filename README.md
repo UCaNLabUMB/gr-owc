@@ -9,7 +9,7 @@ To download and install, follow the steps below:
 
 2-) Source the setup of the desired GNU Radio prefix in the terminal
 
-3-) cd to the gr-testmodule directory
+3-) cd to the gr-owc directory
 
 4-) Create a build directory with 'mkdir build' and move into the directory with 'cd build/'
 
