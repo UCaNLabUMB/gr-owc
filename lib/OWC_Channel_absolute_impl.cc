@@ -51,12 +51,12 @@ namespace gr {
 	    
 	    set_tx_lambertian_order_array(tx_lambertian_order_array);
 	    set_rx_photosensor_area_array(rx_photosensor_area_array);
-	    
-	    set_distance_array(r_num_inputs(),r_num_outputs(),tx_coordinates_array,rx_coordinates_array);
-	    
-	    set_emission_angle_array(r_num_inputs(),r_num_outputs(),tx_coordinates_array,tx_orientation_array,rx_coordinates_array);
-	    
-	    set_acceptance_angle_array(r_num_inputs(),r_num_outputs(),tx_coordinates_array,rx_coordinates_array,rx_orientation_array);
+	    	    
+	    set_tx_coordinates_array(tx_coordinates_array);
+	    set_tx_orientation_array(tx_orientation_array);
+	    set_rx_coordinates_array(rx_coordinates_array);
+	    set_rx_orientation_array(rx_orientation_array);
+
 	    
 	    set_optical_filter_transmittance_array(optical_filter_transmittance_array);
 	    set_refractive_index_array(refractive_index_array);
@@ -80,6 +80,11 @@ namespace gr {
       int ninputs = input_items.size();
       
       int noutputs = output_items.size();
+      
+      set_distance_array();
+      set_emission_angle_array();
+      set_acceptance_angle_array();
+      
       
       for (int i = 0; i < noutput_items; i++) {
       

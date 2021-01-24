@@ -47,6 +47,12 @@ namespace gr {
 	std::vector<float> d_concentrator_FOV_array;
 	std::vector<float> d_E2O_conversion_factor_array;
 	std::vector<float> d_O2E_conversion_factor_array;
+	
+	std::vector<float> d_tx_coordinates_array;
+	std::vector<float> d_tx_orientation_array;
+	std::vector<float> d_rx_coordinates_array;
+	std::vector<float> d_rx_orientation_array;
+	
 
      public:
       OWC_Channel_absolute_impl(int num_inputs, int num_outputs, const std::vector<float>& tx_coordinates_array, const std::vector<float>& tx_orientation_array, const std::vector<float>& rx_coordinates_array, const std::vector<float>& rx_orientation_array, const std::vector<float>& tx_lambertian_order_array, const std::vector<float>& rx_photosensor_area_array, const std::vector<float>& optical_filter_transmittance_array, const std::vector<float>& refractive_index_array, const std::vector<float>& concentrator_FOV_array, const std::vector<float>& E2O_conversion_factor_array, const std::vector<float>& O2E_conversion_factor_array);
@@ -57,6 +63,24 @@ namespace gr {
       
       void set_num_outputs(int num_outputs){d_num_outputs = num_outputs;}
       int r_num_outputs() {return d_num_outputs;}
+      
+      
+      
+      
+      void set_tx_coordinates_array(std::vector<float> tx_coordinates_array){d_tx_coordinates_array = tx_coordinates_array;}
+      std::vector<float> tx_coordinates_array() {return d_tx_coordinates_array;}     
+      
+      void set_tx_orientation_array(std::vector<float> tx_orientation_array){d_tx_orientation_array = tx_orientation_array;}
+      std::vector<float> tx_orientation_array() {return d_tx_orientation_array;}  
+      
+      void set_rx_coordinates_array(std::vector<float> rx_coordinates_array){d_rx_coordinates_array = rx_coordinates_array;}
+      std::vector<float> rx_coordinates_array() {return d_rx_coordinates_array;}     
+      
+      void set_rx_orientation_array(std::vector<float> rx_orientation_array){d_rx_orientation_array = rx_orientation_array;}
+      std::vector<float> rx_orientation_array() {return d_rx_orientation_array;}  
+      
+      
+      
       
       void set_tx_lambertian_order_array(std::vector<float> tx_lambertian_order_array){d_tx_lambertian_order_array = tx_lambertian_order_array;}
       std::vector<float> tx_lambertian_order_array() {return d_tx_lambertian_order_array;}       
@@ -101,20 +125,22 @@ namespace gr {
        	
        	return H;       	     }
        	      
-     	void set_distance_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array)
+     	//void set_distance_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array)
+ 
+     	void set_distance_array()
      	{     		
      		d_distance_array.clear();
-     		for (int i = 0; i < 3*num_outputs; i+=3)
+     		for (int i = 0; i < 3*r_num_outputs(); i+=3)
      		{
-     			float x2 = rx_coordinates_array[i];
-     			float y2 = rx_coordinates_array[i+1];
-     			float z2 = rx_coordinates_array[i+2];
+     			float x2 = rx_coordinates_array()[i];
+     			float y2 = rx_coordinates_array()[i+1];
+     			float z2 = rx_coordinates_array()[i+2];
      			
-     			for (int j = 0; j < 3*num_inputs; j+=3)
+     			for (int j = 0; j < 3*r_num_inputs(); j+=3)
      			{
-	     			float x1 = tx_coordinates_array[j];
-	     			float y1 = tx_coordinates_array[j+1];
-	     			float z1 = tx_coordinates_array[j+2];
+	     			float x1 = tx_coordinates_array()[j];
+	     			float y1 = tx_coordinates_array()[j+1];
+	     			float z1 = tx_coordinates_array()[j+2];
      			
      				float xSquared = (x2-x1)*(x2-x1); 
      				float ySquared = (y2-y1)*(y2-y1); 
@@ -129,20 +155,21 @@ namespace gr {
      	
      	std::vector<float> distance_array() {return d_distance_array;} 
      	
-     	void set_emission_angle_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> tx_orientation_array, std::vector<float> rx_coordinates_array)
+     	//void set_emission_angle_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> tx_orientation_array, std::vector<float> rx_coordinates_array)
+	void set_emission_angle_array()
      	{     
      		d_emission_angle_array.clear();		
-     		for (int i = 0; i < 3*num_outputs; i+=3)
+     		for (int i = 0; i < 3*r_num_outputs(); i+=3)
      		{
-     			float x2 = rx_coordinates_array[i];
-     			float y2 = rx_coordinates_array[i+1];
-     			float z2 = rx_coordinates_array[i+2];
+     			float x2 = rx_coordinates_array()[i];
+     			float y2 = rx_coordinates_array()[i+1];
+     			float z2 = rx_coordinates_array()[i+2];
      			
-     			for (int j = 0; j < 3*num_inputs; j+=3)
+     			for (int j = 0; j < 3*r_num_inputs(); j+=3)
      			{
-	     			float x1 = tx_coordinates_array[j];
-	     			float y1 = tx_coordinates_array[j+1];
-	     			float z1 = tx_coordinates_array[j+2];
+	     			float x1 = tx_coordinates_array()[j];
+	     			float y1 = tx_coordinates_array()[j+1];
+	     			float z1 = tx_coordinates_array()[j+2];
      			
      				float ux = (x2-x1);		//tx to rx vector 
      				float uy = (y2-y1); 
@@ -154,9 +181,9 @@ namespace gr {
      				
      				float u_mag = sqrt(ux_squared + uy_squared + uz_squared);
      				
-				float vx = tx_orientation_array[j];		//tx orientation vector
-				float vy = tx_orientation_array[j+1];
-				float vz = tx_orientation_array[j+2];
+				float vx = tx_orientation_array()[j];		//tx orientation vector
+				float vy = tx_orientation_array()[j+1];
+				float vz = tx_orientation_array()[j+2];
 				
 				float vx_squared = vx*vx;
 				float vy_squared = vy*vy;
@@ -175,24 +202,25 @@ namespace gr {
      	}
      	std::vector<float> emission_angle_array() {return d_emission_angle_array;} 
      	
-     	void set_acceptance_angle_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array, std::vector<float> rx_orientation_array)
+     	//void set_acceptance_angle_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array, std::vector<float> rx_orientation_array)
+	void set_acceptance_angle_array()
      	{
      		d_acceptance_angle_array.clear();
-     		for (int i = 0; i < 3*num_outputs; i+=3)
+     		for (int i = 0; i < 3*r_num_outputs(); i+=3)
      		{
-     			float x1 = rx_coordinates_array[i];
-     			float y1 = rx_coordinates_array[i+1];
-     			float z1 = rx_coordinates_array[i+2];
+     			float x1 = rx_coordinates_array()[i];
+     			float y1 = rx_coordinates_array()[i+1];
+     			float z1 = rx_coordinates_array()[i+2];
      			
-			float vx = rx_orientation_array[i];		//tx orientation vector
-			float vy = rx_orientation_array[i+1];
-			float vz = rx_orientation_array[i+2];
+			float vx = rx_orientation_array()[i];		//tx orientation vector
+			float vy = rx_orientation_array()[i+1];
+			float vz = rx_orientation_array()[i+2];
      			
-     			for (int j = 0; j < 3*num_inputs; j+=3)
+     			for (int j = 0; j < 3*r_num_inputs(); j+=3)
      			{
-	     			float x2 = tx_coordinates_array[j];
-	     			float y2 = tx_coordinates_array[j+1];
-	     			float z2 = tx_coordinates_array[j+2];
+	     			float x2 = tx_coordinates_array()[j];
+	     			float y2 = tx_coordinates_array()[j+1];
+	     			float z2 = tx_coordinates_array()[j+2];
      			
      				float ux = (x2-x1);		//tx to rx vector 
      				float uy = (y2-y1); 

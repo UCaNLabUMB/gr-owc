@@ -49,14 +49,26 @@ namespace gr {
        */
       static sptr make(int num_inputs, int num_outputs, const std::vector<float>& tx_coordinates_array, const std::vector<float>& tx_orientation_array, const std::vector<float>& rx_coordinates_array, const std::vector<float>& rx_orientation_array, const std::vector<float>& tx_lambertian_order_array, const std::vector<float>& rx_photosensor_area_array, const std::vector<float>& optical_filter_transmittance_array, const std::vector<float>& refractive_index_array, const std::vector<float>& concentrator_FOV_array, const std::vector<float>& E2O_conversion_factor_array, const std::vector<float>& O2E_conversion_factor_array);
       
-      virtual void set_distance_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array) = 0;
+/*      virtual void set_distance_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array) = 0;
       virtual std::vector<float> distance_array() = 0;
       
       virtual void set_emission_angle_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> tx_orientation_array, std::vector<float> rx_coordinates_array) = 0;
       virtual std::vector<float> emission_angle_array() = 0;
       
       virtual void set_acceptance_angle_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array, std::vector<float> rx_orientation_array) = 0;
-      virtual std::vector<float> acceptance_angle_array() = 0;
+      virtual std::vector<float> acceptance_angle_array() = 0;*/
+      
+      virtual void set_tx_coordinates_array(std::vector<float> tx_coordinates_array) = 0;
+      virtual std::vector<float> tx_coordinates_array() = 0;   
+      
+      virtual void set_tx_orientation_array(std::vector<float> tx_orientation_array) = 0;
+      virtual std::vector<float> tx_orientation_array() = 0; 
+      
+      virtual void set_rx_coordinates_array(std::vector<float> rx_coordinates_array) = 0;
+      virtual std::vector<float> rx_coordinates_array() = 0;    
+      
+      virtual void set_rx_orientation_array(std::vector<float> rx_orientation_array) = 0;
+      virtual std::vector<float> rx_orientation_array() = 0;  
     };
 
   } // namespace owc

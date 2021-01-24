@@ -87,8 +87,12 @@ templates:
     imports: import owc
     make: owc.OWC_Channel_absolute(${num_inputs}, ${num_outputs}, ${tx_coordinates_array}, ${tx_orientation_array}, ${rx_coordinates_array}, ${rx_orientation_array}, ${tx_lambertian_order_array}, ${rx_photosensor_area_array}, ${optical_filter_transmittance_array}, ${refractive_index_array}, ${concentrator_FOV_array}, ${E2O_conversion_factor_array}, ${O2E_conversion_factor_array})
     callbacks:
-    - set_distance_array(${num_inputs},${num_outputs},${tx_coordinates_array},${rx_coordinates_array})
-    - set_emission_angle_array(${num_inputs},${num_outputs},${tx_coordinates_array},${tx_orientation_array},${rx_coordinates_array})
-    - set_acceptance_angle_array(${num_inputs},${num_outputs},${tx_coordinates_array},${rx_coordinates_array},${rx_orientation_array})
+    - set_tx_coordinates_array(${tx_coordinates_array})
+    - set_tx_orientation_array(${tx_orientation_array})
+    - set_rx_coordinates_array(${rx_coordinates_array})
+    - set_rx_orientation_array(${rx_orientation_array})
+    - set_distance_array()
+    - set_emission_angle_array()
+    - set_acceptance_angle_array()
     
 file_format: 1
