@@ -1,0 +1,26 @@
+id: owc_binary_to_decimal_mapper
+label: Binary to Decimal Mapper
+category: '[owc]'
+
+parameters:
+- id: mod_order
+  label: Modulation Order
+  dtype: int
+  default: 2
+
+inputs:
+- label: in
+  dtype: float
+  
+outputs:
+- label: out
+  dtype: float
+  
+asserts:
+- ${mod_order > 1}
+
+templates:
+    imports: import owc
+    make: owc.binary_to_decimal_mapper(${mod_order})
+
+file_format: 1

@@ -1,0 +1,40 @@
+id: owc_OOK_Modulator_two
+label: OOK Modulator (two)
+category: '[owc]'
+
+parameters:
+- id: amp
+  label: Amplitude
+  dtype: float
+  default: 0.5
+  
+- id: mean
+  label: Mean
+  dtype: float
+  default: 0.5
+  
+- id: samples_per_symbol
+  label: Samples Per Symbol
+  dtype: int
+  default: 1
+
+inputs:
+- label: in
+  dtype: float
+  
+outputs:
+- label: out
+  dtype: float
+  
+asserts:
+- ${amp > 0}
+- ${samples_per_symbol > 0}
+
+templates:
+    imports: import owc
+    make: owc.OOK_Modulator_two(${amp}, ${mean}, ${samples_per_symbol})
+    callbacks:
+    - set_amplitude(${amp})
+    - set_mean(${mean})
+
+file_format: 1

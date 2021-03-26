@@ -1,70 +1,70 @@
 id: owc_OWC_Channel_absolute
-label: OWC_Channel_absolute
+label: OWC Channel (absolute)
 category: '[owc]'
 
 parameters:
 - id: num_inputs
-  label: Num_transmitters
+  label: Number of Tx
   dtype: int
   default: '1'
   
 - id: num_outputs
-  label: Num_receivers
+  label: Number of Rx
   dtype: int
   default: '1'
 
 - id: tx_coordinates_array
-  label: Tx_coordinates_array
+  label: Tx Coordinates Array
   default: [2.0,2.0,2.0]
   dtype: float_vector
   
 - id: tx_orientation_array
-  label: Tx_orientation_array
+  label: Tx Orientation Array
   default: [0,0,-1.0]
   dtype: float_vector
   
 - id: rx_coordinates_array
-  label: Rx_coordinates_array
+  label: Rx Coordinates Array
   default: [1.0,1.0,1.0]
   dtype: float_vector
   
 - id: rx_orientation_array
-  label: Rx_orientation_array
+  label: Rx Orientation Array
   default: [0,0,1.0]
   dtype: float_vector
   
 - id: tx_lambertian_order_array
-  label: Tx_lambertian_order_array
+  label: Tx Lambertian Order Array
   default: [1.0]
   dtype: float_vector
   
 - id: rx_photosensor_area_array
-  label: Rx_photosensor_area_array
+  label: Rx Photosensor Area Array
   default: [1.0]
   dtype: float_vector
   
 - id: optical_filter_transmittance_array
-  label: Optical_filter_transmittance_array
+  label: Optical Filter Transmittance Array
   default: [1.0]
   dtype: float_vector
   
 - id: refractive_index_array
-  label: Refractive_index_array
+  label: Refractive Index Array
   default: [1.0]
   dtype: float_vector
   
 - id: concentrator_FOV_array
-  label: Concentrator_FOV_array
+  label: Concentrator FOV Array
   default: [1.0]
   dtype: float_vector
   
 - id: E2O_conversion_factor_array
-  label: E2O_conversion_factor_array
+  label: E2O Conversion Factor Array
   default: [1.0]
   dtype: float_vector
   
 - id: O2E_conversion_factor_array
-  label: O2E_conversion_factor_array
+  label: O2E Conversion Factor Array
   default: [1.0]
   dtype: float_vector
   

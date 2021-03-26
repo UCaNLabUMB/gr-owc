@@ -19,5 +19,12 @@
 # Boston, MA 02110-1301, USA.
 install(FILES
     owc_OWC_Channel_relative.block.yml
-    owc_OWC_Channel_absolute.block.yml DESTINATION share/gnuradio/grc/blocks
+    owc_OWC_Channel_absolute.block.yml
+    owc_OOK_Modulator_one.block.yml
+    owc_OOK_Modulator_two.block.yml
+    owc_binary_to_decimal_mapper.block.yml
+    owc_PAM_Modulator_one.block.yml
+    owc_PAM_Modulator_two.block.yml
+    owc_VPPM_Modulator_one.block.yml
+    owc_VPPM_Modulator_two.block.yml DESTINATION share/gnuradio/grc/blocks
 )

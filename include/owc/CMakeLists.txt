@@ -24,5 +24,12 @@
 install(FILES
     api.h
     OWC_Channel_relative.h
-    OWC_Channel_absolute.h DESTINATION include/owc
+    OWC_Channel_absolute.h
+    OOK_Modulator_one.h
+    OOK_Modulator_two.h
+    binary_to_decimal_mapper.h
+    PAM_Modulator_one.h
+    PAM_Modulator_two.h
+    VPPM_Modulator_one.h
+    VPPM_Modulator_two.h DESTINATION include/owc
 )

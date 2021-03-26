@@ -1,0 +1,40 @@
+id: owc_OOK_Modulator_one
+label: OOK Modulator (one)
+category: '[owc]'
+
+parameters:
+- id: max_mag
+  label: Maximum Magnitude
+  dtype: float
+  default: 1.0
+  
+- id: min_mag
+  label: Minimum Magnitude
+  dtype: float
+  default: 0
+  
+- id: samples_per_symbol
+  label: Samples Per Symbol
+  dtype: int
+  default: 1
+
+inputs:
+- label: in
+  dtype: float
+  
+outputs:
+- label: out
+  dtype: float
+  
+asserts:
+- ${max_mag > min_mag}
+- ${samples_per_symbol > 0}
+
+templates:
+    imports: import owc
+    make: owc.OOK_Modulator_one(${max_mag}, ${min_mag}, ${samples_per_symbol})
+    callbacks:
+    - set_max_magnitude(${max_mag})
+    - set_min_magnitude(${min_mag})
+
+file_format: 1

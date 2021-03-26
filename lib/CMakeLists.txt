@@ -24,7 +24,14 @@
 include(GrPlatform) #define LIB_SUFFIX
 list(APPEND owc_sources
     OWC_Channel_relative_impl.cc
-    OWC_Channel_absolute_impl.cc )
+    OWC_Channel_absolute_impl.cc
+    OOK_Modulator_one_impl.cc
+    OOK_Modulator_two_impl.cc
+    binary_to_decimal_mapper_impl.cc
+    PAM_Modulator_one_impl.cc
+    PAM_Modulator_two_impl.cc
+    VPPM_Modulator_one_impl.cc
+    VPPM_Modulator_two_impl.cc )
 
 set(owc_sources "${owc_sources}" PARENT_SCOPE)
 if(NOT owc_sources)

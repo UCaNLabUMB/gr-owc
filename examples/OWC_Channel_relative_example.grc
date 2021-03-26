@@ -44,7 +44,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '10'
-    value: '5'
+    value: '1'
     widget: counter_slider
   states:
     bus_sink: false
@@ -107,7 +107,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '10'
-    value: '5'
+    value: '1'
     widget: counter_slider
   states:
     bus_sink: false
@@ -236,7 +236,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '0'
     widget: counter_slider
   states:
     bus_sink: false
@@ -257,7 +257,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '60'
     widget: counter_slider
   states:
     bus_sink: false
@@ -278,7 +278,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '60'
     widget: counter_slider
   states:
     bus_sink: false
@@ -299,7 +299,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '0'
     widget: counter_slider
   states:
     bus_sink: false
@@ -404,7 +404,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '0'
     widget: counter_slider
   states:
     bus_sink: false
@@ -425,7 +425,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '60'
     widget: counter_slider
   states:
     bus_sink: false
@@ -446,7 +446,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '60'
     widget: counter_slider
   states:
     bus_sink: false
@@ -467,7 +467,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '0'
     widget: counter_slider
   states:
     bus_sink: false
@@ -483,19 +483,19 @@ blocks:
     alias: ''
     amp: '1'
     comment: ''
-    freq: '1000'
+    freq: 1000*10
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
     type: float
-    waveform: analog.GR_SQR_WAVE
+    waveform: analog.GR_SIN_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [505, 133]
+    coordinate: [568, 190]
     rotation: 0
     state: true
 - name: analog_sig_source_x_0_0
@@ -517,7 +517,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [504, 271]
+    coordinate: [567, 328]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -536,7 +536,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [696, 93]
+    coordinate: [759, 150]
     rotation: 0
     state: true
 - name: owc_OWC_Channel_relative_0
@@ -563,7 +563,167 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [817, 205]
+    coordinate: [880, 263]
+    rotation: 0
+    state: true
+- name: qtgui_freq_sink_x_0
+  id: qtgui_freq_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    average: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    ctrlpanel: 'False'
+    fc: '0'
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: ''
+    label: Relative Gain
+    label1: ''
+    label10: ''''''
+    label2: ''''''
+    label3: ''''''
+    label4: ''''''
+    label5: ''''''
+    label6: ''''''
+    label7: ''''''
+    label8: ''''''
+    label9: ''''''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"Rx 1 Frequency Domain"'
+    nconnections: '1'
+    showports: 'False'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_tag: '""'
+    type: float
+    units: dB
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+    ymax: '10'
+    ymin: '-140'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1248, 135]
+    rotation: 0
+    state: true
+- name: qtgui_freq_sink_x_0_0
+  id: qtgui_freq_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    average: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '"yellow"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    ctrlpanel: 'False'
+    fc: '0'
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: ''
+    label: Relative Gain
+    label1: ''
+    label10: ''''''
+    label2: ''''''
+    label3: ''''''
+    label4: ''''''
+    label5: ''''''
+    label6: ''''''
+    label7: ''''''
+    label8: ''''''
+    label9: ''''''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"Rx 2 Frequency Domain"'
+    nconnections: '1'
+    showports: 'False'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_tag: '""'
+    type: float
+    units: dB
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+    ymax: '10'
+    ymin: '-140'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1244, 461]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -581,7 +741,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: black
     color10: dark blue
@@ -619,7 +779,7 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    name: '"Rx 1"'
+    name: '"Rx 1 Time Domain"'
     nconnections: '1'
     size: '1024'
     srate: samp_rate
@@ -660,7 +820,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1182, 193]
+    coordinate: [1245, 250]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0
@@ -678,9 +838,9 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
-    color1: cyan
+    color1: magenta
     color10: dark blue
     color2: red
     color3: green
@@ -716,7 +876,7 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    name: '"Rx 2"'
+    name: '"Rx 2 Time Domain"'
     nconnections: '1'
     size: '1024'
     srate: samp_rate
@@ -757,7 +917,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1181, 286]
+    coordinate: [1243, 343]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0
@@ -775,7 +935,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: red
     color10: dark blue
@@ -854,7 +1014,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [905, 95]
+    coordinate: [968, 152]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0_0
@@ -872,7 +1032,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: green
     color10: dark blue
@@ -951,7 +1111,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [907, 437]
+    coordinate: [967, 493]
     rotation: 0
     state: true
 
@@ -961,7 +1121,9 @@ connections:
 - [analog_sig_source_x_0_0, '0', qtgui_time_sink_x_0_0_0_0, '0']
 - [blocks_throttle_0, '0', owc_OWC_Channel_relative_0, '0']
 - [blocks_throttle_0, '0', qtgui_time_sink_x_0_0_0, '0']
+- [owc_OWC_Channel_relative_0, '0', qtgui_freq_sink_x_0, '0']
 - [owc_OWC_Channel_relative_0, '0', qtgui_time_sink_x_0, '0']
+- [owc_OWC_Channel_relative_0, '1', qtgui_freq_sink_x_0_0, '0']
 - [owc_OWC_Channel_relative_0, '1', qtgui_time_sink_x_0_0, '0']
 
 metadata:
