@@ -31,5 +31,8 @@ install(FILES
     PAM_Modulator_one.h
     PAM_Modulator_two.h
     VPPM_Modulator_one.h
-    VPPM_Modulator_two.h DESTINATION include/owc
+    VPPM_Modulator_two.h
+    OOK_Demodulator.h
+    PAM_Demodulator.h
+    decimal_to_binary_mapper.h DESTINATION include/owc
 )

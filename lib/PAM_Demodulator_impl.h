@@ -20,15 +20,15 @@
  *
  */
 
-#ifndef INCLUDED_OWC_PAM_MODULATOR_ONE_IMPL_H
-#define INCLUDED_OWC_PAM_MODULATOR_ONE_IMPL_H
+#ifndef INCLUDED_OWC_PAM_DEMODULATOR_IMPL_H
+#define INCLUDED_OWC_PAM_DEMODULATOR_IMPL_H
 
-#include <owc/PAM_Modulator_one.h>
+#include <owc/PAM_Demodulator.h>
 
 namespace gr {
   namespace owc {
 
-    class PAM_Modulator_one_impl : public PAM_Modulator_one
+    class PAM_Demodulator_impl : public PAM_Demodulator
     {
      private:
      int d_modulation_order;
@@ -40,8 +40,8 @@ namespace gr {
      std::vector<float> d_level_array;
 
      public:
-      PAM_Modulator_one_impl(int modulation_order, float max_magnitude, float min_magnitude, int samples_per_symbol);
-      ~PAM_Modulator_one_impl();
+      PAM_Demodulator_impl(int modulation_order, float max_magnitude, float min_magnitude, int samples_per_symbol);
+      ~PAM_Demodulator_impl();
       
       void set_modulation_order(int modulation_order) { d_modulation_order = modulation_order; }
       int modulation_order() { return d_modulation_order; }
@@ -54,7 +54,6 @@ namespace gr {
 
       void set_samples_per_symbol(int samples_per_symbol) { d_samples_per_symbol = samples_per_symbol; }
       int samples_per_symbol() { return d_samples_per_symbol; }
-      
       
       void set_symbol_array(int modulation_order)
       {
@@ -70,16 +69,16 @@ namespace gr {
       std::vector<int> symbol_array() {return d_symbol_array;}
       
       
-      void set_level_array()
+      void set_level_array(int modulation_order, float max_magnitude, float min_magnitude)
       {
       	d_level_array.clear();
-      	
-      	int num_bits = floor(log2(modulation_order()));
+      
+      	int num_bits = floor(log2(modulation_order));
       	int max_symbol = pow(2,num_bits);
-      	float range = max_magnitude() - min_magnitude();
-      	float single_level_magnitude = range/(modulation_order()-1);
+      	float range = max_magnitude - min_magnitude;
+      	float single_level_magnitude = range/(modulation_order-1);
       	
-      	float levels = min_magnitude();
+      	float levels = min_magnitude;
       	      	
       	for (int i = 0; i < max_symbol; i++)
       	{
@@ -89,6 +88,19 @@ namespace gr {
       	
       }
       std::vector<float> level_array() {return d_level_array;}
+      
+      float samples_average_value(std::vector<float> samples_array, int num_incoming_samples)
+      {
+      	float sum = 0;
+      	
+      	for (int i = 0; i < num_incoming_samples; i++)
+      	{
+		sum += samples_array[i];
+      	}
+      	
+      	return (sum/num_incoming_samples);
+      }
+      
 
       // Where all the action really happens
       int work(
@@ -101,5 +113,5 @@ namespace gr {
   } // namespace owc
 } // namespace gr
 
-#endif /* INCLUDED_OWC_PAM_MODULATOR_ONE_IMPL_H */
+#endif /* INCLUDED_OWC_PAM_DEMODULATOR_IMPL_H */
 

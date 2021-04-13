@@ -25,73 +25,58 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "PAM_Modulator_one_impl.h"
+#include "decimal_to_binary_mapper_impl.h"
 
 namespace gr {
   namespace owc {
 
-    PAM_Modulator_one::sptr
-    PAM_Modulator_one::make(int modulation_order, float max_magnitude, float min_magnitude, int samples_per_symbol)
+    decimal_to_binary_mapper::sptr
+    decimal_to_binary_mapper::make(int modulation_order)
     {
       return gnuradio::get_initial_sptr
-        (new PAM_Modulator_one_impl(modulation_order, max_magnitude, min_magnitude, samples_per_symbol));
+        (new decimal_to_binary_mapper_impl(modulation_order));
     }
 
 
     /*
      * The private constructor
      */
-    PAM_Modulator_one_impl::PAM_Modulator_one_impl(int modulation_order, float max_magnitude, float min_magnitude, int samples_per_symbol)
-      : gr::sync_interpolator("PAM_Modulator_one",
+    decimal_to_binary_mapper_impl::decimal_to_binary_mapper_impl(int modulation_order)
+      : gr::sync_interpolator("decimal_to_binary_mapper",
               gr::io_signature::make(1, 1, sizeof(float)),
-              gr::io_signature::make(1, 1, sizeof(float)), samples_per_symbol)
+              gr::io_signature::make(1, 1, sizeof(float)), floor(log2(modulation_order)))
     {
-	set_modulation_order(modulation_order); 
-    	set_max_magnitude(max_magnitude);
-    	set_min_magnitude(min_magnitude);
-    	set_samples_per_symbol(samples_per_symbol);
-    	set_symbol_array(modulation_order);
+    	set_modulation_order(modulation_order);
     }
 
     /*
      * Our virtual destructor.
      */
-    PAM_Modulator_one_impl::~PAM_Modulator_one_impl()
+    decimal_to_binary_mapper_impl::~decimal_to_binary_mapper_impl()
     {
     }
 
     int
-    PAM_Modulator_one_impl::work(int noutput_items,
+    decimal_to_binary_mapper_impl::work(int noutput_items,
         gr_vector_const_void_star &input_items,
         gr_vector_void_star &output_items)
     {
       const float *in = (const float *) input_items[0];
       float *out = (float *) output_items[0];
       
-      int log_2_M = floor(log2(modulation_order()));
-      int max_symbol = pow(2,log_2_M);
-      int symbol_index = 0;
-      
+      int num_output_bits = floor(log2(modulation_order()));
+
       int i = 0;
       int z = 0;
       
-      set_level_array();
       
       while(i < noutput_items) {
-      		int decimal = 	in[z];	
-      		for (int j = 0; j < samples_per_symbol(); j++){
-      			for (int m = 0; m < max_symbol; m++)
-			{
-				if (decimal == symbol_array()[m])
-				{symbol_index = m;
-				 break;}
-			}
-						
-			out[i++] = level_array()[symbol_index];
-      			
+      		int decimal_value = in[z];
+      		std::vector<int> binary = decimal_to_binary(decimal_value, num_output_bits);
+      		for (int j = 0; j < num_output_bits; j++){
+      			out[i++] = binary[j];	
       		}
-      		z++;
-      		symbol_index = 0;}
+      	z++;}
 
       // Tell runtime system how many output items we produced.
       return noutput_items;

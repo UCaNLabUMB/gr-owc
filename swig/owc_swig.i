@@ -17,6 +17,9 @@
 #include "owc/PAM_Modulator_two.h"
 #include "owc/VPPM_Modulator_one.h"
 #include "owc/VPPM_Modulator_two.h"
+#include "owc/OOK_Demodulator.h"
+#include "owc/PAM_Demodulator.h"
+#include "owc/decimal_to_binary_mapper.h"
 %}
 
 %include "owc/OWC_Channel_relative.h"
@@ -39,3 +42,9 @@ GR_SWIG_BLOCK_MAGIC2(owc, PAM_Modulator_two);
 GR_SWIG_BLOCK_MAGIC2(owc, VPPM_Modulator_one);
 %include "owc/VPPM_Modulator_two.h"
 GR_SWIG_BLOCK_MAGIC2(owc, VPPM_Modulator_two);
+%include "owc/OOK_Demodulator.h"
+GR_SWIG_BLOCK_MAGIC2(owc, OOK_Demodulator);
+%include "owc/PAM_Demodulator.h"
+GR_SWIG_BLOCK_MAGIC2(owc, PAM_Demodulator);
+%include "owc/decimal_to_binary_mapper.h"
+GR_SWIG_BLOCK_MAGIC2(owc, decimal_to_binary_mapper);

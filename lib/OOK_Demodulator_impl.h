@@ -20,38 +20,40 @@
  *
  */
 
-#ifndef INCLUDED_OWC_BINARY_TO_DECIMAL_MAPPER_IMPL_H
-#define INCLUDED_OWC_BINARY_TO_DECIMAL_MAPPER_IMPL_H
+#ifndef INCLUDED_OWC_OOK_DEMODULATOR_IMPL_H
+#define INCLUDED_OWC_OOK_DEMODULATOR_IMPL_H
 
-#include <owc/binary_to_decimal_mapper.h>
+#include <owc/OOK_Demodulator.h>
 
 namespace gr {
   namespace owc {
 
-    class binary_to_decimal_mapper_impl : public binary_to_decimal_mapper
+    class OOK_Demodulator_impl : public OOK_Demodulator
     {
      private:
-     int d_modulation_order;
+     float d_threshold;
+     int d_samples_per_symbol;
 
      public:
-      binary_to_decimal_mapper_impl(int modulation_order);
-      ~binary_to_decimal_mapper_impl();
-
-      void set_modulation_order(int modulation_order) { d_modulation_order = modulation_order; }
-      int modulation_order() { return d_modulation_order; }
+      OOK_Demodulator_impl(float threshold, int samples_per_symbol);
+      ~OOK_Demodulator_impl();
       
-      int bits_to_decimal(std::vector<float> bits_array, int num_bits)
+      void set_threshold(float threshold) { d_threshold = threshold; }
+      float threshold() { return d_threshold; }
+
+      void set_samples_per_symbol(int samples_per_symbol) { d_samples_per_symbol = samples_per_symbol; }
+      int samples_per_symbol() { return d_samples_per_symbol;}
+      
+      float samples_average_value(std::vector<float> samples_array, int num_incoming_samples)
       {
-      	int decimal_value = 0;
+      	float sum = 0;
       	
-      	reverse(bits_array.begin(),bits_array.end());
-      	
-      	for (int i = 0; i < num_bits; i++)
+      	for (int i = 0; i < num_incoming_samples; i++)
       	{
-      		if (bits_array[i] == 1) 
-      		{decimal_value += pow(2,i);}
+		sum += samples_array[i];
       	}
-      	return decimal_value;
+      	
+      	return (sum/num_incoming_samples);
       }
 
       // Where all the action really happens
@@ -65,5 +67,5 @@ namespace gr {
   } // namespace owc
 } // namespace gr
 
-#endif /* INCLUDED_OWC_BINARY_TO_DECIMAL_MAPPER_IMPL_H */
+#endif /* INCLUDED_OWC_OOK_DEMODULATOR_IMPL_H */
 

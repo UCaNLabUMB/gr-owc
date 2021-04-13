@@ -1,0 +1,33 @@
+id: owc_OOK_Demodulator
+label: OOK Demodulator
+category: '[owc]'
+
+parameters:
+- id: threshold
+  label: Threshold Value
+  dtype: float
+  default: 0.5
+  
+- id: samples_per_symbol
+  label: Samples Per Symbol
+  dtype: int
+  default: 1
+
+inputs:
+- label: in
+  dtype: float
+  
+outputs:
+- label: out
+  dtype: float
+  
+asserts:
+- ${samples_per_symbol > 0}
+
+templates:
+    imports: import owc
+    make: owc.OOK_Demodulator(${threshold}, ${samples_per_symbol})
+    callbacks:
+    - set_threshold(${threshold})
+
+file_format: 1

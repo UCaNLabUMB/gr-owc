@@ -20,39 +20,42 @@
  *
  */
 
-#ifndef INCLUDED_OWC_BINARY_TO_DECIMAL_MAPPER_IMPL_H
-#define INCLUDED_OWC_BINARY_TO_DECIMAL_MAPPER_IMPL_H
+#ifndef INCLUDED_OWC_DECIMAL_TO_BINARY_MAPPER_IMPL_H
+#define INCLUDED_OWC_DECIMAL_TO_BINARY_MAPPER_IMPL_H
 
-#include <owc/binary_to_decimal_mapper.h>
+#include <owc/decimal_to_binary_mapper.h>
 
 namespace gr {
   namespace owc {
 
-    class binary_to_decimal_mapper_impl : public binary_to_decimal_mapper
+    class decimal_to_binary_mapper_impl : public decimal_to_binary_mapper
     {
      private:
      int d_modulation_order;
 
      public:
-      binary_to_decimal_mapper_impl(int modulation_order);
-      ~binary_to_decimal_mapper_impl();
-
+      decimal_to_binary_mapper_impl(int modulation_order);
+      ~decimal_to_binary_mapper_impl();
+      
       void set_modulation_order(int modulation_order) { d_modulation_order = modulation_order; }
       int modulation_order() { return d_modulation_order; }
       
-      int bits_to_decimal(std::vector<float> bits_array, int num_bits)
+      std::vector<int> decimal_to_binary(int decimal_value, int num_output_bits)
       {
-      	int decimal_value = 0;
-      	
-      	reverse(bits_array.begin(),bits_array.end());
-      	
-      	for (int i = 0; i < num_bits; i++)
-      	{
-      		if (bits_array[i] == 1) 
-      		{decimal_value += pow(2,i);}
-      	}
-      	return decimal_value;
-      }
+      		std::vector<int> binary_array;
+      		int decimal_divide = decimal_value;
+      		int rem = 0;      
+      		
+      		for (int x = 0; x < num_output_bits; x++)
+      		{
+			rem = decimal_divide % 2;
+			binary_array.push_back(rem);
+			decimal_divide = decimal_divide/2; 
+      		}
+      		
+		reverse(binary_array.begin(),binary_array.end());
+		return binary_array;
+      } 
 
       // Where all the action really happens
       int work(
@@ -65,5 +68,5 @@ namespace gr {
   } // namespace owc
 } // namespace gr
 
-#endif /* INCLUDED_OWC_BINARY_TO_DECIMAL_MAPPER_IMPL_H */
+#endif /* INCLUDED_OWC_DECIMAL_TO_BINARY_MAPPER_IMPL_H */
 

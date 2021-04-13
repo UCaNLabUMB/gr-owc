@@ -41,8 +41,8 @@ blocks:
     min_len: '200'
     orient: Qt.Horizontal
     rangeType: float
-    start: '0'
-    step: '1'
+    start: '0.1'
+    step: '0.1'
     stop: '10'
     value: '1'
     widget: counter_slider
@@ -62,8 +62,8 @@ blocks:
     min_len: '200'
     orient: Qt.Horizontal
     rangeType: float
-    start: '0'
-    step: '1'
+    start: '0.1'
+    step: '0.1'
     stop: '10'
     value: '5'
     widget: counter_slider
@@ -83,8 +83,8 @@ blocks:
     min_len: '200'
     orient: Qt.Horizontal
     rangeType: float
-    start: '0'
-    step: '1'
+    start: '0.1'
+    step: '0.1'
     stop: '10'
     value: '5'
     widget: counter_slider
@@ -104,8 +104,8 @@ blocks:
     min_len: '200'
     orient: Qt.Horizontal
     rangeType: float
-    start: '0'
-    step: '1'
+    start: '0.1'
+    step: '0.1'
     stop: '10'
     value: '1'
     widget: counter_slider
@@ -476,6 +476,25 @@ blocks:
     coordinate: [355, 104]
     rotation: 0
     state: true
+- name: analog_noise_source_x_0
+  id: analog_noise_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: 1e-5
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_type: analog.GR_GAUSSIAN
+    seed: '0'
+    type: float
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1230, 161]
+    rotation: 0
+    state: true
 - name: analog_sig_source_x_0
   id: analog_sig_source_x
   parameters:
@@ -495,7 +514,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 190]
+    coordinate: [506, 192]
     rotation: 0
     state: true
 - name: analog_sig_source_x_0_0
@@ -517,7 +536,43 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [567, 328]
+    coordinate: [505, 330]
+    rotation: 0
+    state: true
+- name: blocks_add_xx_0
+  id: blocks_add_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1466, 263]
+    rotation: 0
+    state: true
+- name: blocks_add_xx_0_0
+  id: blocks_add_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1464, 412]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -536,7 +591,20 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [759, 150]
+    coordinate: [697, 152]
+    rotation: 0
+    state: true
+- name: note_0
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: Setting a non-zero noise-floor to remove inaccuracies
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1222, 116]
     rotation: 0
     state: true
 - name: owc_OWC_Channel_relative_0
@@ -563,7 +631,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [880, 263]
+    coordinate: [882, 263]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -643,7 +711,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1248, 135]
+    coordinate: [1642, 170]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0_0
@@ -723,7 +791,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1244, 461]
+    coordinate: [1638, 496]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -820,7 +888,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1245, 250]
+    coordinate: [1639, 285]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0
@@ -917,7 +985,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1243, 343]
+    coordinate: [1637, 378]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0
@@ -1014,7 +1082,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [968, 152]
+    coordinate: [993, 130]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0_0
@@ -1111,20 +1179,24 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [967, 493]
+    coordinate: [912, 549]
     rotation: 0
     state: true
 
 connections:
+- [analog_noise_source_x_0, '0', blocks_add_xx_0, '0']
+- [analog_noise_source_x_0, '0', blocks_add_xx_0_0, '0']
 - [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
 - [analog_sig_source_x_0_0, '0', owc_OWC_Channel_relative_0, '1']
 - [analog_sig_source_x_0_0, '0', qtgui_time_sink_x_0_0_0_0, '0']
+- [blocks_add_xx_0, '0', qtgui_freq_sink_x_0, '0']
+- [blocks_add_xx_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_add_xx_0_0, '0', qtgui_freq_sink_x_0_0, '0']
+- [blocks_add_xx_0_0, '0', qtgui_time_sink_x_0_0, '0']
 - [blocks_throttle_0, '0', owc_OWC_Channel_relative_0, '0']
 - [blocks_throttle_0, '0', qtgui_time_sink_x_0_0_0, '0']
-- [owc_OWC_Channel_relative_0, '0', qtgui_freq_sink_x_0, '0']
-- [owc_OWC_Channel_relative_0, '0', qtgui_time_sink_x_0, '0']
-- [owc_OWC_Channel_relative_0, '1', qtgui_freq_sink_x_0_0, '0']
-- [owc_OWC_Channel_relative_0, '1', qtgui_time_sink_x_0_0, '0']
+- [owc_OWC_Channel_relative_0, '0', blocks_add_xx_0, '1']
+- [owc_OWC_Channel_relative_0, '1', blocks_add_xx_0_0, '1']
 
 metadata:
   file_format: 1

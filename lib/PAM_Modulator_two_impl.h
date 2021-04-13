@@ -71,6 +71,9 @@ namespace gr {
       
       void set_level_array(int modulation_order, float amplitude, float mean)
       {
+      
+      	d_level_array.clear();
+      	
       	int num_bits = floor(log2(modulation_order));
       	int max_symbol = pow(2,num_bits);
       	

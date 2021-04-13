@@ -51,7 +51,6 @@ namespace gr {
     	set_mean(mean);
     	set_samples_per_symbol(samples_per_symbol);
     	set_symbol_array(modulation_order);
-    	set_level_array(modulation_order, amplitude, mean);
     }
 
     /*
@@ -75,6 +74,8 @@ namespace gr {
       
       int i = 0;
       int z = 0;
+      
+      set_level_array(modulation_order(), amplitude(), mean());
       
       while(i < noutput_items) {
       		int decimal = 	in[z];	

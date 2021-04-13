@@ -25,24 +25,24 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "PAM_Modulator_one_impl.h"
+#include "PAM_Demodulator_impl.h"
 
 namespace gr {
   namespace owc {
 
-    PAM_Modulator_one::sptr
-    PAM_Modulator_one::make(int modulation_order, float max_magnitude, float min_magnitude, int samples_per_symbol)
+    PAM_Demodulator::sptr
+    PAM_Demodulator::make(int modulation_order, float max_magnitude, float min_magnitude, int samples_per_symbol)
     {
       return gnuradio::get_initial_sptr
-        (new PAM_Modulator_one_impl(modulation_order, max_magnitude, min_magnitude, samples_per_symbol));
+        (new PAM_Demodulator_impl(modulation_order, max_magnitude, min_magnitude, samples_per_symbol));
     }
 
 
     /*
      * The private constructor
      */
-    PAM_Modulator_one_impl::PAM_Modulator_one_impl(int modulation_order, float max_magnitude, float min_magnitude, int samples_per_symbol)
-      : gr::sync_interpolator("PAM_Modulator_one",
+    PAM_Demodulator_impl::PAM_Demodulator_impl(int modulation_order, float max_magnitude, float min_magnitude, int samples_per_symbol)
+      : gr::sync_decimator("PAM_Demodulator",
               gr::io_signature::make(1, 1, sizeof(float)),
               gr::io_signature::make(1, 1, sizeof(float)), samples_per_symbol)
     {
@@ -56,43 +56,52 @@ namespace gr {
     /*
      * Our virtual destructor.
      */
-    PAM_Modulator_one_impl::~PAM_Modulator_one_impl()
+    PAM_Demodulator_impl::~PAM_Demodulator_impl()
     {
     }
 
     int
-    PAM_Modulator_one_impl::work(int noutput_items,
+    PAM_Demodulator_impl::work(int noutput_items,
         gr_vector_const_void_star &input_items,
         gr_vector_void_star &output_items)
     {
       const float *in = (const float *) input_items[0];
       float *out = (float *) output_items[0];
       
-      int log_2_M = floor(log2(modulation_order()));
-      int max_symbol = pow(2,log_2_M);
-      int symbol_index = 0;
-      
+      set_level_array(modulation_order(), max_magnitude(), min_magnitude());
+
       int i = 0;
-      int z = 0;
+      int j = 0;
       
-      set_level_array();
+      std::vector<float> d_incoming_samples_array;
+      
+      int num_incoming_samples = samples_per_symbol();
+      
+      int symbol_level = 0;
       
       while(i < noutput_items) {
-      		int decimal = 	in[z];	
-      		for (int j = 0; j < samples_per_symbol(); j++){
-      			for (int m = 0; m < max_symbol; m++)
-			{
-				if (decimal == symbol_array()[m])
-				{symbol_index = m;
-				 break;}
-			}
-						
-			out[i++] = level_array()[symbol_index];
+      		for (int k = 0; k < num_incoming_samples; k++)
+      			{
+      				d_incoming_samples_array.push_back(in[j+k]);
+      			}
       			
-      		}
-      		z++;
-      		symbol_index = 0;}
-
+		float average_value = samples_average_value(d_incoming_samples_array, num_incoming_samples);
+		
+		for (int x = 0; x < modulation_order(); x++)
+			{
+				float difference = average_value - level_array()[x];
+				if ( abs(difference) < 0.000001)
+				{
+					symbol_level = x;
+					break;
+				}
+			}
+		
+      		out[i++] = symbol_array()[symbol_level];
+      		
+	j += num_incoming_samples;
+	d_incoming_samples_array.clear();
+	}
       // Tell runtime system how many output items we produced.
       return noutput_items;
     }
