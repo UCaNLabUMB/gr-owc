@@ -36,7 +36,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1'
+    value: 1e-6
   states:
     bus_sink: false
     bus_source: false
@@ -48,7 +48,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1'
+    value: 1e-6
   states:
     bus_sink: false
     bus_source: false
@@ -444,24 +444,24 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1'
+    value: '0.5'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [306, 13]
+    coordinate: [296, 11]
     rotation: 0
     state: enabled
 - name: tx_m_2
   id: variable
   parameters:
     comment: ''
-    value: '1'
+    value: '0.5'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [375, 13]
+    coordinate: [379, 11]
     rotation: 0
     state: enabled
 - name: tx_u_x_1
@@ -852,25 +852,6 @@ blocks:
     coordinate: [737, 925]
     rotation: 0
     state: true
-- name: analog_noise_source_x_0
-  id: analog_noise_source_x
-  parameters:
-    affinity: ''
-    alias: ''
-    amp: 1e-4
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_type: analog.GR_GAUSSIAN
-    seed: '0'
-    type: float
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1459, 136]
-    rotation: 0
-    state: true
 - name: analog_sig_source_x_0
   id: analog_sig_source_x
   parameters:
@@ -913,42 +894,6 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [728, 275]
-    rotation: 0
-    state: true
-- name: blocks_add_xx_0
-  id: blocks_add_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_inputs: '2'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1704, 169]
-    rotation: 0
-    state: true
-- name: blocks_add_xx_0_0
-  id: blocks_add_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_inputs: '2'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1698, 428]
     rotation: 0
     state: true
 - name: blocks_float_to_complex_0
@@ -1032,19 +977,6 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [958, 160]
-    rotation: 0
-    state: true
-- name: note_0
-  id: note
-  parameters:
-    alias: ''
-    comment: ''
-    note: Setting a non-zero noise-floor to remove inaccuracies
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1450, 89]
     rotation: 0
     state: true
 - name: owc_OWC_Channel_absolute_0
@@ -1336,7 +1268,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1844, 93]
+    coordinate: [1758, 145]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0_0
@@ -1416,7 +1348,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1856, 526]
+    coordinate: [1764, 497]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -1434,7 +1366,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -1513,7 +1445,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1851, 219]
+    coordinate: [1765, 271]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0
@@ -1531,7 +1463,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -1610,7 +1542,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1853, 328]
+    coordinate: [1767, 380]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0
@@ -1817,23 +1749,19 @@ connections:
 - [analog_const_source_x_0_1, '0', blocks_float_to_complex_0_0, '1']
 - [analog_const_source_x_0_1_0, '0', blocks_float_to_complex_0_0_0_0, '1']
 - [analog_const_source_x_0_2, '0', blocks_float_to_complex_0_0_0, '1']
-- [analog_noise_source_x_0, '0', blocks_add_xx_0, '0']
-- [analog_noise_source_x_0, '0', blocks_add_xx_0_0, '0']
 - [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
 - [analog_sig_source_x_0_0, '0', owc_OWC_Channel_absolute_0, '1']
 - [analog_sig_source_x_0_0, '0', qtgui_time_sink_x_0_0_0_0, '0']
-- [blocks_add_xx_0, '0', qtgui_freq_sink_x_0, '0']
-- [blocks_add_xx_0, '0', qtgui_time_sink_x_0, '0']
-- [blocks_add_xx_0_0, '0', qtgui_freq_sink_x_0_0, '0']
-- [blocks_add_xx_0_0, '0', qtgui_time_sink_x_0_0, '0']
 - [blocks_float_to_complex_0, '0', qtgui_const_sink_x_0, '0']
 - [blocks_float_to_complex_0_0, '0', qtgui_const_sink_x_0, '1']
 - [blocks_float_to_complex_0_0_0, '0', qtgui_const_sink_x_0_0, '0']
 - [blocks_float_to_complex_0_0_0_0, '0', qtgui_const_sink_x_0_0, '1']
 - [blocks_throttle_0, '0', owc_OWC_Channel_absolute_0, '0']
 - [blocks_throttle_0, '0', qtgui_time_sink_x_0_0_0, '0']
-- [owc_OWC_Channel_absolute_0, '0', blocks_add_xx_0, '1']
-- [owc_OWC_Channel_absolute_0, '1', blocks_add_xx_0_0, '1']
+- [owc_OWC_Channel_absolute_0, '0', qtgui_freq_sink_x_0, '0']
+- [owc_OWC_Channel_absolute_0, '0', qtgui_time_sink_x_0, '0']
+- [owc_OWC_Channel_absolute_0, '1', qtgui_freq_sink_x_0_0, '0']
+- [owc_OWC_Channel_absolute_0, '1', qtgui_time_sink_x_0_0, '0']
 
 metadata:
   file_format: 1
