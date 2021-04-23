@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: OWC_Channel_relative_Example
+    id: OWC_Channel_relative_Mod_Example
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -21,13 +21,13 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Example of the relative channel model
+    title: Example of the relative channel model with Modulators
     window_size: ''
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 8]
+    coordinate: [10, 6]
     rotation: 0
     state: enabled
 
@@ -50,7 +50,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [9, 337]
+    coordinate: [23, 346]
     rotation: 0
     state: true
 - name: d_1_2
@@ -71,7 +71,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [124, 337]
+    coordinate: [138, 346]
     rotation: 0
     state: true
 - name: d_2_1
@@ -92,7 +92,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [239, 336]
+    coordinate: [253, 345]
     rotation: 0
     state: true
 - name: d_2_2
@@ -113,7 +113,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [357, 336]
+    coordinate: [371, 345]
     rotation: 0
     state: true
 - name: m_1_0
@@ -125,7 +125,67 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [265, 121]
+    coordinate: [279, 130]
+    rotation: 0
+    state: enabled
+- name: max_magnitude_tx1
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [21, 742]
+    rotation: 0
+    state: enabled
+- name: max_magnitude_tx2
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [18, 814]
+    rotation: 0
+    state: enabled
+- name: min_magnitude_tx1
+  id: variable
+  parameters:
+    comment: ''
+    value: '2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [166, 743]
+    rotation: 0
+    state: enabled
+- name: min_magnitude_tx2
+  id: variable
+  parameters:
+    comment: ''
+    value: '2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [162, 816]
+    rotation: 0
+    state: enabled
+- name: modulation_order_tx2
+  id: variable
+  parameters:
+    comment: ''
+    value: '16'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [475, 816]
     rotation: 0
     state: enabled
 - name: rx_A_1
@@ -137,7 +197,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [472, 20]
+    coordinate: [486, 29]
     rotation: 0
     state: enabled
 - name: rx_A_2
@@ -149,7 +209,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [541, 20]
+    coordinate: [555, 29]
     rotation: 0
     state: enabled
 - name: rx_C_r_1
@@ -161,7 +221,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1353, 19]
+    coordinate: [1367, 28]
     rotation: 0
     state: enabled
 - name: rx_C_r_2
@@ -173,7 +233,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1429, 19]
+    coordinate: [1443, 28]
     rotation: 0
     state: enabled
 - name: rx_Ts_1
@@ -185,7 +245,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [642, 20]
+    coordinate: [656, 29]
     rotation: 0
     state: enabled
 - name: rx_Ts_2
@@ -197,7 +257,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [711, 20]
+    coordinate: [725, 29]
     rotation: 0
     state: enabled
 - name: rx_n_1
@@ -209,7 +269,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [810, 19]
+    coordinate: [824, 28]
     rotation: 0
     state: enabled
 - name: rx_n_2
@@ -221,7 +281,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [879, 19]
+    coordinate: [893, 28]
     rotation: 0
     state: enabled
 - name: rx_psi_1_1
@@ -242,7 +302,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 217]
+    coordinate: [22, 226]
     rotation: 0
     state: true
 - name: rx_psi_1_2
@@ -263,7 +323,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [123, 217]
+    coordinate: [137, 226]
     rotation: 0
     state: true
 - name: rx_psi_2_1
@@ -284,7 +344,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [238, 216]
+    coordinate: [252, 225]
     rotation: 0
     state: true
 - name: rx_psi_2_2
@@ -305,7 +365,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [356, 216]
+    coordinate: [370, 225]
     rotation: 0
     state: true
 - name: rx_psi_c_1
@@ -317,7 +377,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 21]
+    coordinate: [998, 30]
     rotation: 0
     state: enabled
 - name: rx_psi_c_2
@@ -329,7 +389,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1065, 22]
+    coordinate: [1079, 31]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -341,7 +401,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [174, 20]
+    coordinate: [188, 29]
+    rotation: 0
+    state: enabled
+- name: samples_per_symbol_tx1
+  id: variable
+  parameters:
+    comment: ''
+    value: '5'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [303, 744]
+    rotation: 0
+    state: enabled
+- name: samples_per_symbol_tx2
+  id: variable
+  parameters:
+    comment: ''
+    value: '5'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [302, 817]
     rotation: 0
     state: enabled
 - name: tx_C_t_1
@@ -353,7 +437,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1172, 18]
+    coordinate: [1186, 27]
     rotation: 0
     state: enabled
 - name: tx_C_t_2
@@ -365,7 +449,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1245, 18]
+    coordinate: [1259, 27]
     rotation: 0
     state: enabled
 - name: tx_m_1
@@ -386,7 +470,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [123, 463]
+    coordinate: [137, 472]
     rotation: 0
     state: true
 - name: tx_m_2
@@ -407,7 +491,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [263, 462]
+    coordinate: [277, 471]
     rotation: 0
     state: true
 - name: tx_phi_1_1
@@ -428,7 +512,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [7, 105]
+    coordinate: [21, 114]
     rotation: 0
     state: true
 - name: tx_phi_1_2
@@ -449,7 +533,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [122, 105]
+    coordinate: [136, 114]
     rotation: 0
     state: true
 - name: tx_phi_2_1
@@ -470,7 +554,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [237, 104]
+    coordinate: [251, 113]
     rotation: 0
     state: true
 - name: tx_phi_2_2
@@ -491,51 +575,47 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [355, 104]
+    coordinate: [369, 113]
     rotation: 0
     state: true
-- name: analog_sig_source_x_0
-  id: analog_sig_source_x
+- name: analog_random_source_x_0
+  id: analog_random_source_x
   parameters:
     affinity: ''
     alias: ''
-    amp: '1'
     comment: ''
-    freq: 1000*10
+    max: '32'
     maxoutbuf: '0'
+    min: '0'
     minoutbuf: '0'
-    offset: '0'
-    phase: '0'
-    samp_rate: samp_rate
-    type: float
-    waveform: analog.GR_SIN_WAVE
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [506, 192]
+    coordinate: [492, 298]
     rotation: 0
     state: true
-- name: analog_sig_source_x_0_0
-  id: analog_sig_source_x
+- name: analog_random_source_x_0_0
+  id: analog_random_source_x
   parameters:
     affinity: ''
     alias: ''
-    amp: '1'
     comment: ''
-    freq: '1000'
+    max: '32'
     maxoutbuf: '0'
+    min: '0'
     minoutbuf: '0'
-    offset: '0'
-    phase: '0'
-    samp_rate: samp_rate
-    type: float
-    waveform: analog.GR_SIN_WAVE
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [505, 330]
+    coordinate: [483, 479]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -554,9 +634,89 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [697, 152]
+    coordinate: [1190, 138]
     rotation: 0
     state: true
+- name: blocks_uchar_to_float_1
+  id: blocks_uchar_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [899, 326]
+    rotation: 0
+    state: true
+- name: blocks_uchar_to_float_1_0
+  id: blocks_uchar_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [919, 506]
+    rotation: 0
+    state: true
+- name: blocks_unpack_k_bits_bb_0
+  id: blocks_unpack_k_bits_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    k: '8'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [701, 322]
+    rotation: 0
+    state: enabled
+- name: blocks_unpack_k_bits_bb_0_0
+  id: blocks_unpack_k_bits_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    k: '8'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [692, 503]
+    rotation: 0
+    state: enabled
+- name: owc_OOK_Modulator_one_0
+  id: owc_OOK_Modulator_one
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    max_mag: max_magnitude_tx1
+    maxoutbuf: '0'
+    min_mag: min_magnitude_tx1
+    minoutbuf: '0'
+    samples_per_symbol: samples_per_symbol_tx1
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1110, 306]
+    rotation: 0
+    state: enabled
 - name: owc_OWC_Channel_relative_0
   id: owc_OWC_Channel_relative
   parameters:
@@ -581,167 +741,42 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [882, 263]
+    coordinate: [1675, 202]
     rotation: 0
     state: true
-- name: qtgui_freq_sink_x_0
-  id: qtgui_freq_sink_x
+- name: owc_PAM_Modulator_one_0
+  id: owc_PAM_Modulator_one
   parameters:
     affinity: ''
     alias: ''
-    alpha1: '1.0'
-    alpha10: '1.0'
-    alpha2: '1.0'
-    alpha3: '1.0'
-    alpha4: '1.0'
-    alpha5: '1.0'
-    alpha6: '1.0'
-    alpha7: '1.0'
-    alpha8: '1.0'
-    alpha9: '1.0'
-    autoscale: 'True'
-    average: '1.0'
-    axislabels: 'True'
-    bw: samp_rate
-    color1: '"blue"'
-    color10: '"dark blue"'
-    color2: '"red"'
-    color3: '"green"'
-    color4: '"black"'
-    color5: '"cyan"'
-    color6: '"magenta"'
-    color7: '"yellow"'
-    color8: '"dark red"'
-    color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
-    fc: '0'
-    fftsize: '1024'
-    freqhalf: 'True'
-    grid: 'False'
-    gui_hint: ''
-    label: Relative Gain
-    label1: ''
-    label10: ''''''
-    label2: ''''''
-    label3: ''''''
-    label4: ''''''
-    label5: ''''''
-    label6: ''''''
-    label7: ''''''
-    label8: ''''''
-    label9: ''''''
-    legend: 'True'
+    max_mag: max_magnitude_tx2
     maxoutbuf: '0'
+    min_mag: min_magnitude_tx2
     minoutbuf: '0'
-    name: '"Rx 1 Frequency Domain"'
-    nconnections: '1'
-    showports: 'False'
-    tr_chan: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_tag: '""'
-    type: float
-    units: dB
-    update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
-    wintype: firdes.WIN_BLACKMAN_hARRIS
-    ymax: '10'
-    ymin: '-140'
+    mod_order: modulation_order_tx2
+    samples_per_symbol: samples_per_symbol_tx2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1396, 171]
+    coordinate: [1371, 478]
     rotation: 0
     state: true
-- name: qtgui_freq_sink_x_0_0
-  id: qtgui_freq_sink_x
+- name: owc_binary_to_decimal_mapper_0
+  id: owc_binary_to_decimal_mapper
   parameters:
     affinity: ''
     alias: ''
-    alpha1: '1.0'
-    alpha10: '1.0'
-    alpha2: '1.0'
-    alpha3: '1.0'
-    alpha4: '1.0'
-    alpha5: '1.0'
-    alpha6: '1.0'
-    alpha7: '1.0'
-    alpha8: '1.0'
-    alpha9: '1.0'
-    autoscale: 'True'
-    average: '1.0'
-    axislabels: 'True'
-    bw: samp_rate
-    color1: '"yellow"'
-    color10: '"dark blue"'
-    color2: '"red"'
-    color3: '"green"'
-    color4: '"black"'
-    color5: '"cyan"'
-    color6: '"magenta"'
-    color7: '"yellow"'
-    color8: '"dark red"'
-    color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
-    fc: '0'
-    fftsize: '1024'
-    freqhalf: 'True'
-    grid: 'False'
-    gui_hint: ''
-    label: Relative Gain
-    label1: ''
-    label10: ''''''
-    label2: ''''''
-    label3: ''''''
-    label4: ''''''
-    label5: ''''''
-    label6: ''''''
-    label7: ''''''
-    label8: ''''''
-    label9: ''''''
-    legend: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    name: '"Rx 2 Frequency Domain"'
-    nconnections: '1'
-    showports: 'False'
-    tr_chan: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_tag: '""'
-    type: float
-    units: dB
-    update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
-    wintype: firdes.WIN_BLACKMAN_hARRIS
-    ymax: '10'
-    ymin: '-140'
+    mod_order: modulation_order_tx2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1392, 497]
+    coordinate: [1117, 502]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -838,7 +873,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1393, 286]
+    coordinate: [2103, 194]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0
@@ -935,7 +970,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1391, 379]
+    coordinate: [2100, 431]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0
@@ -1032,7 +1067,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [993, 130]
+    coordinate: [1488, 115]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0_0
@@ -1129,20 +1164,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 549]
+    coordinate: [1653, 577]
     rotation: 0
     state: true
 
 connections:
-- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
-- [analog_sig_source_x_0_0, '0', owc_OWC_Channel_relative_0, '1']
-- [analog_sig_source_x_0_0, '0', qtgui_time_sink_x_0_0_0_0, '0']
+- [analog_random_source_x_0, '0', blocks_unpack_k_bits_bb_0, '0']
+- [analog_random_source_x_0_0, '0', blocks_unpack_k_bits_bb_0_0, '0']
 - [blocks_throttle_0, '0', owc_OWC_Channel_relative_0, '0']
 - [blocks_throttle_0, '0', qtgui_time_sink_x_0_0_0, '0']
-- [owc_OWC_Channel_relative_0, '0', qtgui_freq_sink_x_0, '0']
+- [blocks_uchar_to_float_1, '0', owc_OOK_Modulator_one_0, '0']
+- [blocks_uchar_to_float_1_0, '0', owc_binary_to_decimal_mapper_0, '0']
+- [blocks_unpack_k_bits_bb_0, '0', blocks_uchar_to_float_1, '0']
+- [blocks_unpack_k_bits_bb_0_0, '0', blocks_uchar_to_float_1_0, '0']
+- [owc_OOK_Modulator_one_0, '0', blocks_throttle_0, '0']
 - [owc_OWC_Channel_relative_0, '0', qtgui_time_sink_x_0, '0']
-- [owc_OWC_Channel_relative_0, '1', qtgui_freq_sink_x_0_0, '0']
 - [owc_OWC_Channel_relative_0, '1', qtgui_time_sink_x_0_0, '0']
+- [owc_PAM_Modulator_one_0, '0', owc_OWC_Channel_relative_0, '1']
+- [owc_PAM_Modulator_one_0, '0', qtgui_time_sink_x_0_0_0_0, '0']
+- [owc_binary_to_decimal_mapper_0, '0', owc_PAM_Modulator_one_0, '0']
 
 metadata:
   file_format: 1

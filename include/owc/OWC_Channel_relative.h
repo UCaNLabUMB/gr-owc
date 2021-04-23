@@ -58,6 +58,9 @@ namespace gr {
       virtual void set_distance_array(std::vector<float> distance_array) = 0;
       virtual std::vector<float> distance_array() = 0;
       
+      virtual void set_lambertian_order_array(std::vector<float> lambertian_order_array) = 0;
+      virtual std::vector<float> lambertian_order_array() = 0;
+      
     };
 
   } // namespace owc

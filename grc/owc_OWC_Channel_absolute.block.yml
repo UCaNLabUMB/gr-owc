@@ -94,5 +94,6 @@ templates:
     - set_distance_array()
     - set_emission_angle_array()
     - set_acceptance_angle_array()
+    - set_tx_lambertian_order_array(${tx_lambertian_order_array})
     
 file_format: 1

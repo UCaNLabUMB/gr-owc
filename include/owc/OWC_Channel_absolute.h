@@ -68,7 +68,10 @@ namespace gr {
       virtual std::vector<float> rx_coordinates_array() = 0;    
       
       virtual void set_rx_orientation_array(std::vector<float> rx_orientation_array) = 0;
-      virtual std::vector<float> rx_orientation_array() = 0;  
+      virtual std::vector<float> rx_orientation_array() = 0; 
+      
+      virtual void set_tx_lambertian_order_array(std::vector<float> lambertian_order_array) = 0;
+      virtual std::vector<float> tx_lambertian_order_array() = 0; 
     };
 
   } // namespace owc

@@ -32,18 +32,6 @@ options:
     state: enabled
 
 blocks:
-- name: averaging_window_size
-  id: variable
-  parameters:
-    comment: ''
-    value: '100000'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [740, 15]
-    rotation: 0
-    state: enabled
 - name: max_magnitude
   id: variable
   parameters:

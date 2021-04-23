@@ -85,5 +85,6 @@ templates:
     - set_emission_angle_array(${emission_angle_array})
     - set_acceptance_angle_array(${acceptance_angle_array})
     - set_distance_array(${distance_array})
+    - set_lambertian_order_array(${lambertian_order_array})
     
 file_format: 1

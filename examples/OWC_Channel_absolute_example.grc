@@ -441,29 +441,47 @@ blocks:
     rotation: 0
     state: enabled
 - name: tx_m_1
-  id: variable
+  id: variable_qtgui_range
   parameters:
     comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '0.1'
+    stop: '2'
     value: '0.5'
+    widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [296, 11]
+    coordinate: [24, 701]
     rotation: 0
-    state: enabled
+    state: true
 - name: tx_m_2
-  id: variable
+  id: variable_qtgui_range
   parameters:
     comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '0.1'
+    stop: '2'
     value: '0.5'
+    widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [379, 11]
+    coordinate: [164, 700]
     rotation: 0
-    state: enabled
+    state: true
 - name: tx_u_x_1
   id: variable_qtgui_range
   parameters:
