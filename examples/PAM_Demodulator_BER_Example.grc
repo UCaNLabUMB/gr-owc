@@ -174,7 +174,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    max: '32'
+    max: '256'
     maxoutbuf: '0'
     min: '0'
     minoutbuf: '0'

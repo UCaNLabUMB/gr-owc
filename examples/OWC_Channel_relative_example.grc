@@ -132,7 +132,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 1e-6
+    value: 75e-6
   states:
     bus_sink: false
     bus_source: false
@@ -144,12 +144,12 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 1e-6
+    value: 75e-6
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [541, 20]
+    coordinate: [547, 20]
     rotation: 0
     state: enabled
 - name: rx_C_r_1
@@ -554,7 +554,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [697, 152]
+    coordinate: [756, 154]
     rotation: 0
     state: true
 - name: owc_OWC_Channel_relative_0
@@ -581,7 +581,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [882, 263]
+    coordinate: [917, 244]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -741,7 +741,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1392, 497]
+    coordinate: [1395, 484]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -1129,7 +1129,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 549]
+    coordinate: [919, 503]
     rotation: 0
     state: true
 

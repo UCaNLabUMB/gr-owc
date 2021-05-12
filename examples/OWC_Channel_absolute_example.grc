@@ -36,24 +36,24 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 1e-6
+    value: 75e-6
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 14]
+    coordinate: [459, 14]
     rotation: 0
     state: enabled
 - name: rx_A_2
   id: variable
   parameters:
     comment: ''
-    value: 1e-6
+    value: 75e-6
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [533, 14]
+    coordinate: [537, 14]
     rotation: 0
     state: enabled
 - name: rx_C_r_1

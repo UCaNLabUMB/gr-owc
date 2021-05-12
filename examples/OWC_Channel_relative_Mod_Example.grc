@@ -595,7 +595,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [492, 298]
+    coordinate: [736, 294]
     rotation: 0
     state: true
 - name: analog_random_source_x_0_0
@@ -615,7 +615,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [483, 479]
+    coordinate: [874, 522]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -634,7 +634,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1190, 138]
+    coordinate: [1300, 137]
     rotation: 0
     state: true
 - name: blocks_uchar_to_float_1
@@ -649,7 +649,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [899, 326]
+    coordinate: [1080, 322]
     rotation: 0
     state: true
 - name: blocks_uchar_to_float_1_0
@@ -664,7 +664,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [919, 506]
+    coordinate: [1244, 550]
     rotation: 0
     state: true
 - name: blocks_unpack_k_bits_bb_0
@@ -680,7 +680,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [701, 322]
+    coordinate: [915, 318]
     rotation: 0
     state: enabled
 - name: blocks_unpack_k_bits_bb_0_0
@@ -696,7 +696,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [692, 503]
+    coordinate: [1056, 546]
     rotation: 0
     state: enabled
 - name: owc_OOK_Modulator_one_0
@@ -714,7 +714,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1110, 306]
+    coordinate: [1291, 302]
     rotation: 0
     state: enabled
 - name: owc_OWC_Channel_relative_0
@@ -741,7 +741,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1675, 202]
+    coordinate: [1555, 224]
     rotation: 0
     state: true
 - name: owc_PAM_Modulator_one_0
@@ -760,7 +760,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1371, 478]
+    coordinate: [1696, 522]
     rotation: 0
     state: true
 - name: owc_binary_to_decimal_mapper_0
@@ -776,7 +776,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1117, 502]
+    coordinate: [1442, 546]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -873,7 +873,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [2103, 194]
+    coordinate: [1941, 188]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0
@@ -970,7 +970,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [2100, 431]
+    coordinate: [1944, 368]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0
@@ -1067,7 +1067,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1488, 115]
+    coordinate: [1595, 113]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0_0
@@ -1164,7 +1164,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1653, 577]
+    coordinate: [1944, 522]
     rotation: 0
     state: true
 
