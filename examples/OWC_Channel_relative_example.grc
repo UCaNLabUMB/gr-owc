@@ -36,7 +36,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 4,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -57,7 +57,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 8,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -78,7 +78,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 13,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -99,7 +99,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 16,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -228,7 +228,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 3,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -249,7 +249,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 7,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -270,7 +270,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 12,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -291,7 +291,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 15,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -372,7 +372,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 19,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -393,7 +393,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 20,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -414,7 +414,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 2,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -435,7 +435,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 6,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -456,7 +456,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 11,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -477,7 +477,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 14,0
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -513,7 +513,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [506, 192]
+    coordinate: [565, 215]
     rotation: 0
     state: true
 - name: analog_sig_source_x_0_0
@@ -535,7 +535,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [505, 330]
+    coordinate: [566, 376]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -619,7 +619,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 10,0
     label: Relative Gain
     label1: ''
     label10: ''''''
@@ -661,7 +661,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1396, 171]
+    coordinate: [1350, 155]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0_0
@@ -699,7 +699,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 18,0
     label: Relative Gain
     label1: ''
     label10: ''''''
@@ -741,7 +741,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1395, 484]
+    coordinate: [1349, 468]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -775,7 +775,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 9,0
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
@@ -838,7 +838,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1393, 286]
+    coordinate: [1347, 270]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0
@@ -872,7 +872,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 17,0
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
@@ -935,7 +935,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1391, 379]
+    coordinate: [1345, 363]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0
@@ -967,9 +967,9 @@ blocks:
     color9: dark green
     comment: ''
     ctrlpanel: 'False'
-    entags: 'True'
+    entags: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 0,0
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
@@ -1066,7 +1066,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 1,0
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
