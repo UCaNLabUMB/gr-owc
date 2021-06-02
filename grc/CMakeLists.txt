@@ -29,5 +29,6 @@ install(FILES
     owc_VPPM_Modulator_two.block.yml
     owc_OOK_Demodulator.block.yml
     owc_PAM_Demodulator.block.yml
-    owc_decimal_to_binary_mapper.block.yml DESTINATION share/gnuradio/grc/blocks
+    owc_decimal_to_binary_mapper.block.yml
+    owc_VPPM_Demodulator.block.yml DESTINATION share/gnuradio/grc/blocks
 )

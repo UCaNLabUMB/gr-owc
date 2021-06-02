@@ -605,7 +605,7 @@ blocks:
     bw: samp_rate
     color1: '"blue"'
     color10: '"dark blue"'
-    color2: '"red"'
+    color2: '"yellow"'
     color3: '"green"'
     color4: '"black"'
     color5: '"cyan"'
@@ -621,9 +621,9 @@ blocks:
     grid: 'False'
     gui_hint: 10,0
     label: Relative Gain
-    label1: ''
+    label1: Rx 1 Frequency Domain
     label10: ''''''
-    label2: ''''''
+    label2: Rx 2 Frequency Domain
     label3: ''''''
     label4: ''''''
     label5: ''''''
@@ -634,8 +634,8 @@ blocks:
     legend: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    name: '"Rx 1 Frequency Domain"'
-    nconnections: '1'
+    name: Rx's Frequency Domain
+    nconnections: '2'
     showports: 'False'
     tr_chan: '0'
     tr_level: '0.0'
@@ -661,89 +661,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1350, 155]
+    coordinate: [1342, 155]
     rotation: 0
-    state: true
-- name: qtgui_freq_sink_x_0_0
-  id: qtgui_freq_sink_x
-  parameters:
-    affinity: ''
-    alias: ''
-    alpha1: '1.0'
-    alpha10: '1.0'
-    alpha2: '1.0'
-    alpha3: '1.0'
-    alpha4: '1.0'
-    alpha5: '1.0'
-    alpha6: '1.0'
-    alpha7: '1.0'
-    alpha8: '1.0'
-    alpha9: '1.0'
-    autoscale: 'True'
-    average: '1.0'
-    axislabels: 'True'
-    bw: samp_rate
-    color1: '"yellow"'
-    color10: '"dark blue"'
-    color2: '"red"'
-    color3: '"green"'
-    color4: '"black"'
-    color5: '"cyan"'
-    color6: '"magenta"'
-    color7: '"yellow"'
-    color8: '"dark red"'
-    color9: '"dark green"'
-    comment: ''
-    ctrlpanel: 'False'
-    fc: '0'
-    fftsize: '1024'
-    freqhalf: 'True'
-    grid: 'False'
-    gui_hint: 18,0
-    label: Relative Gain
-    label1: ''
-    label10: ''''''
-    label2: ''''''
-    label3: ''''''
-    label4: ''''''
-    label5: ''''''
-    label6: ''''''
-    label7: ''''''
-    label8: ''''''
-    label9: ''''''
-    legend: 'True'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    name: '"Rx 2 Frequency Domain"'
-    nconnections: '1'
-    showports: 'False'
-    tr_chan: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_tag: '""'
-    type: float
-    units: dB
-    update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
-    wintype: firdes.WIN_BLACKMAN_hARRIS
-    ymax: '10'
-    ymin: '-140'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1349, 468]
-    rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -838,9 +758,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1347, 270]
+    coordinate: [1344, 343]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_time_sink_x_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -935,9 +855,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1345, 363]
+    coordinate: [1342, 436]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_time_sink_x_0_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -1132,6 +1052,67 @@ blocks:
     coordinate: [919, 503]
     rotation: 0
     state: true
+- name: qtgui_waterfall_sink_x_0
+  id: qtgui_waterfall_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: ''
+    int_max: '-100'
+    int_min: '-200'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: Rx2 Waterfall
+    nconnections: '1'
+    showports: 'False'
+    type: float
+    update_time: '0.01'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1330, 542]
+    rotation: 0
+    state: true
 
 connections:
 - [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
@@ -1141,8 +1122,9 @@ connections:
 - [blocks_throttle_0, '0', qtgui_time_sink_x_0_0_0, '0']
 - [owc_OWC_Channel_relative_0, '0', qtgui_freq_sink_x_0, '0']
 - [owc_OWC_Channel_relative_0, '0', qtgui_time_sink_x_0, '0']
-- [owc_OWC_Channel_relative_0, '1', qtgui_freq_sink_x_0_0, '0']
+- [owc_OWC_Channel_relative_0, '1', qtgui_freq_sink_x_0, '1']
 - [owc_OWC_Channel_relative_0, '1', qtgui_time_sink_x_0_0, '0']
+- [owc_OWC_Channel_relative_0, '1', qtgui_waterfall_sink_x_0, '0']
 
 metadata:
   file_format: 1

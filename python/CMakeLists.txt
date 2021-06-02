@@ -54,3 +54,4 @@ GR_ADD_TEST(qa_VPPM_Modulator_two ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DI
 GR_ADD_TEST(qa_OOK_Demodulator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_OOK_Demodulator.py)
 GR_ADD_TEST(qa_PAM_Demodulator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PAM_Demodulator.py)
 GR_ADD_TEST(qa_decimal_to_binary_mapper ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_decimal_to_binary_mapper.py)
+GR_ADD_TEST(qa_VPPM_Demodulator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_VPPM_Demodulator.py)
