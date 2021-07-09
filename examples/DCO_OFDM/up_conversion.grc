@@ -75,7 +75,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [248, 229]
+    coordinate: [208, 243]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_real_0
@@ -91,7 +91,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [625, 165]
+    coordinate: [585, 179]
+    rotation: 0
+    state: true
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: 1/20
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [695, 119]
     rotation: 0
     state: true
 - name: blocks_multiply_xx_0
@@ -109,7 +127,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 154]
+    coordinate: [424, 168]
     rotation: 0
     state: enabled
 - name: pad_sink_0
@@ -127,7 +145,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [861, 166]
+    coordinate: [886, 180]
     rotation: 0
     state: true
 - name: pad_source_0
@@ -147,13 +165,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [280, 144]
+    coordinate: [240, 158]
     rotation: 0
     state: true
 
 connections:
 - [analog_sig_source_x_0_0_0, '0', blocks_multiply_xx_0, '1']
-- [blocks_complex_to_real_0, '0', pad_sink_0, '0']
+- [blocks_complex_to_real_0, '0', blocks_multiply_const_vxx_0, '0']
+- [blocks_multiply_const_vxx_0, '0', pad_sink_0, '0']
 - [blocks_multiply_xx_0, '0', blocks_complex_to_real_0, '0']
 - [pad_source_0, '0', blocks_multiply_xx_0, '0']
 

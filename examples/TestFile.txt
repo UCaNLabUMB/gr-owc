@@ -1,1 +1,1 @@
-gr-owc by the Ubiquitous Communications and Networking Lab (UCan Lab) at UMass Boston  .
+gr-owc by the Ubiquitous Communications and Networking Lab (UCan Lab) at UMass Boston.
