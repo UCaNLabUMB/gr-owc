@@ -86,7 +86,16 @@ namespace gr {
       
       float channel_model(float emission_angle, float acceptance_angle, float distance, float lambertian_order, float ps_area, float optical_filter_transmittance, float refractive_index, float concentrator_FOV, float E2O_conversion_factor, float O2E_conversion_factor){
        	     	
-       	float Gt = ((lambertian_order + 1)/(2*M_PI))*pow(cos(emission_angle*(M_PI/180)),lambertian_order);
+       	float Gt = 0;
+       	     	
+       	if (emission_angle <= 90)
+       	{
+       		Gt = ((lambertian_order + 1)/(2*M_PI))*pow(cos(emission_angle*(M_PI/180)),lambertian_order);
+       	}
+       	else
+       	{
+       		Gt = 0;
+       	}
        	
        	float Ts = optical_filter_transmittance;
        	
