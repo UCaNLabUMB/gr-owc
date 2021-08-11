@@ -163,7 +163,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [644, 173]
+    coordinate: [644, 172]
     rotation: 0
     state: true
 - name: pad_sink_0
@@ -181,7 +181,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [836, 183]
+    coordinate: [851, 188]
     rotation: 0
     state: true
 - name: pad_source_0
@@ -201,7 +201,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [206, 187]
+    coordinate: [206, 188]
     rotation: 0
     state: true
 

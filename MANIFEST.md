@@ -1,17 +1,20 @@
-title: The OWC OOT Module
-brief: Short description of gr-owc
+title: gr-owc
+brief: GNURadio out-ot-tree (OOT) module for optical wireless communications.
 tags: # Tags are arbitrary, but look at CGRAN what other authors are using
-  - sdr
+  - OWC
+  - VLC
+  - SDR
+  - GNURadio
+
 author:
-  - Author Name <authors@email.address>
+  - Arsalan Ahmed <arsalanqasimahmed@gmail.com>
+  - Michael Rahaim <Michael.Rahaim@umb.edu>
 copyright_owner:
-  - Copyright Owner 1
-license:
-gr_supported_version: # Put a comma separated list of supported GR versions here
-#repo: # Put the URL of the repository here, or leave blank for default
+  - The Ubiquitous Communications and Networking (UCAN) Lab, University of Massachusetts, Boston.
+license: GPLv3
+gr_supported_version: v3.8
+repo: https://github.com/UCaNLabUMB/gr-owc
 #website: <module_website> # If you have a separate project website, put it here
 #icon: <icon_url> # Put a URL to a square image here that will be used as an icon on CGRAN
 ---
-A longer, multi-line description of gr-owc.
-You may use some *basic* Markdown here.
-If left empty, it will try to find a README file instead.
+*gr-owc* is an, an open source out-of-tree module for the widely used GNURadio signal processing toolkit. Within gr-owc, we have developed signal processing blocks for OWC channel simulation and common OWC modulation/demodulation techniques.
