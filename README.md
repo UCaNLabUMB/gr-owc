@@ -23,4 +23,12 @@ To download and install, follow the steps below:
 
 9-) Configure your linker/debugger with 'sudo ldconfig'
 
-10-) Open gnuradio-companion and you should find a module for gr-owc.
+10-) Open gnuradio-companion and you should find a module for gr-owc
+
+Alternatively, gr-owc can also be installed directly into the desired GNURadio prefix using PyBOMBS. For this, follow the steps below:
+
+1-) cd into the desired GNURadio prefix folder
+
+2-) Install gr-owc using pybombs with 'pybombs install gr-owc' 
+
+3-) Open gnuradio-comapanion from that prefix and you should find a module for gr-owc
