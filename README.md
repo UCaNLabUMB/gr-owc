@@ -27,8 +27,12 @@ To download and install, follow the steps below:
 
 Alternatively, gr-owc can also be installed directly into the desired GNURadio prefix using PyBOMBS. For this, follow the steps below:
 
-1-) cd into the desired GNURadio prefix folder
+1-) Configure PyBOMBS for default configuration with 'pybombs auto-config'
 
-2-) Install gr-owc using pybombs with 'pybombs install gr-owc' 
+2-) Point PyBOMBS to the recipes for installing OOT modules. As a default, you can use 'pybombs recipes add-defaults' (adds gr-recipes and gr-etcetra) 
 
-3-) Open gnuradio-comapanion from that prefix and you should find a module for gr-owc
+3-) cd into the desired GNURadio prefix folder
+
+4-) Install gr-owc using pybombs with 'pybombs install gr-owc' 
+
+5-) Open gnuradio-comapanion from that prefix and you should find a module for gr-owc
