@@ -1,7 +1,7 @@
 # gr-owc
 GNURadio out-ot-tree (OOT) module for optical wireless communications. Contact person for the module is Dr. Michael Rahaim (<Michael.Rahaim@umb.edu>) from The Ubiquitous Communications and Networking (UCAN) Lab, University of Massachusetts, Boston.
 
-https://zenodo.org/badge/latestdoi/323626297
+<a href="https://zenodo.org/badge/latestdoi/323626297"><img src="https://zenodo.org/badge/323626297.svg" alt="DOI"></a>
 
 
 This installation guide assumes that GNU Radio has been installed using PyBOMBS.
