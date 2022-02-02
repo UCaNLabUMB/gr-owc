@@ -20,15 +20,16 @@
  *
  */
 
-#ifndef INCLUDED_OWC_OWC_CHANNEL_ABSOLUTE_IMPL_H
-#define INCLUDED_OWC_OWC_CHANNEL_ABSOLUTE_IMPL_H
+#ifndef INCLUDED_OWC_OWC_CHANNEL_ABSOLUTE_TWO_IMPL_H
+#define INCLUDED_OWC_OWC_CHANNEL_ABSOLUTE_TWO_IMPL_H
 
-#include <owc/OWC_Channel_absolute.h>
+#include <owc/OWC_Channel_absolute_two.h>
+#include <gnuradio/random.h>
 
 namespace gr {
   namespace owc {
 
-    class OWC_Channel_absolute_impl : public OWC_Channel_absolute
+    class OWC_Channel_absolute_two_impl : public OWC_Channel_absolute_two
     {
      private:
       	int d_num_inputs = 1;
@@ -53,19 +54,28 @@ namespace gr {
 	std::vector<float> d_rx_coordinates_array;
 	std::vector<float> d_rx_orientation_array;
 	
+	int d_sample_rate;
+	
+	std::vector<int> d_num_delay_samples_array;
+	std::vector<int> d_blockage_array;
+	
+	std::vector<float> d_remaining_input_samples;
+	
+	std::vector<float> d_noise_power_array;
+	
+	gr::random d_rng;
+	
+	int d_noutput_items_previous = 10000;//Using 10000 (a very large number just to be safe) zeros initially to add at the very start
 
      public:
-      OWC_Channel_absolute_impl(int num_inputs, int num_outputs, const std::vector<float>& tx_coordinates_array, const std::vector<float>& tx_orientation_array, const std::vector<float>& rx_coordinates_array, const std::vector<float>& rx_orientation_array, const std::vector<float>& tx_lambertian_order_array, const std::vector<float>& rx_photosensor_area_array, const std::vector<float>& optical_filter_transmittance_array, const std::vector<float>& refractive_index_array, const std::vector<float>& concentrator_FOV_array, const std::vector<float>& E2O_conversion_factor_array, const std::vector<float>& O2E_conversion_factor_array);
-      ~OWC_Channel_absolute_impl();
-
+      OWC_Channel_absolute_two_impl(int num_inputs, int num_outputs, const std::vector<float>& tx_coordinates_array, const std::vector<float>& tx_orientation_array, const std::vector<float>& rx_coordinates_array, const std::vector<float>& rx_orientation_array, const std::vector<float>& tx_lambertian_order_array, const std::vector<float>& rx_photosensor_area_array, const std::vector<float>& optical_filter_transmittance_array, const std::vector<float>& refractive_index_array, const std::vector<float>& concentrator_FOV_array, const std::vector<float>& E2O_conversion_factor_array, const std::vector<float>& O2E_conversion_factor_array, int sample_rate, const std::vector<int>& blockage_array, const std::vector<float>& noise_power_array);
+      ~OWC_Channel_absolute_two_impl();
+      
       void set_num_inputs(int num_inputs){d_num_inputs = num_inputs;}
       int r_num_inputs() {return d_num_inputs;}
       
       void set_num_outputs(int num_outputs){d_num_outputs = num_outputs;}
       int r_num_outputs() {return d_num_outputs;}
-      
-      
-      
       
       void set_tx_coordinates_array(std::vector<float> tx_coordinates_array){d_tx_coordinates_array = tx_coordinates_array;}
       std::vector<float> tx_coordinates_array() {return d_tx_coordinates_array;}     
@@ -78,9 +88,6 @@ namespace gr {
       
       void set_rx_orientation_array(std::vector<float> rx_orientation_array){d_rx_orientation_array = rx_orientation_array;}
       std::vector<float> rx_orientation_array() {return d_rx_orientation_array;}  
-      
-      
-      
       
       void set_tx_lambertian_order_array(std::vector<float> tx_lambertian_order_array){d_tx_lambertian_order_array = tx_lambertian_order_array;}
       std::vector<float> tx_lambertian_order_array() {return d_tx_lambertian_order_array;}       
@@ -103,13 +110,12 @@ namespace gr {
       void set_O2E_conversion_factor_array(std::vector<float> O2E_conversion_factor_array){d_O2E_conversion_factor_array = O2E_conversion_factor_array;}
       std::vector<float> O2E_conversion_factor_array() {return d_O2E_conversion_factor_array;}
       
-      float channel_model(float emission_angle, float acceptance_angle, float distance, float lambertian_order_m, float photosensor_area, float optical_filter_transmittance, float refractive_index, float concentrator_FOV, float E2O_conversion_factor, float O2E_conversion_factor){
-       	     	
+      float channel_model(float emission_angle, float acceptance_angle, float distance, float lambertian_order, float ps_area, float optical_filter_transmittance, float refractive_index, float concentrator_FOV, float E2O_conversion_factor, float O2E_conversion_factor, int blockage){
        	float Gt = 0;
        	     	
        	if (emission_angle <= 90)
        	{
-       		Gt = ((lambertian_order_m + 1)/(2*M_PI))*pow(cos(emission_angle*(M_PI/180)),lambertian_order_m);
+       		Gt = ((lambertian_order + 1)/(2*M_PI))*pow(cos(emission_angle*(M_PI/180)),lambertian_order);
        	}
        	else
        	{
@@ -122,9 +128,9 @@ namespace gr {
        	float sin_of_concentrator_FOV_squared = sin(concentrator_FOV*(M_PI/180))*sin(concentrator_FOV*(M_PI/180));
        	float g = refractive_index_squared/sin_of_concentrator_FOV_squared;
        	if ((acceptance_angle < 0) || (acceptance_angle > concentrator_FOV))
-       	{g = 0;}
+       	{g = 0.0;}
        	
-       	float Gr = photosensor_area*Ts*g*cos(acceptance_angle*(M_PI/180)); 
+       	float Gr = ps_area*Ts*g*cos(acceptance_angle*(M_PI/180)); 
        	float distance_squared = distance * distance;
        	
        	float Ct = E2O_conversion_factor;
@@ -132,9 +138,10 @@ namespace gr {
        	
        	float H = Ct*((Gt*Gr)/distance_squared)*Cr;
        	
+       	H = H * blockage;
+       	
        	return H;       	     }
        	      
-     	//void set_distance_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array)
  
      	void set_distance_array()
      	{     		
@@ -164,7 +171,6 @@ namespace gr {
      	
      	std::vector<float> distance_array() {return d_distance_array;} 
      	
-     	//void set_emission_angle_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> tx_orientation_array, std::vector<float> rx_coordinates_array)
 	void set_emission_angle_array()
      	{     
      		d_emission_angle_array.clear();		
@@ -211,7 +217,6 @@ namespace gr {
      	}
      	std::vector<float> emission_angle_array() {return d_emission_angle_array;} 
      	
-     	//void set_acceptance_angle_array(int num_inputs, int num_outputs, std::vector<float> tx_coordinates_array, std::vector<float> rx_coordinates_array, std::vector<float> rx_orientation_array)
 	void set_acceptance_angle_array()
      	{
      		d_acceptance_angle_array.clear();
@@ -256,8 +261,45 @@ namespace gr {
      			}
      		}	
      	}
-     	std::vector<float> acceptance_angle_array() {return d_acceptance_angle_array;} 
-
+     	std::vector<float> acceptance_angle_array() {return d_acceptance_angle_array;}
+     	
+      void set_sample_rate(int sample_rate){d_sample_rate = sample_rate;}
+      int sample_rate() {return d_sample_rate;}
+      
+      void set_num_delay_samples_array()
+      {      	
+      	d_num_delay_samples_array.clear();
+      	float speed_of_light = 299792458;
+      	
+      	float propagation_time = 0;
+      	float num_delay_samples = 0;
+      	 
+      	int array_length = r_num_inputs()*r_num_outputs();
+      	
+      	for (int x = 0; x < array_length; x++)
+      	{
+      		propagation_time = distance_array()[x] / speed_of_light;
+      		num_delay_samples = round(propagation_time * sample_rate());  
+      		
+      		d_num_delay_samples_array.push_back(num_delay_samples); 
+      	}
+      }      
+      std::vector<int> num_delay_samples_array() {return d_num_delay_samples_array;}
+           
+      void set_blockage_array(std::vector<int> blockage_array){d_blockage_array = blockage_array;}
+      std::vector<int> blockage_array() {return d_blockage_array;}
+      
+      void set_remaining_samples_array()
+      {
+      		for (int x = 0; x < r_num_inputs()*d_noutput_items_previous; x++)
+      		{
+      			d_remaining_input_samples.push_back(0);
+      		}
+      }
+      std::vector<float> remaining_samples_array() {return d_remaining_input_samples;}
+      
+      void set_noise_power_array(std::vector<float> noise_power_array){d_noise_power_array = noise_power_array;}
+      std::vector<float> noise_power_array() {return d_noise_power_array;}
 
       // Where all the action really happens
       int work(
@@ -270,4 +312,5 @@ namespace gr {
   } // namespace owc
 } // namespace gr
 
-#endif /* INCLUDED_OWC_OWC_CHANNEL_ABSOLUTE_IMPL_H */
+#endif /* INCLUDED_OWC_OWC_CHANNEL_ABSOLUTE_TWO_IMPL_H */
+

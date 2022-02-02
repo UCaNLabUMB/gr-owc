@@ -35,5 +35,7 @@ install(FILES
     OOK_Demodulator.h
     PAM_Demodulator.h
     decimal_to_binary_mapper.h
-    VPPM_Demodulator.h DESTINATION include/owc
+    VPPM_Demodulator.h
+    OWC_Channel_relative_two.h
+    OWC_Channel_absolute_two.h DESTINATION include/owc
 )

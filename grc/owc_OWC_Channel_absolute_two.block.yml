@@ -1,0 +1,115 @@
+id: owc_OWC_Channel_absolute_two
+label: OWC Channel (absolute) with delay, blockage and noise
+category: '[owc]'
+
+parameters:
+- id: num_inputs
+  label: Number of Tx
+  dtype: int
+  default: '1'
+  
+- id: num_outputs
+  label: Number of Rx
+  dtype: int
+  default: '1'
+
+- id: tx_coordinates_array
+  label: Tx Coordinates Array
+  default: [2.0,2.0,2.0]
+  dtype: float_vector
+  
+- id: tx_orientation_array
+  label: Tx Orientation Array
+  default: [0,0,-1.0]
+  dtype: float_vector
+  
+- id: rx_coordinates_array
+  label: Rx Coordinates Array
+  default: [1.0,1.0,1.0]
+  dtype: float_vector
+  
+- id: rx_orientation_array
+  label: Rx Orientation Array
+  default: [0,0,1.0]
+  dtype: float_vector
+  
+- id: tx_lambertian_order_array
+  label: Tx Lambertian Order Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: rx_photosensor_area_array
+  label: Rx Photosensor Area Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: optical_filter_transmittance_array
+  label: Optical Filter Transmittance Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: refractive_index_array
+  label: Refractive Index Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: concentrator_FOV_array
+  label: Concentrator FOV Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: E2O_conversion_factor_array
+  label: E2O Conversion Factor Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: O2E_conversion_factor_array
+  label: O2E Conversion Factor Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: sample_rate
+  label: Sample Rate
+  dtype: int
+  default: '100000'
+  
+- id: blockage_array
+  label: Blockages Array
+  default: [1]
+  dtype: int_vector
+  
+- id: noise_power_array
+  label: Noise Power Array
+  default: [0]
+  dtype: float_vector
+  
+inputs:
+- label: in
+  domain: stream
+  dtype: float
+  multiplicity: ${num_inputs}
+outputs:
+- label: out
+  domain: stream
+  dtype: float
+  multiplicity: ${num_outputs}
+  
+asserts:
+- ${num_inputs > 0}
+- ${num_outputs > 0}
+  
+templates:
+    imports: import owc
+    make: owc.OWC_Channel_absolute_two(${num_inputs}, ${num_outputs}, ${tx_coordinates_array}, ${tx_orientation_array}, ${rx_coordinates_array}, ${rx_orientation_array}, ${tx_lambertian_order_array}, ${rx_photosensor_area_array}, ${optical_filter_transmittance_array}, ${refractive_index_array}, ${concentrator_FOV_array}, ${E2O_conversion_factor_array}, ${O2E_conversion_factor_array}, ${sample_rate}, ${blockage_array}, ${noise_power_array})
+    callbacks:
+    - set_tx_coordinates_array(${tx_coordinates_array})
+    - set_tx_orientation_array(${tx_orientation_array})
+    - set_rx_coordinates_array(${rx_coordinates_array})
+    - set_rx_orientation_array(${rx_orientation_array})
+    - set_distance_array()
+    - set_emission_angle_array()
+    - set_acceptance_angle_array()
+    - set_tx_lambertian_order_array(${tx_lambertian_order_array})
+    - set_blockage_array(${blockage_array})
+    - set_noise_power_array(${noise_power_array})
+file_format: 1

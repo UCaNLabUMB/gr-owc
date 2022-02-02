@@ -35,7 +35,9 @@ list(APPEND owc_sources
     OOK_Demodulator_impl.cc
     PAM_Demodulator_impl.cc
     decimal_to_binary_mapper_impl.cc
-    VPPM_Demodulator_impl.cc )
+    VPPM_Demodulator_impl.cc
+    OWC_Channel_relative_two_impl.cc
+    OWC_Channel_absolute_two_impl.cc )
 
 set(owc_sources "${owc_sources}" PARENT_SCOPE)
 if(NOT owc_sources)
