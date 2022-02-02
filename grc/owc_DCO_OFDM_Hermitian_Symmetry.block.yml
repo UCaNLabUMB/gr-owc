@@ -1,0 +1,29 @@
+id: owc_DCO_OFDM_Hermitian_Symmetry
+label: Hermitian Symmetry for DCO-OFDM
+category: '[owc]'
+
+templates:
+  imports: import owc
+  make: owc.DCO_OFDM_Hermitian_Symmetry(${fft_len})
+
+parameters:
+- id: fft_len
+  label: FFT Length
+  dtype: int
+  default: '32'
+  
+inputs:
+-   domain: stream
+    dtype: complex
+    vlen: ${fft_len}
+
+outputs:
+-   domain: stream
+    dtype: complex
+    vlen: ${1}
+
+asserts:
+- ${ fft_len > 0}
+- ${ fft_len % 2 == 0}
+
+file_format: 1

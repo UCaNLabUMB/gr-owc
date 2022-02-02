@@ -23,6 +23,7 @@
 #include "owc/VPPM_Demodulator.h"
 #include "owc/OWC_Channel_relative_two.h"
 #include "owc/OWC_Channel_absolute_two.h"
+#include "owc/DCO_OFDM_Hermitian_Symmetry.h"
 %}
 
 %include "owc/OWC_Channel_relative.h"
@@ -57,3 +58,5 @@ GR_SWIG_BLOCK_MAGIC2(owc, VPPM_Demodulator);
 GR_SWIG_BLOCK_MAGIC2(owc, OWC_Channel_relative_two);
 %include "owc/OWC_Channel_absolute_two.h"
 GR_SWIG_BLOCK_MAGIC2(owc, OWC_Channel_absolute_two);
+%include "owc/DCO_OFDM_Hermitian_Symmetry.h"
+GR_SWIG_BLOCK_MAGIC2(owc, DCO_OFDM_Hermitian_Symmetry);

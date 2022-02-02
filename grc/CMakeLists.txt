@@ -32,5 +32,6 @@ install(FILES
     owc_decimal_to_binary_mapper.block.yml
     owc_VPPM_Demodulator.block.yml
     owc_OWC_Channel_relative_two.block.yml
-    owc_OWC_Channel_absolute_two.block.yml DESTINATION share/gnuradio/grc/blocks
+    owc_OWC_Channel_absolute_two.block.yml
+    owc_DCO_OFDM_Hermitian_Symmetry.block.yml DESTINATION share/gnuradio/grc/blocks
 )
