@@ -60,3 +60,4 @@ GR_SWIG_BLOCK_MAGIC2(owc, OWC_Channel_relative_two);
 GR_SWIG_BLOCK_MAGIC2(owc, OWC_Channel_absolute_two);
 %include "owc/DCO_OFDM_Hermitian_Symmetry.h"
 GR_SWIG_BLOCK_MAGIC2(owc, DCO_OFDM_Hermitian_Symmetry);
+

@@ -38,7 +38,8 @@ list(APPEND owc_sources
     VPPM_Demodulator_impl.cc
     OWC_Channel_relative_two_impl.cc
     OWC_Channel_absolute_two_impl.cc
-    DCO_OFDM_Hermitian_Symmetry_impl.cc )
+    DCO_OFDM_Hermitian_Symmetry_impl.cc
+    )
 
 set(owc_sources "${owc_sources}" PARENT_SCOPE)
 if(NOT owc_sources)
