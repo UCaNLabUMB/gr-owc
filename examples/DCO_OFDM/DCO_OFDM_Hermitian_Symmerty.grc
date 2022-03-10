@@ -312,24 +312,6 @@ blocks:
     coordinate: [301, 211]
     rotation: 0
     state: enabled
-- name: blocks_stream_to_vector_0
-  id: blocks_stream_to_vector
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_items: fft_len
-    type: complex
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [866, 647]
-    rotation: 0
-    state: true
 - name: blocks_tag_gate_0
   id: blocks_tag_gate
   parameters:
@@ -600,22 +582,22 @@ blocks:
     coordinate: [1492, 218]
     rotation: 0
     state: enabled
-- name: owc_DCO_OFDM_Hermitian_Symmetry_0
-  id: owc_DCO_OFDM_Hermitian_Symmetry
+- name: owc_Hermitian_symmetry_vec_to_vec_0
+  id: owc_Hermitian_symmetry_vec_to_vec
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    fft_len: '64'
+    fft_len: fft_len
     maxoutbuf: '0'
     minoutbuf: '0'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [591, 643]
+    coordinate: [704, 643]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -1014,7 +996,6 @@ connections:
 - [blocks_repack_bits_bb_0, '0', virtual_sink_0_0, '0']
 - [blocks_repack_bits_bb_0_0, '0', header_bits, '0']
 - [blocks_stream_to_tagged_stream_0, '0', digital_crc32_bb_0, '0']
-- [blocks_stream_to_vector_0, '0', fft_vxx_0, '0']
 - [blocks_tag_gate_0, '0', qtgui_freq_sink_x_0, '0']
 - [blocks_tag_gate_0, '0', qtgui_time_sink_x_0, '0']
 - [blocks_tag_gate_0, '0', virtual_sink_0_1, '0']
@@ -1026,12 +1007,13 @@ connections:
 - [digital_chunks_to_symbols_xx_0_0, '0', blocks_tagged_stream_mux_0, '1']
 - [digital_crc32_bb_0, '0', blocks_repack_bits_bb_0, '0']
 - [digital_crc32_bb_0, '0', digital_protocol_formatter_bb_0, '0']
-- [digital_ofdm_carrier_allocator_cvc_0, '0', owc_DCO_OFDM_Hermitian_Symmetry_0, '0']
+- [digital_ofdm_carrier_allocator_cvc_0, '0', owc_Hermitian_symmetry_vec_to_vec_0,
+  '0']
 - [digital_ofdm_cyclic_prefixer_0, '0', virtual_sink_0, '0']
 - [digital_ofdm_rx_0, '0', blocks_uchar_to_float_0, '0']
 - [digital_protocol_formatter_bb_0, '0', blocks_repack_bits_bb_0_0, '0']
 - [fft_vxx_0, '0', digital_ofdm_cyclic_prefixer_0, '0']
-- [owc_DCO_OFDM_Hermitian_Symmetry_0, '0', blocks_stream_to_vector_0, '0']
+- [owc_Hermitian_symmetry_vec_to_vec_0, '0', fft_vxx_0, '0']
 - [virtual_source_0, '0', digital_chunks_to_symbols_xx_0, '0']
 - [virtual_source_0_0, '0', digital_chunks_to_symbols_xx_0_0, '0']
 - [virtual_source_0_0_0, '0', digital_ofdm_carrier_allocator_cvc_0, '0']
