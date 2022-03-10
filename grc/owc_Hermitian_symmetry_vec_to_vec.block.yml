@@ -1,10 +1,10 @@
-id: owc_DCO_OFDM_Hermitian_Symmetry
-label: Hermitian Symmetry
+id: owc_Hermitian_symmetry_vec_to_vec
+label: Hermitian Symmetry (v to v)
 category: '[owc]'
 
 templates:
   imports: import owc
-  make: owc.DCO_OFDM_Hermitian_Symmetry(${fft_len})
+  make: owc.Hermitian_symmetry_vec_to_vec(${fft_len})
 
 parameters:
 - id: fft_len
@@ -20,7 +20,7 @@ inputs:
 outputs:
 -   domain: stream
     dtype: complex
-    vlen: ${1}
+    vlen: ${fft_len}
 
 asserts:
 - ${ fft_len > 0}

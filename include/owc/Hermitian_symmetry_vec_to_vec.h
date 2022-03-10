@@ -20,36 +20,38 @@
  *
  */
 
-#ifndef INCLUDED_OWC_DCO_OFDM_HERMITIAN_SYMMETRY_IMPL_H
-#define INCLUDED_OWC_DCO_OFDM_HERMITIAN_SYMMETRY_IMPL_H
+#ifndef INCLUDED_OWC_HERMITIAN_SYMMETRY_VEC_TO_VEC_H
+#define INCLUDED_OWC_HERMITIAN_SYMMETRY_VEC_TO_VEC_H
 
-#include <owc/DCO_OFDM_Hermitian_Symmetry.h>
+#include <owc/api.h>
+#include <gnuradio/sync_block.h>
 
 namespace gr {
   namespace owc {
 
-    class DCO_OFDM_Hermitian_Symmetry_impl : public DCO_OFDM_Hermitian_Symmetry
+    /*!
+     * \brief <+description of block+>
+     * \ingroup owc
+     *
+     */
+    class OWC_API Hermitian_symmetry_vec_to_vec : virtual public gr::sync_block
     {
-     private:
-      int d_fft_len;
-
      public:
-      DCO_OFDM_Hermitian_Symmetry_impl(int fft_len);
-      ~DCO_OFDM_Hermitian_Symmetry_impl();
-      
-      void set_fft_len(int fft_len){d_fft_len = fft_len;}
-      int fft_len() {return d_fft_len;}
+      typedef boost::shared_ptr<Hermitian_symmetry_vec_to_vec> sptr;
 
-      // Where all the action really happens
-      int work(
-              int noutput_items,
-              gr_vector_const_void_star &input_items,
-              gr_vector_void_star &output_items
-      );
+      /*!
+       * \brief Return a shared_ptr to a new instance of owc::Hermitian_symmetry_vec_to_vec.
+       *
+       * To avoid accidental use of raw pointers, owc::Hermitian_symmetry_vec_to_vec's
+       * constructor is in a private implementation
+       * class. owc::Hermitian_symmetry_vec_to_vec::make is the public interface for
+       * creating new instances.
+       */
+      static sptr make(int fft_len);
     };
 
   } // namespace owc
 } // namespace gr
 
-#endif /* INCLUDED_OWC_DCO_OFDM_HERMITIAN_SYMMETRY_IMPL_H */
+#endif /* INCLUDED_OWC_HERMITIAN_SYMMETRY_VEC_TO_VEC_H */
 

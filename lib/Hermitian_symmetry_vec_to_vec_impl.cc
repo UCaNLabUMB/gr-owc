@@ -25,28 +25,26 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "DCO_OFDM_Hermitian_Symmetry_impl.h"
-#include <complex>
+#include "Hermitian_symmetry_vec_to_vec_impl.h"
 
 namespace gr {
   namespace owc {
 
-    DCO_OFDM_Hermitian_Symmetry::sptr
-    DCO_OFDM_Hermitian_Symmetry::make(int fft_len)
+    Hermitian_symmetry_vec_to_vec::sptr
+    Hermitian_symmetry_vec_to_vec::make(int fft_len)
     {
       return gnuradio::get_initial_sptr
-        (new DCO_OFDM_Hermitian_Symmetry_impl(fft_len));
+        (new Hermitian_symmetry_vec_to_vec_impl(fft_len));
     }
 
 
     /*
      * The private constructor
      */
-    DCO_OFDM_Hermitian_Symmetry_impl::DCO_OFDM_Hermitian_Symmetry_impl(int fft_len)
-      : gr::sync_interpolator("DCO_OFDM_Hermitian_Symmetry",
-                        io_signature::make(1, 1, sizeof(gr_complex) * fft_len),
-                        io_signature::make(1, 1, sizeof(gr_complex)),
-                        fft_len)
+    Hermitian_symmetry_vec_to_vec_impl::Hermitian_symmetry_vec_to_vec_impl(int fft_len)
+      : gr::sync_block("Hermitian_symmetry_vec_to_vec",
+              gr::io_signature::make(1, 1, sizeof(gr_complex) * fft_len),
+              gr::io_signature::make(1, 1, sizeof(gr_complex) * fft_len))
     {
     	set_fft_len(fft_len);
     }
@@ -54,12 +52,12 @@ namespace gr {
     /*
      * Our virtual destructor.
      */
-    DCO_OFDM_Hermitian_Symmetry_impl::~DCO_OFDM_Hermitian_Symmetry_impl()
+    Hermitian_symmetry_vec_to_vec_impl::~Hermitian_symmetry_vec_to_vec_impl()
     {
     }
 
     int
-    DCO_OFDM_Hermitian_Symmetry_impl::work(int noutput_items,
+    Hermitian_symmetry_vec_to_vec_impl::work(int noutput_items,
         gr_vector_const_void_star &input_items,
         gr_vector_void_star &output_items)
     {
@@ -70,12 +68,12 @@ namespace gr {
 	    
 	    int middle_subcarrier = fft_len()/2;
 	    
-	    for (int i=0; i < noutput_items; i = i + fft_len())
+	    for (int i=0; i < noutput_items; i++)
 	    {
 	    	int sub_carrier_counter = 0;
 	    	int mid_subcarr_index = 0;
 	    	
-	    	for (int j = i; j < i + fft_len(); j++)
+	    	for (int j = i * fft_len(); j < (i * fft_len()) + fft_len(); j++)
 	    	{
 	    		if (sub_carrier_counter == zeroth_subcarrier)
 	    		{
@@ -97,8 +95,6 @@ namespace gr {
 	    		sub_carrier_counter++;
 	    	}
 	    }
-
-	    return noutput_items;
 
       // Tell runtime system how many output items we produced.
       return noutput_items;
