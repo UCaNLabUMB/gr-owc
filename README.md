@@ -4,7 +4,7 @@ GNURadio out-ot-tree (OOT) module for optical wireless communications. Contact p
 <a href="https://zenodo.org/badge/latestdoi/323626297"><img src="https://zenodo.org/badge/323626297.svg" alt="DOI"></a>
 
 
-This installation guide assumes that GNU Radio has been installed using PyBOMBS.
+This installation guide assumes that GNU Radio has been installed using PyBOMBS. Also, please note that gr-owc is currently only compatible with GNURadio 3.8 version.
 
 To download and install, follow the steps below:
 
