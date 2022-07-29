@@ -1,6 +1,6 @@
 id: owc_VPPM_Modulator_two
 label: VPPM_Modulator (two)
-category: '[owc]'
+category: '[owc]/Signal Processing Blocks'
 
 parameters:
 - id: amp

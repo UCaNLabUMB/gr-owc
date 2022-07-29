@@ -1,6 +1,6 @@
 id: owc_OWC_Channel_absolute
 label: OWC Channel (absolute)
-category: '[owc]'
+category: '[owc]/Channel Models'
 
 parameters:
 - id: num_inputs

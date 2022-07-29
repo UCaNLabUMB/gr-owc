@@ -1,6 +1,6 @@
 id: owc_OWC_Channel_absolute_two
 label: OWC Channel (absolute) with delay, blockage and noise
-category: '[owc]'
+category: '[owc]/Channel Models'
 
 parameters:
 - id: num_inputs

@@ -1,6 +1,6 @@
 id: owc_decimal_to_binary_mapper
 label: Decimal to Binary Mapper
-category: '[owc]'
+category: '[owc]/Signal Processing Blocks'
 
 parameters:
 - id: mod_order

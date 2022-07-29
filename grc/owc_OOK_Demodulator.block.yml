@@ -1,6 +1,6 @@
 id: owc_OOK_Demodulator
 label: OOK Demodulator
-category: '[owc]'
+category: '[owc]/Signal Processing Blocks'
 
 parameters:
 - id: threshold

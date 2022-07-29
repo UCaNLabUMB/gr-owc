@@ -1,6 +1,6 @@
 id: owc_OWC_Channel_relative
 label: OWC Channel (relative)
-category: '[owc]'
+category: '[owc]/Channel Models'
 
 parameters:
 - id: num_inputs

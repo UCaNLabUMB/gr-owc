@@ -1,6 +1,6 @@
 id: owc_OOK_Modulator_one
 label: OOK Modulator (one)
-category: '[owc]'
+category: '[owc]/Signal Processing Blocks'
 
 parameters:
 - id: max_mag

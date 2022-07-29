@@ -1,6 +1,6 @@
 id: owc_VPPM_Demodulator
 label: VPPM Demodulator
-category: '[owc]'
+category: '[owc]/Signal Processing Blocks'
 
 parameters:
 - id: samples_per_symbol

@@ -1,6 +1,6 @@
 id: owc_Hermitian_symmetry_vec_to_vec
 label: Hermitian Symmetry
-category: '[owc]'
+category: '[owc]/Signal Processing Blocks'
 
 templates:
   imports: import owc

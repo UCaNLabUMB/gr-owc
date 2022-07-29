@@ -1,6 +1,6 @@
 id: owc_PAM_Modulator_two
 label: PAM Modulator (two)
-category: '[owc]'
+category: '[owc]/Signal Processing Blocks'
 
 parameters:
 - id: mod_order

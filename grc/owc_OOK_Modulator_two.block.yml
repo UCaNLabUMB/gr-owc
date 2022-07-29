@@ -1,6 +1,6 @@
 id: owc_OOK_Modulator_two
 label: OOK Modulator (two)
-category: '[owc]'
+category: '[owc]/Signal Processing Blocks'
 
 parameters:
 - id: amp
