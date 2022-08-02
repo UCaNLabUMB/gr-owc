@@ -156,7 +156,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 7,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -177,7 +177,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 9,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -198,7 +198,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 7,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -219,7 +219,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 9,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -240,7 +240,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 7,2,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -261,7 +261,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 9,2,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -282,7 +282,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 6,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -303,7 +303,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 8,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -324,7 +324,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 6,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -345,7 +345,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 8,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -366,7 +366,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 6,2,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -387,7 +387,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 8,2,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -444,7 +444,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 10,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -465,7 +465,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 10,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -486,7 +486,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 3,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -507,7 +507,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 5,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -528,7 +528,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 3,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -549,7 +549,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 5,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -570,7 +570,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 3,2,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -591,7 +591,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 5,2,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -612,7 +612,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 2,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -633,7 +633,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 4,0,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -654,7 +654,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 2,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -675,7 +675,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 4,1,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -696,7 +696,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 2,2,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -717,7 +717,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 4,2,1,1
     label: ''
     min_len: '200'
     orient: Qt.Horizontal
@@ -1045,8 +1045,8 @@ blocks:
     color1: '"blue"'
     color10: '"red"'
     color2: '"red"'
-    color3: '"red"'
-    color4: '"red"'
+    color3: '"green"'
+    color4: '"yellow"'
     color5: '"red"'
     color6: '"red"'
     color7: '"red"'
@@ -1054,12 +1054,12 @@ blocks:
     color9: '"red"'
     comment: ''
     grid: 'False'
-    gui_hint: ''
-    label1: ''
+    gui_hint: 11,0,1,3
+    label1: Tx 1
     label10: ''
-    label2: ''
-    label3: ''
-    label4: ''
+    label2: Tx 2
+    label3: Rx 1
+    label4: Rx 2
     label5: ''
     label6: ''
     label7: ''
@@ -1076,8 +1076,8 @@ blocks:
     marker7: '0'
     marker8: '0'
     marker9: '0'
-    name: '"Tx XY location coordinates"'
-    nconnections: '2'
+    name: '"Tx Rx X&Y location coordinates"'
+    nconnections: '4'
     size: '1024'
     style1: '0'
     style10: '0'
@@ -1117,98 +1117,6 @@ blocks:
     coordinate: [1254, 821]
     rotation: 0
     state: true
-- name: qtgui_const_sink_x_0_0
-  id: qtgui_const_sink_x
-  parameters:
-    affinity: ''
-    alias: ''
-    alpha1: '1.0'
-    alpha10: '1.0'
-    alpha2: '1.0'
-    alpha3: '1.0'
-    alpha4: '1.0'
-    alpha5: '1.0'
-    alpha6: '1.0'
-    alpha7: '1.0'
-    alpha8: '1.0'
-    alpha9: '1.0'
-    autoscale: 'False'
-    axislabels: 'True'
-    color1: '"green"'
-    color10: '"red"'
-    color2: '"black"'
-    color3: '"red"'
-    color4: '"red"'
-    color5: '"red"'
-    color6: '"red"'
-    color7: '"red"'
-    color8: '"red"'
-    color9: '"red"'
-    comment: ''
-    grid: 'False'
-    gui_hint: ''
-    label1: ''
-    label10: ''
-    label2: ''
-    label3: ''
-    label4: ''
-    label5: ''
-    label6: ''
-    label7: ''
-    label8: ''
-    label9: ''
-    legend: 'True'
-    marker1: '0'
-    marker10: '0'
-    marker2: '0'
-    marker3: '0'
-    marker4: '0'
-    marker5: '0'
-    marker6: '0'
-    marker7: '0'
-    marker8: '0'
-    marker9: '0'
-    name: '"Rx XY location coordinates"'
-    nconnections: '2'
-    size: '1024'
-    style1: '0'
-    style10: '0'
-    style2: '0'
-    style3: '0'
-    style4: '0'
-    style5: '0'
-    style6: '0'
-    style7: '0'
-    style8: '0'
-    style9: '0'
-    tr_chan: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_slope: qtgui.TRIG_SLOPE_POS
-    tr_tag: '""'
-    type: complex
-    update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
-    xmax: '10'
-    xmin: '-10'
-    ymax: '10'
-    ymin: '-10'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1255, 900]
-    rotation: 0
-    state: true
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -1244,7 +1152,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 13,0,1,3
     label: Relative Gain
     label1: ''
     label10: ''''''
@@ -1256,7 +1164,7 @@ blocks:
     label7: ''''''
     label8: ''''''
     label9: ''''''
-    legend: 'True'
+    legend: 'False'
     maxoutbuf: '0'
     minoutbuf: '0'
     name: '"Rx 1 Frequency Domain"'
@@ -1324,7 +1232,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 15,0,1,3
     label: Relative Gain
     label1: ''
     label10: ''''''
@@ -1336,7 +1244,7 @@ blocks:
     label7: ''''''
     label8: ''''''
     label9: ''''''
-    legend: 'True'
+    legend: 'False'
     maxoutbuf: '0'
     minoutbuf: '0'
     name: '"Rx 2 Frequency Domain"'
@@ -1400,7 +1308,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 12,0,1,3
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
@@ -1411,7 +1319,7 @@ blocks:
     label7: Signal 7
     label8: Signal 8
     label9: Signal 9
-    legend: 'True'
+    legend: 'False'
     marker1: '-1'
     marker10: '-1'
     marker2: '-1'
@@ -1497,7 +1405,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 14,0,1,3
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
@@ -1508,7 +1416,7 @@ blocks:
     label7: Signal 7
     label8: Signal 8
     label9: Signal 9
-    legend: 'True'
+    legend: 'False'
     marker1: '-1'
     marker10: '-1'
     marker2: '-1'
@@ -1594,7 +1502,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 0,0,1,3
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
@@ -1605,7 +1513,7 @@ blocks:
     label7: Signal 7
     label8: Signal 8
     label9: Signal 9
-    legend: 'True'
+    legend: 'False'
     marker1: '-1'
     marker10: '-1'
     marker2: '-1'
@@ -1657,7 +1565,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1223, 92]
+    coordinate: [1160, 124.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0_0_0_0
@@ -1689,9 +1597,9 @@ blocks:
     color9: dark green
     comment: ''
     ctrlpanel: 'False'
-    entags: 'True'
+    entags: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 1,0,1,3
     label1: Signal 1
     label10: Signal 10
     label2: Signal 2
@@ -1702,7 +1610,7 @@ blocks:
     label7: Signal 7
     label8: Signal 8
     label9: Signal 9
-    legend: 'True'
+    legend: 'False'
     marker1: '-1'
     marker10: '-1'
     marker2: '-1'
@@ -1754,7 +1662,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1156, 505]
+    coordinate: [1152, 476.0]
     rotation: 0
     state: true
 
@@ -1772,8 +1680,8 @@ connections:
 - [analog_sig_source_x_0_0, '0', qtgui_time_sink_x_0_0_0_0, '0']
 - [blocks_float_to_complex_0, '0', qtgui_const_sink_x_0, '0']
 - [blocks_float_to_complex_0_0, '0', qtgui_const_sink_x_0, '1']
-- [blocks_float_to_complex_0_0_0, '0', qtgui_const_sink_x_0_0, '0']
-- [blocks_float_to_complex_0_0_0_0, '0', qtgui_const_sink_x_0_0, '1']
+- [blocks_float_to_complex_0_0_0, '0', qtgui_const_sink_x_0, '2']
+- [blocks_float_to_complex_0_0_0_0, '0', qtgui_const_sink_x_0, '3']
 - [blocks_throttle_0, '0', owc_OWC_Channel_absolute_0, '0']
 - [blocks_throttle_0, '0', qtgui_time_sink_x_0_0_0, '0']
 - [owc_OWC_Channel_absolute_0, '0', qtgui_freq_sink_x_0, '0']
