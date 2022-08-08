@@ -33,5 +33,5 @@ install(FILES
     owc_VPPM_Demodulator.block.yml
     owc_OWC_Channel_relative_two.block.yml
     owc_OWC_Channel_absolute_two.block.yml
-    owc_Hermitian_symmetry_vec_to_vec.block.yml DESTINATION share/gnuradio/grc/blocks
+    owc_Hermitian_Symmetry_i_o_same_vec_size.block.yml DESTINATION share/gnuradio/grc/blocks
 )

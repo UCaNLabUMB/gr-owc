@@ -20,38 +20,40 @@
  *
  */
 
-#ifndef INCLUDED_OWC_HERMITIAN_SYMMETRY_VEC_TO_VEC_H
-#define INCLUDED_OWC_HERMITIAN_SYMMETRY_VEC_TO_VEC_H
+#ifndef INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_SAME_VEC_SIZE_IMPL_H
+#define INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_SAME_VEC_SIZE_IMPL_H
 
-#include <owc/api.h>
-#include <gnuradio/sync_block.h>
+#include <owc/Hermitian_Symmetry_i_o_same_vec_size.h>
 
 namespace gr {
   namespace owc {
 
-    /*!
-     * \brief <+description of block+>
-     * \ingroup owc
-     *
-     */
-    class OWC_API Hermitian_symmetry_vec_to_vec : virtual public gr::sync_block
+    class Hermitian_Symmetry_i_o_same_vec_size_impl : public Hermitian_Symmetry_i_o_same_vec_size
     {
-     public:
-      typedef boost::shared_ptr<Hermitian_symmetry_vec_to_vec> sptr;
+     private:
+      int d_fft_len;
+      
+      int d_current_num_remaining_samples;
+      
+      std::vector<gr_complex> d_remaining_input_samples;
 
-      /*!
-       * \brief Return a shared_ptr to a new instance of owc::Hermitian_symmetry_vec_to_vec.
-       *
-       * To avoid accidental use of raw pointers, owc::Hermitian_symmetry_vec_to_vec's
-       * constructor is in a private implementation
-       * class. owc::Hermitian_symmetry_vec_to_vec::make is the public interface for
-       * creating new instances.
-       */
-      static sptr make(int fft_len);
+     public:
+      Hermitian_Symmetry_i_o_same_vec_size_impl(int fft_len);
+      ~Hermitian_Symmetry_i_o_same_vec_size_impl();
+      
+      void set_fft_len(int fft_len){d_fft_len = fft_len;}
+      int fft_len() {return d_fft_len;}
+
+      // Where all the action really happens
+      int work(
+              int noutput_items,
+              gr_vector_const_void_star &input_items,
+              gr_vector_void_star &output_items
+      );
     };
 
   } // namespace owc
 } // namespace gr
 
-#endif /* INCLUDED_OWC_HERMITIAN_SYMMETRY_VEC_TO_VEC_H */
+#endif /* INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_SAME_VEC_SIZE_IMPL_H */
 

@@ -1,10 +1,10 @@
-id: owc_Hermitian_symmetry_vec_to_vec
-label: Hermitian Symmetry
+id: owc_Hermitian_Symmetry_i_o_same_vec_size
+label: Hermitian Symmetry (Same Vec Size I/O)
 category: '[owc]/Signal Processing Blocks'
 
 templates:
   imports: import owc
-  make: owc.Hermitian_symmetry_vec_to_vec(${fft_len})
+  make: owc.Hermitian_Symmetry_i_o_same_vec_size(${fft_len})
 
 parameters:
 - id: fft_len

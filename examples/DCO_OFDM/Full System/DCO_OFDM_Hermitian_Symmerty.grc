@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: tx_dco_ofdm
+    id: dco_ofdm_with_hermetian_symmetry
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -582,8 +582,8 @@ blocks:
     coordinate: [1492, 218]
     rotation: 0
     state: enabled
-- name: owc_Hermitian_symmetry_vec_to_vec_0
-  id: owc_Hermitian_symmetry_vec_to_vec
+- name: owc_Hermitian_Symmetry_i_o_same_vec_size_0
+  id: owc_Hermitian_Symmetry_i_o_same_vec_size
   parameters:
     affinity: ''
     alias: ''
@@ -595,9 +595,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 643]
+    coordinate: [664, 644.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -1007,13 +1007,13 @@ connections:
 - [digital_chunks_to_symbols_xx_0_0, '0', blocks_tagged_stream_mux_0, '1']
 - [digital_crc32_bb_0, '0', blocks_repack_bits_bb_0, '0']
 - [digital_crc32_bb_0, '0', digital_protocol_formatter_bb_0, '0']
-- [digital_ofdm_carrier_allocator_cvc_0, '0', owc_Hermitian_symmetry_vec_to_vec_0,
+- [digital_ofdm_carrier_allocator_cvc_0, '0', owc_Hermitian_Symmetry_i_o_same_vec_size_0,
   '0']
 - [digital_ofdm_cyclic_prefixer_0, '0', virtual_sink_0, '0']
 - [digital_ofdm_rx_0, '0', blocks_uchar_to_float_0, '0']
 - [digital_protocol_formatter_bb_0, '0', blocks_repack_bits_bb_0_0, '0']
 - [fft_vxx_0, '0', digital_ofdm_cyclic_prefixer_0, '0']
-- [owc_Hermitian_symmetry_vec_to_vec_0, '0', fft_vxx_0, '0']
+- [owc_Hermitian_Symmetry_i_o_same_vec_size_0, '0', fft_vxx_0, '0']
 - [virtual_source_0, '0', digital_chunks_to_symbols_xx_0, '0']
 - [virtual_source_0_0, '0', digital_chunks_to_symbols_xx_0_0, '0']
 - [virtual_source_0_0_0, '0', digital_ofdm_carrier_allocator_cvc_0, '0']

@@ -38,5 +38,5 @@ install(FILES
     VPPM_Demodulator.h
     OWC_Channel_relative_two.h
     OWC_Channel_absolute_two.h
-    Hermitian_symmetry_vec_to_vec.h DESTINATION include/owc
+    Hermitian_Symmetry_i_o_same_vec_size.h DESTINATION include/owc
 )

@@ -25,24 +25,24 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "Hermitian_symmetry_vec_to_vec_impl.h"
+#include "Hermitian_Symmetry_i_o_same_vec_size_impl.h"
 
 namespace gr {
   namespace owc {
 
-    Hermitian_symmetry_vec_to_vec::sptr
-    Hermitian_symmetry_vec_to_vec::make(int fft_len)
+    Hermitian_Symmetry_i_o_same_vec_size::sptr
+    Hermitian_Symmetry_i_o_same_vec_size::make(int fft_len)
     {
       return gnuradio::get_initial_sptr
-        (new Hermitian_symmetry_vec_to_vec_impl(fft_len));
+        (new Hermitian_Symmetry_i_o_same_vec_size_impl(fft_len));
     }
 
 
     /*
      * The private constructor
      */
-    Hermitian_symmetry_vec_to_vec_impl::Hermitian_symmetry_vec_to_vec_impl(int fft_len)
-      : gr::sync_block("Hermitian_symmetry_vec_to_vec",
+    Hermitian_Symmetry_i_o_same_vec_size_impl::Hermitian_Symmetry_i_o_same_vec_size_impl(int fft_len)
+      : gr::sync_block("Hermitian_Symmetry_i_o_same_vec_size",
               gr::io_signature::make(1, 1, sizeof(gr_complex) * fft_len),
               gr::io_signature::make(1, 1, sizeof(gr_complex) * fft_len))
     {
@@ -52,12 +52,12 @@ namespace gr {
     /*
      * Our virtual destructor.
      */
-    Hermitian_symmetry_vec_to_vec_impl::~Hermitian_symmetry_vec_to_vec_impl()
+    Hermitian_Symmetry_i_o_same_vec_size_impl::~Hermitian_Symmetry_i_o_same_vec_size_impl()
     {
     }
 
     int
-    Hermitian_symmetry_vec_to_vec_impl::work(int noutput_items,
+    Hermitian_Symmetry_i_o_same_vec_size_impl::work(int noutput_items,
         gr_vector_const_void_star &input_items,
         gr_vector_void_star &output_items)
     {
