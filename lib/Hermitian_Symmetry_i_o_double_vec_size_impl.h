@@ -20,22 +20,22 @@
  *
  */
 
-#ifndef INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_SAME_VEC_SIZE_IMPL_H
-#define INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_SAME_VEC_SIZE_IMPL_H
+#ifndef INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_DOUBLE_VEC_SIZE_IMPL_H
+#define INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_DOUBLE_VEC_SIZE_IMPL_H
 
-#include <owc/Hermitian_Symmetry_i_o_same_vec_size.h>
+#include <owc/Hermitian_Symmetry_i_o_double_vec_size.h>
 
 namespace gr {
   namespace owc {
 
-    class Hermitian_Symmetry_i_o_same_vec_size_impl : public Hermitian_Symmetry_i_o_same_vec_size
+    class Hermitian_Symmetry_i_o_double_vec_size_impl : public Hermitian_Symmetry_i_o_double_vec_size
     {
      private:
       int d_fft_len;
 
      public:
-      Hermitian_Symmetry_i_o_same_vec_size_impl(int fft_len);
-      ~Hermitian_Symmetry_i_o_same_vec_size_impl();
+      Hermitian_Symmetry_i_o_double_vec_size_impl(int fft_len);
+      ~Hermitian_Symmetry_i_o_double_vec_size_impl();
       
       void set_fft_len(int fft_len){d_fft_len = fft_len;}
       int fft_len() {return d_fft_len;}
@@ -51,5 +51,5 @@ namespace gr {
   } // namespace owc
 } // namespace gr
 
-#endif /* INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_SAME_VEC_SIZE_IMPL_H */
+#endif /* INCLUDED_OWC_HERMITIAN_SYMMETRY_I_O_DOUBLE_VEC_SIZE_IMPL_H */
 

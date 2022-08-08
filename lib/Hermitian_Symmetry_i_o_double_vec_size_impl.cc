@@ -25,26 +25,26 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "Hermitian_Symmetry_i_o_same_vec_size_impl.h"
+#include "Hermitian_Symmetry_i_o_double_vec_size_impl.h"
 
 namespace gr {
   namespace owc {
 
-    Hermitian_Symmetry_i_o_same_vec_size::sptr
-    Hermitian_Symmetry_i_o_same_vec_size::make(int fft_len)
+    Hermitian_Symmetry_i_o_double_vec_size::sptr
+    Hermitian_Symmetry_i_o_double_vec_size::make(int fft_len)
     {
       return gnuradio::get_initial_sptr
-        (new Hermitian_Symmetry_i_o_same_vec_size_impl(fft_len));
+        (new Hermitian_Symmetry_i_o_double_vec_size_impl(fft_len));
     }
 
 
     /*
      * The private constructor
      */
-    Hermitian_Symmetry_i_o_same_vec_size_impl::Hermitian_Symmetry_i_o_same_vec_size_impl(int fft_len)
-      : gr::sync_block("Hermitian_Symmetry_i_o_same_vec_size",
+    Hermitian_Symmetry_i_o_double_vec_size_impl::Hermitian_Symmetry_i_o_double_vec_size_impl(int fft_len)
+      : gr::sync_block("Hermitian_Symmetry_i_o_double_vec_size",
               gr::io_signature::make(1, 1, sizeof(gr_complex) * fft_len),
-              gr::io_signature::make(1, 1, sizeof(gr_complex) * fft_len))
+              gr::io_signature::make(1, 1, sizeof(gr_complex) * fft_len * 2))
     {
     	set_fft_len(fft_len);
     }
@@ -52,47 +52,60 @@ namespace gr {
     /*
      * Our virtual destructor.
      */
-    Hermitian_Symmetry_i_o_same_vec_size_impl::~Hermitian_Symmetry_i_o_same_vec_size_impl()
+    Hermitian_Symmetry_i_o_double_vec_size_impl::~Hermitian_Symmetry_i_o_double_vec_size_impl()
     {
     }
 
     int
-    Hermitian_Symmetry_i_o_same_vec_size_impl::work(int noutput_items,
+    Hermitian_Symmetry_i_o_double_vec_size_impl::work(int noutput_items,
         gr_vector_const_void_star &input_items,
         gr_vector_void_star &output_items)
     {
 	    const gr_complex* in = (const gr_complex*)input_items[0];
 	    gr_complex* out = (gr_complex*)output_items[0];
 	    //Only allocate the subcarriers on the negative half using the carrier allocator bloc before this block.
-	    
-	    
 	    int zeroth_subcarrier = 0;
 	    
-	    int middle_subcarrier = fft_len()/2;
-	    
+	    int output_index = 0;
+	    	    
 	    for (int i=0; i < noutput_items; i++)      //output_items are actually vectors.
 	    {
 	    	int sub_carrier_counter = 0;
-	    	int mid_subcarr_index = 0;
+	    	
+	    	std::vector<gr_complex> incoming_samples;
 	    	
 	    	for (int j = i * fft_len(); j < (i * fft_len()) + fft_len(); j++)
 	    	{
 	    		if (sub_carrier_counter == zeroth_subcarrier)
 	    		{
-	    			out[j] = 0;                            //Dont allocate the zeroeth (firstmost) subcarrier
-	    		}
-	    		else if (sub_carrier_counter == middle_subcarrier)
+	    			out[output_index] = 0;                     //Dont allocate the zeroth (firstmost) subcarrier
+	    			output_index++;
+	    		} 		
+	   		else
 	    		{
-	    			out[j] = 0;				//Dont allocate the middle subcarrier
-	    			mid_subcarr_index = j;
+	    			out[output_index] = in[j];
+	    			output_index++;
+	    			
+	    			incoming_samples.push_back(in[j]);
 	    		}
-	    		else if (sub_carrier_counter < middle_subcarrier)
+	    		
+	    		if (sub_carrier_counter == fft_len() - 1)
 	    		{
-	    			out[j] = in[j];	
-	    		}
-	    		else
-	    		{
-	    			out[j] = std::conj(in[mid_subcarr_index- (j-mid_subcarr_index)]);
+	    			std::reverse(incoming_samples.begin(), incoming_samples.end());
+	    			for (int k=0; k < fft_len(); k++)
+	    			{	    				
+	    				if (k == 0)
+	    				{
+	    					out[output_index] = 0;
+	    					output_index++;
+	    				}
+	    				else
+	    				{
+	    					out[output_index] = std::conj(incoming_samples[k - 1]);
+	    					output_index++;	
+	    				}
+	    			}
+	    			incoming_samples.clear();
 	    		}
 	    		sub_carrier_counter++;
 	    	}

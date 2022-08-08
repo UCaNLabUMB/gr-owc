@@ -24,6 +24,7 @@
 #include "owc/OWC_Channel_relative_two.h"
 #include "owc/OWC_Channel_absolute_two.h"
 #include "owc/Hermitian_Symmetry_i_o_same_vec_size.h"
+#include "owc/Hermitian_Symmetry_i_o_double_vec_size.h"
 %}
 
 %include "owc/OWC_Channel_relative.h"
@@ -62,3 +63,5 @@ GR_SWIG_BLOCK_MAGIC2(owc, OWC_Channel_absolute_two);
 
 %include "owc/Hermitian_Symmetry_i_o_same_vec_size.h"
 GR_SWIG_BLOCK_MAGIC2(owc, Hermitian_Symmetry_i_o_same_vec_size);
+%include "owc/Hermitian_Symmetry_i_o_double_vec_size.h"
+GR_SWIG_BLOCK_MAGIC2(owc, Hermitian_Symmetry_i_o_double_vec_size);
