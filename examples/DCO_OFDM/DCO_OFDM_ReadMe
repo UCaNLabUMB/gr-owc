@@ -1,0 +1,9 @@
+There are two subfolders in the DCO-OFDM examples folder which includes Simulation folder and Full System Folder.
+
+Full System Folder:
+
+This folder includes flowgraphs which are ready for physical implementation using SDR hardware. Only the TX and RX parts are to be separated and connected appropriately to the hardware. However, the flowgraphs which uses the expanded OFDM implementation (not the hierarchical OFDM transmitter and receiver block) are limited in functionality as they work well with only the specified subcarriers. The issue is with the synchronization part (to be figured out in the future).
+
+Simulation Folder:
+
+This folder contains DCO-OFDM flowgraphs which does not include synchronization and hence, can not be used for physical deployment. These flowgraphs are meant to be used in simulation only.
