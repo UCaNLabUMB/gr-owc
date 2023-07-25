@@ -50,7 +50,7 @@ Alternatively, to download the repository and install, follow the steps below:
 The documentation provided in the chapters below offers a step-by-step overview of gr-owc and how it can be used to deploy a multi-cell/multi-user OWC testbed.
 
 | Chapter | Topic | Image | Summary 
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | 1 | [Introduction](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/Chapters/Overview.md)           | ADD IMAGE | Introduction to gr-owc channel blocks and modulators/demodulators
 | 2 | [Hardware Setup](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/Chapters/Hardware.md)         | ADD IMAGE | Overview of setup procedure for over-the-air OWC transmission with USRPs
 | 3 | [Data Collection](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/Chapters/Data_Collection.md) | ADD IMAGE | Overview of examples for packet error rate analysis and automated data collection
