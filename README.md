@@ -11,8 +11,8 @@ GNURadio out-ot-tree (OOT) module for optical wireless communications.
 **NOTE:** gr-owc is currently only compatible with GNURadio 3.8 version.
 
 This installation guide assumes that GNU Radio has been installed using PyBOMBS. With a PyBOMBS installation, gr-owc can be installed using either of the following methods:
-* **PyBOMBS Installation:** Since gr-owc is available in [CGRAN](https://www.cgran.org/), it can be directly added to your GNURadio Installation via PyBOMBS.
-* **Basic Installation:** Download this repository and use _make_ to the install gr-owc library.
+* **Install via PyBOMBS:** Since gr-owc is available in [CGRAN](https://www.cgran.org/), PyBOMBS can be used to directly add the gr-owc library to an existing GNURadio prefix.
+* **Basic Installation:** Download this repository and use _make_ to install the gr-owc library in an existing GNURadio prefix.
 
 
 
