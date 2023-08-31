@@ -44,6 +44,38 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
+- name: blocks_complex_to_real_0
+  id: blocks_complex_to_real
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 240.0]
+    rotation: 0
+    state: true
+- name: blocks_complex_to_real_0_0
+  id: blocks_complex_to_real
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 304.0]
+    rotation: 0
+    state: true
 - name: blocks_null_sink_0
   id: blocks_null_sink
   parameters:
@@ -91,7 +123,7 @@ blocks:
     comment: ''
     fc: '0'
     fftsize: '1024'
-    freqhalf: 'True'
+    freqhalf: 'False'
     grid: 'False'
     gui_hint: 1,0,1,1
     int_max: '10'
@@ -112,14 +144,14 @@ blocks:
     name: '"Channel 2"'
     nconnections: '1'
     showports: 'False'
-    type: complex
+    type: float
     update_time: '0.10'
     wintype: firdes.WIN_BLACKMAN_hARRIS
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 292.0]
+    coordinate: [656, 292.0]
     rotation: 0
     state: true
 - name: qtgui_waterfall_sink_x_0_0
@@ -152,7 +184,68 @@ blocks:
     comment: ''
     fc: '0'
     fftsize: '1024'
-    freqhalf: 'True'
+    freqhalf: 'False'
+    grid: 'False'
+    gui_hint: 0,0,1,1
+    int_max: '10'
+    int_min: '-140'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"Channel 1"'
+    nconnections: '1'
+    showports: 'False'
+    type: float
+    update_time: '0.10'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 196.0]
+    rotation: 0
+    state: true
+- name: qtgui_waterfall_sink_x_0_0_0
+  id: qtgui_waterfall_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    freqhalf: 'False'
     grid: 'False'
     gui_hint: 0,0,1,1
     int_max: '10'
@@ -180,9 +273,70 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 196.0]
+    coordinate: [424, 132.0]
     rotation: 0
-    state: true
+    state: disabled
+- name: qtgui_waterfall_sink_x_0_1
+  id: qtgui_waterfall_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    freqhalf: 'False'
+    grid: 'False'
+    gui_hint: 1,0,1,1
+    int_max: '10'
+    int_min: '-140'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"Channel 2"'
+    nconnections: '1'
+    showports: 'False'
+    type: complex
+    update_time: '0.10'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 356.0]
+    rotation: 0
+    state: disabled
 - name: uhd_usrp_source_0
   id: uhd_usrp_source
   parameters:
@@ -557,9 +711,13 @@ blocks:
     state: enabled
 
 connections:
-- [uhd_usrp_source_0, '0', qtgui_waterfall_sink_x_0_0, '0']
+- [blocks_complex_to_real_0, '0', qtgui_waterfall_sink_x_0_0, '0']
+- [blocks_complex_to_real_0_0, '0', qtgui_waterfall_sink_x_0, '0']
+- [uhd_usrp_source_0, '0', blocks_complex_to_real_0, '0']
+- [uhd_usrp_source_0, '0', qtgui_waterfall_sink_x_0_0_0, '0']
 - [uhd_usrp_source_0, '1', blocks_null_sink_0, '0']
-- [uhd_usrp_source_0, '2', qtgui_waterfall_sink_x_0, '0']
+- [uhd_usrp_source_0, '2', blocks_complex_to_real_0_0, '0']
+- [uhd_usrp_source_0, '2', qtgui_waterfall_sink_x_0_1, '0']
 
 metadata:
   file_format: 1
