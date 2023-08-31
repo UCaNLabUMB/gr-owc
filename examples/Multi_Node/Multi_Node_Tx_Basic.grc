@@ -228,7 +228,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: '0.5'
+    amp: '0.25'
     comment: ''
     freq: sig_freq_1
     maxoutbuf: '0'
@@ -250,7 +250,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: '0.5'
+    amp: '0.25'
     comment: ''
     freq: sig_freq_2
     maxoutbuf: '0'
