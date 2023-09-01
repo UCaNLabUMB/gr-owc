@@ -72,7 +72,8 @@ def step_through_code():
         print('Signal 2 Off Set')
         time.sleep(2)
 
-        choice = input("Press any key to continue, or 'q' to quit: ")
+        choice = input("Press any key to continue, or 'q' to quit: ") 
+
         if choice == 'q':
             print("Exiting.")
             break
@@ -82,6 +83,7 @@ def step_through_code():
 
 if __name__ == "__main__":
     step_through_code()
+    
 
 
 
