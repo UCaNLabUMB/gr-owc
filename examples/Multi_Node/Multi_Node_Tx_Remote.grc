@@ -42,7 +42,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1384, 140.0]
+    coordinate: [1376, 136.0]
     rotation: 0
     state: enabled
 - name: interp_2
@@ -54,7 +54,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1376, 276.0]
+    coordinate: [1376, 272.0]
     rotation: 0
     state: enabled
 - name: path_select_1
@@ -126,7 +126,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1088, 236.0]
+    coordinate: [1088, 252.0]
     rotation: 0
     state: true
 - name: path_select_2
@@ -162,7 +162,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1416, 436.0]
+    coordinate: [1256, 384.0]
     rotation: 0
     state: enabled
 - name: sig_freq_1
@@ -412,7 +412,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [392, 624.0]
+    coordinate: [384, 632.0]
     rotation: 0
     state: true
 - name: blocks_repeat_0
@@ -901,3 +901,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.5.1
