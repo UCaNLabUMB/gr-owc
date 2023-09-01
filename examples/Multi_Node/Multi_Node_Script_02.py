@@ -10,7 +10,7 @@ DISABLED = 2
 ############
 Filter_ON = 1
 Filter_Off = 0
-Filter_Value = 1.5e9
+Filter_Values = [1.5e9, 2.0e9]
 ######## Time Delay in Seconds
 time_delay = 1
 time_delay_2 = 3
@@ -59,28 +59,51 @@ socket2.setsockopt(zmq.SUBSCRIBE, b'')
 # Pair tx_1_settings and tx_2_settings in tuples and loop through them
 paired_settings = zip(tx_1_settings, tx_2_settings)
 
-# Loop through the paired settings
+# Inside the existing for loop for tx_1 and tx_2 settings
 for tx1, tx2 in paired_settings:
     print(f"[Current Settings {tx1} {tx2}]")
     STA2_control.set_path_select_1(tx1)
     STA2_control.set_path_select_2(tx2)
     time.sleep(time_delay_2)
-    avg_power1 = power_measurement(socket1)
 
     # Inner loop for filter settings
     for filt in filter_settting:
-        print(f"[Filter Setting {filt}]")
-        STA3_control.set_select_filter_1(filt)
-        STA3_control.set_select_filter_2(filt)
-        avg_power1 = power_measurement(socket1)
-
-        # Perform measurements
-        for i in range(2):  # Loop twice for demonstration
-            time.sleep(time_delay)
+        
+        # When filter should be OFF, both are OFF
+        if filt == Filter_Off:
+            print("[Both Filters OFF]")
+            STA3_control.set_select_filter_1(Filter_Off)
+            STA3_control.set_select_filter_2(Filter_Off)
+            
+            # Take power measurement
             avg_power1 = power_measurement(socket1)
             avg_power2 = power_measurement(socket2)
+            print(f" Power 1: {avg_power1 if avg_power1 is not None else 'No message'}, Power 2: {avg_power2 if avg_power2 is not None else 'No message'}")
         
-            if avg_power1 is not None and avg_power2 is not None:
-                print(f" Power 1: {avg_power1} Power 2: {avg_power2}")
-            else:
-                print("No message received")
+        # When filter should be ON, alternate turning Filter_1 and Filter_2 ON
+        else:
+            # Filter_1 ON, Filter_2 OFF
+            print("[Filter 1 ON, Filter 2 OFF]")
+            STA3_control.set_select_filter_1(Filter_ON)
+            STA3_control.set_select_filter_2(Filter_Off)
+            for val in Filter_Values:
+                print(f"[Filter 1 Value {val}]")
+                STA3_control.set_filter_value_1(val)
+                
+                # Take power measurement
+                avg_power1 = power_measurement(socket1)
+                avg_power2 = power_measurement(socket2)
+                print(f" Power 1: {avg_power1 if avg_power1 is not None else 'No message'}, Power 2: {avg_power2 if avg_power2 is not None else 'No message'}")
+            
+            # Filter_1 OFF, Filter_2 ON
+            print("[Filter 1 OFF, Filter 2 ON]")
+            STA3_control.set_select_filter_1(Filter_Off)
+            STA3_control.set_select_filter_2(Filter_ON)
+            for val in Filter_Values:
+                print(f"[Filter 2 Value {val}]")
+                STA3_control.set_filter_value_2(val)
+                
+                # Take power measurement
+                avg_power1 = power_measurement(socket1)
+                avg_power2 = power_measurement(socket2)
+                print(f" Power 1: {avg_power1 if avg_power1 is not None else 'No message'}, Power 2: {avg_power2 if avg_power2 is not None else 'No message'}")
