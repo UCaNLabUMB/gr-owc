@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: Two_TX
+    id: Multi_Node_Tx_Remote
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Two TX
+    title: Multi-node transmitter with remote control
     window_size: (1000,1000)
   states:
     bus_sink: false
@@ -412,7 +412,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 632.0]
+    coordinate: [520, 624.0]
     rotation: 0
     state: true
 - name: blocks_repeat_0
@@ -494,7 +494,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [776, 556.0]
+    coordinate: [712, 556.0]
     rotation: 0
     state: true
 - name: note_0_0
@@ -810,7 +810,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 48.0]
+    coordinate: [752, 52.0]
     rotation: 0
     state: enabled
 - name: virtual_sink_0
@@ -823,7 +823,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [920, 292.0]
+    coordinate: [920, 324.0]
     rotation: 0
     state: enabled
 - name: virtual_sink_0_0
@@ -836,7 +836,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 556.0]
+    coordinate: [920, 588.0]
     rotation: 0
     state: enabled
 - name: virtual_source_0
@@ -876,7 +876,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [136, 108.0]
+    coordinate: [8, 100.0]
     rotation: 0
     state: true
 
@@ -901,4 +901,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.5.1

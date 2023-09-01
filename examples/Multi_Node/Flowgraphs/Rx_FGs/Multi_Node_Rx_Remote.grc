@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: Multi_Node_Rx_Basic
+    id: Multi_Node_Rx_Remote
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -991,7 +991,6 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    drop_on_hwm: 'True'
     hwm: '1'
     key: ''
     pass_tags: 'False'
@@ -1012,7 +1011,6 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    drop_on_hwm: 'True'
     hwm: '1'
     key: ''
     pass_tags: 'False'
@@ -1046,4 +1044,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.5.1
