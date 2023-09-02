@@ -56,6 +56,18 @@ blocks:
     coordinate: [728, 68.0]
     rotation: 180
     state: enabled
+- name: OC_int
+  id: variable
+  parameters:
+    comment: ''
+    value: (list(range(-12, -2)),)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1080, 12.0]
+    rotation: 180
+    state: enabled
 - name: OC_low
   id: variable
   parameters:
@@ -68,6 +80,36 @@ blocks:
     coordinate: [728, 12.0]
     rotation: 180
     state: enabled
+- name: ch2_enable
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: 1,4,1,1
+    label: Subcarrier Select
+    label0: Disabled
+    label1: Enabled
+    label2: Mix
+    label3: ''
+    label4: ''
+    labels: '[]'
+    num_opts: '2'
+    option0: '0'
+    option1: '1'
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QVBoxLayout
+    type: int
+    value: '1'
+    widget: combo_box
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [48, 820.0]
+    rotation: 0
+    state: true
 - name: fft_len
   id: variable
   parameters:
@@ -108,7 +150,7 @@ blocks:
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 0,4,1,1
     label: Subcarrier Select
     label0: Low
     label1: High
@@ -125,7 +167,7 @@ blocks:
     options: '[0, 1, 2]'
     orient: Qt.QVBoxLayout
     type: int
-    value: '2'
+    value: '0'
     widget: combo_box
   states:
     bus_sink: false
@@ -144,6 +186,18 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [584, 12.0]
+    rotation: 0
+    state: enabled
+- name: pilot_carriers_2
+  id: variable
+  parameters:
+    comment: ''
+    value: ((-28,-1),)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [584, 132.0]
     rotation: 0
     state: enabled
 - name: pilot_symbols
@@ -289,8 +343,8 @@ blocks:
     fft_len: fft_len
     maxoutbuf: '0'
     minoutbuf: '0'
-    occupied_carriers: OC_low
-    pilot_carriers: pilot_carriers
+    occupied_carriers: OC_int
+    pilot_carriers: pilot_carriers_2
     pilot_symbols: pilot_symbols
     sync_word1: sync_word1
     sync_word2: sync_word2
@@ -330,7 +384,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [896, 760.0]
+    coordinate: [1104, 744.0]
     rotation: 0
     state: true
 - name: blocks_file_source_0
@@ -404,8 +458,27 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 756.0]
+    coordinate: [1280, 740.0]
     rotation: 0
+    state: true
+- name: blocks_null_source_0
+  id: blocks_null_source
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_source: '[[0,],]'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_outputs: '1'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 672.0]
+    rotation: 180
     state: true
 - name: blocks_selector_0
   id: blocks_selector
@@ -428,6 +501,29 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [712, 484.0]
+    rotation: 0
+    state: true
+- name: blocks_selector_0_0
+  id: blocks_selector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    enabled: 'True'
+    input_index: ch2_enable
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    num_outputs: '1'
+    output_index: '0'
+    showports: 'True'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 708.0]
     rotation: 0
     state: true
 - name: blocks_vector_source_x_0
@@ -525,33 +621,126 @@ blocks:
     coordinate: [112, 300.0]
     rotation: 0
     state: enabled
-- name: qtgui_sink_x_0_0
-  id: qtgui_sink_x
+- name: qtgui_waterfall_sink_x_0
+  id: qtgui_waterfall_sink_x
   parameters:
     affinity: ''
     alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
     bw: samp_rate_usrp
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
     comment: ''
     fc: '0'
     fftsize: '1024'
-    gui_hint: 0,0,1,1
+    freqhalf: 'False'
+    grid: 'False'
+    gui_hint: 0,0,1,4
+    int_max: '10'
+    int_min: '-140'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    name: '""'
-    plotconst: 'False'
-    plotfreq: 'True'
-    plottime: 'True'
-    plotwaterfall: 'True'
-    rate: '10'
+    name: '"Channel 1"'
+    nconnections: '1'
     showports: 'False'
-    showrf: 'False'
     type: float
+    update_time: '0.10'
     wintype: firdes.WIN_BLACKMAN_hARRIS
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1272, 436.0]
+    coordinate: [1232, 396.0]
+    rotation: 0
+    state: true
+- name: qtgui_waterfall_sink_x_0_0
+  id: qtgui_waterfall_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    bw: samp_rate_usrp
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    freqhalf: 'False'
+    grid: 'False'
+    gui_hint: 1,0,1,4
+    int_max: '10'
+    int_min: '-140'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"Channel 2"'
+    nconnections: '1'
+    showports: 'False'
+    type: float
+    update_time: '0.10'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1464, 716.0]
     rotation: 0
     state: true
 - name: uhd_usrp_sink_0
@@ -936,16 +1125,18 @@ connections:
 - [DCO_OFDM_Sync_Packetized_Signal_Generator_0, '0', blocks_selector_0, '0']
 - [DCO_OFDM_Sync_Packetized_Signal_Generator_0_0, '0', blocks_selector_0, '1']
 - [DCO_OFDM_Sync_Packetized_Signal_Generator_0_0_0, '0', blocks_selector_0, '2']
-- [DCO_OFDM_Sync_Packetized_Signal_Generator_0_1, '0', blocks_complex_to_real_0_0,
-  '0']
+- [DCO_OFDM_Sync_Packetized_Signal_Generator_0_1, '0', blocks_selector_0_0, '1']
 - [blocks_complex_to_real_0, '0', blocks_multiply_const_vxx_1, '0']
 - [blocks_complex_to_real_0_0, '0', blocks_multiply_const_vxx_1_0, '0']
 - [blocks_file_source_0, '0', virtual_sink_0_0_0_0_1_0, '0']
 - [blocks_float_to_complex_2, '0', uhd_usrp_sink_0, '0']
 - [blocks_multiply_const_vxx_1, '0', blocks_float_to_complex_2, '0']
-- [blocks_multiply_const_vxx_1, '0', qtgui_sink_x_0_0, '0']
+- [blocks_multiply_const_vxx_1, '0', qtgui_waterfall_sink_x_0, '0']
 - [blocks_multiply_const_vxx_1_0, '0', blocks_float_to_complex_2, '1']
+- [blocks_multiply_const_vxx_1_0, '0', qtgui_waterfall_sink_x_0_0, '0']
+- [blocks_null_source_0, '0', blocks_selector_0_0, '0']
 - [blocks_selector_0, '0', blocks_complex_to_real_0, '0']
+- [blocks_selector_0_0, '0', blocks_complex_to_real_0_0, '0']
 - [blocks_vector_source_x_0, '0', virtual_sink_0_0_0_0_1, '0']
 - [blocks_wavfile_source_0, '0', vocoder_cvsd_encode_fb_0, '0']
 - [blocks_wavfile_source_0_0, '0', vocoder_cvsd_encode_fb_0_0, '0']
