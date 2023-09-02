@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: dco_ofdm_tx_select
+    id: dco_ofdm_tx_select_2
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -21,7 +21,7 @@ options:
     run_options: run
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Single Channel DCO-OFDM Tx with Subcarrier - Select
+    title: Two channel DCO-OFDM Tx with Subcarrier - Select
     window_size: 1280, 1024
   states:
     bus_sink: false
@@ -131,7 +131,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [80, 476.0]
+    coordinate: [80, 508.0]
     rotation: 0
     state: true
 - name: pilot_carriers
@@ -235,7 +235,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 380.0]
+    coordinate: [288, 412.0]
     rotation: 0
     state: true
 - name: DCO_OFDM_Sync_Packetized_Signal_Generator_0_0
@@ -256,7 +256,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 444.0]
+    coordinate: [288, 476.0]
     rotation: 0
     state: true
 - name: DCO_OFDM_Sync_Packetized_Signal_Generator_0_0_0
@@ -277,26 +277,30 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 508.0]
+    coordinate: [288, 540.0]
     rotation: 0
     state: true
-- name: analog_const_source_x_0
-  id: analog_const_source_x
+- name: DCO_OFDM_Sync_Packetized_Signal_Generator_0_1
+  id: DCO_OFDM_Sync_Packetized_Signal_Generator
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    const: '0'
+    fft_len: fft_len
     maxoutbuf: '0'
     minoutbuf: '0'
-    type: float
+    occupied_carriers: OC_low
+    pilot_carriers: pilot_carriers
+    pilot_symbols: pilot_symbols
+    sync_word1: sync_word1
+    sync_word2: sync_word2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1008, 588.0]
+    coordinate: [464, 716.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: blocks_complex_to_real_0
   id: blocks_complex_to_real
   parameters:
@@ -310,7 +314,23 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 488.0]
+    coordinate: [912, 520.0]
+    rotation: 0
+    state: true
+- name: blocks_complex_to_real_0_0
+  id: blocks_complex_to_real
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 760.0]
     rotation: 0
     state: true
 - name: blocks_file_source_0
@@ -348,7 +368,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1240, 560.0]
+    coordinate: [1240, 592.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_1
@@ -366,7 +386,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 484.0]
+    coordinate: [1080, 516.0]
+    rotation: 0
+    state: true
+- name: blocks_multiply_const_vxx_1_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '0.0125'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1072, 756.0]
     rotation: 0
     state: true
 - name: blocks_selector_0
@@ -389,7 +427,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 452.0]
+    coordinate: [712, 484.0]
     rotation: 0
     state: true
 - name: blocks_vector_source_x_0
@@ -430,6 +468,24 @@ blocks:
     coordinate: [112, 236.0]
     rotation: 0
     state: enabled
+- name: blocks_wavfile_source_0_0
+  id: blocks_wavfile_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    file: /home/mrahaim/Desktop/imperial_march.wav
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    repeat: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [32, 748.0]
+    rotation: 0
+    state: enabled
 - name: note_0
   id: note
   parameters:
@@ -453,7 +509,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [20.0, 376]
+    coordinate: [20.0, 408]
     rotation: 90
     state: true
 - name: note_0_1
@@ -495,7 +551,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1272, 404.0]
+    coordinate: [1272, 436.0]
     rotation: 0
     state: true
 - name: uhd_usrp_sink_0
@@ -772,7 +828,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1464, 508.0]
+    coordinate: [1480, 540.0]
     rotation: 0
     state: enabled
 - name: virtual_sink_0_0_0_0
@@ -824,7 +880,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [88, 420.0]
+    coordinate: [88, 452.0]
     rotation: 0
     state: enabled
 - name: vocoder_cvsd_encode_fb_0
@@ -842,6 +898,23 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [376, 236.0]
+    rotation: 0
+    state: enabled
+- name: vocoder_cvsd_encode_fb_0_0
+  id: vocoder_cvsd_encode_fb
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: '0.5'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    resample: '8'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 748.0]
     rotation: 0
     state: enabled
 - name: xmlrpc_server_0
@@ -863,20 +936,26 @@ connections:
 - [DCO_OFDM_Sync_Packetized_Signal_Generator_0, '0', blocks_selector_0, '0']
 - [DCO_OFDM_Sync_Packetized_Signal_Generator_0_0, '0', blocks_selector_0, '1']
 - [DCO_OFDM_Sync_Packetized_Signal_Generator_0_0_0, '0', blocks_selector_0, '2']
-- [analog_const_source_x_0, '0', blocks_float_to_complex_2, '1']
+- [DCO_OFDM_Sync_Packetized_Signal_Generator_0_1, '0', blocks_complex_to_real_0_0,
+  '0']
 - [blocks_complex_to_real_0, '0', blocks_multiply_const_vxx_1, '0']
+- [blocks_complex_to_real_0_0, '0', blocks_multiply_const_vxx_1_0, '0']
 - [blocks_file_source_0, '0', virtual_sink_0_0_0_0_1_0, '0']
 - [blocks_float_to_complex_2, '0', uhd_usrp_sink_0, '0']
 - [blocks_multiply_const_vxx_1, '0', blocks_float_to_complex_2, '0']
 - [blocks_multiply_const_vxx_1, '0', qtgui_sink_x_0_0, '0']
+- [blocks_multiply_const_vxx_1_0, '0', blocks_float_to_complex_2, '1']
 - [blocks_selector_0, '0', blocks_complex_to_real_0, '0']
 - [blocks_vector_source_x_0, '0', virtual_sink_0_0_0_0_1, '0']
 - [blocks_wavfile_source_0, '0', vocoder_cvsd_encode_fb_0, '0']
+- [blocks_wavfile_source_0_0, '0', vocoder_cvsd_encode_fb_0_0, '0']
 - [virtual_source_0_0_1_0_0, '0', DCO_OFDM_Sync_Packetized_Signal_Generator_0, '0']
 - [virtual_source_0_0_1_0_0, '0', DCO_OFDM_Sync_Packetized_Signal_Generator_0_0, '0']
 - [virtual_source_0_0_1_0_0, '0', DCO_OFDM_Sync_Packetized_Signal_Generator_0_0_0,
   '0']
 - [vocoder_cvsd_encode_fb_0, '0', virtual_sink_0_0_0_0, '0']
+- [vocoder_cvsd_encode_fb_0_0, '0', DCO_OFDM_Sync_Packetized_Signal_Generator_0_1,
+  '0']
 
 metadata:
   file_format: 1
