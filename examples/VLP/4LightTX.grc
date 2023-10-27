@@ -53,7 +53,7 @@ blocks:
     option4: '4'
     options: '[0, 1, 2]'
     orient: Qt.QVBoxLayout
-    type: int
+    type: real
     value: '0'
     widget: combo_box
   states:
@@ -151,18 +151,6 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [1136, 200.0]
-    rotation: 0
-    state: true
-- name: Select1
-  id: variable
-  parameters:
-    comment: ''
-    value: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1320, 144.0]
     rotation: 0
     state: true
 - name: amp_1
@@ -417,6 +405,18 @@ blocks:
     coordinate: [448, 120.0]
     rotation: 0
     state: enabled
+- name: select1
+  id: variable
+  parameters:
+    comment: ''
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1320, 144.0]
+    rotation: 0
+    state: true
 - name: select2
   id: variable
   parameters:
@@ -847,7 +847,7 @@ blocks:
     alias: ''
     comment: ''
     enabled: 'True'
-    input_index: Mode_C1_TXA
+    input_index: select1
     maxoutbuf: '0'
     minoutbuf: '0'
     num_inputs: '2'
@@ -870,7 +870,7 @@ blocks:
     alias: ''
     comment: ''
     enabled: 'True'
-    input_index: Mode_C1_TXB
+    input_index: select2
     maxoutbuf: '0'
     minoutbuf: '0'
     num_inputs: '2'
@@ -893,7 +893,7 @@ blocks:
     alias: ''
     comment: ''
     enabled: 'True'
-    input_index: Mode_C2_TXB
+    input_index: select4
     maxoutbuf: '0'
     minoutbuf: '0'
     num_inputs: '2'
@@ -916,7 +916,7 @@ blocks:
     alias: ''
     comment: ''
     enabled: 'True'
-    input_index: Mode_C2_TXA
+    input_index: select3
     maxoutbuf: '0'
     minoutbuf: '0'
     num_inputs: '2'
@@ -1366,4 +1366,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0
