@@ -8,7 +8,7 @@ import logging
 STA_TX1control = ServerProxy('http://localhost:8080')
 
 # Time Delay in Seconds
-time_delay = 2
+time_delay = 3
 
 
 
@@ -53,13 +53,13 @@ if __name__ == "__main__":
     amplitude_settings = {  
         1: [0.55],
         2: [0.25],
-        # Add more signals/channels as needed
+        # Add more signals/channels as needed/using two for simplified testing.
     }
 
     frequency_settings = {  
         1: [1000000],
-        2: [1200000],
-        # Add more signals/channels as needed
+        2: [1000000],
+        # Add more signals/channels as needed/using two for simplified testing.
     }
     
     select_configs = [0,0,0,0]  

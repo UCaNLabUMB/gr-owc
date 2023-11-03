@@ -1,0 +1,223 @@
+options:
+  parameters:
+    author: UCan_Lab
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: Transmits Packets over RF with B200Mini
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: RF_Packet_Error_Rate
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: RF_Packet_Error_Testing
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: fft_len
+  id: variable
+  parameters:
+    comment: ''
+    value: '64'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 12.0]
+    rotation: 0
+    state: true
+- name: len_tag_key
+  id: variable
+  parameters:
+    comment: ''
+    value: packet_len
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [384, 12.0]
+    rotation: 0
+    state: true
+- name: oc_high
+  id: variable
+  parameters:
+    comment: ''
+    value: (-4,-3,3,4)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [664, 12.0]
+    rotation: 0
+    state: true
+- name: oc_low
+  id: variable
+  parameters:
+    comment: ''
+    value: (-3,3)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [744, 12.0]
+    rotation: 0
+    state: true
+- name: packet_len
+  id: variable
+  parameters:
+    comment: ''
+    value: '50'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [288, 12.0]
+    rotation: 0
+    state: true
+- name: path_select
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    label0: ''
+    label1: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    labels: '[]'
+    num_opts: '2'
+    option0: oc_high
+    option1: oc_low
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QVBoxLayout
+    type: raw
+    value: oc_high
+    widget: combo_box
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [808, 156.0]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '32000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: sample_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '100000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [552, 12.0]
+    rotation: 0
+    state: true
+- name: blocks_stream_to_tagged_stream_0
+  id: blocks_stream_to_tagged_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    len_tag_key: '"packet_len"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    packet_len: packet_len
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [264, 180.0]
+    rotation: 0
+    state: true
+- name: blocks_vector_source_x_0
+  id: blocks_vector_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'True'
+    tags: '[]'
+    type: byte
+    vector: range(0,20)
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [64, 172.0]
+    rotation: 0
+    state: true
+- name: digital_ofdm_tx_0
+  id: digital_ofdm_tx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    cp_len: '16'
+    fft_len: '64'
+    header_mod: '"BPSK"'
+    log: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    occupied_carriers: path_select
+    packet_len_key: packet_len
+    payload_mod: '"QPSK"'
+    pilot_carriers: (-6,-5,5,6)
+    pilot_symbols: (-1,1,-1,1)
+    rolloff: '0'
+    scramble_bits: 'False'
+    sync_word1: ()
+    sync_word2: ()
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 108.0]
+    rotation: 0
+    state: true
+
+connections:
+- [blocks_stream_to_tagged_stream_0, '0', digital_ofdm_tx_0, '0']
+- [blocks_vector_source_x_0, '0', blocks_stream_to_tagged_stream_0, '0']
+
+metadata:
+  file_format: 1
