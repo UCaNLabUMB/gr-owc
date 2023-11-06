@@ -14,9 +14,7 @@ import time
 server_list = ['http://' + '10.1.1.2' + ':8080',  'http://' + '10.1.1.3' + ':8080',  'http://' + '10.1.1.4' + ':8080']
 
 
-def add_server_connection(server_url):
-    server_list.append(ServerProxy(server_url))
-    print(f"Added server {server_url} to server list.")
+
 
 
 def set_fn(file_name, server):
@@ -24,59 +22,16 @@ def set_fn(file_name, server):
     server.set_fn(file_name)
     time.sleep(2)
 
-def remove_server(server_list, server_str):
-    """Remove a server from the server_list based on its string representation"""
-    for server in server_list:
-        if str(server) == server_str:
-            server_list.remove(server)
-            print(f"Removed server: {server_str}")
-            return
-    print(f"Server not found: {server_str}")
-
-
-def set_my_select_1(myselect, server):
+def set_patch_select(patch_select, server):
     """Sets the carriers in use on the XML-RPC server tx"""
-    server.set_my_select_1(myselect)
+    server.set_patch_select(patch_select)
     # Wait 2 seconds after setting the carriers
     time.sleep(1)
 
-def set_my_select_2(myselect_2, server):
-    """Sets the carriers in use on the XML-RPC server rx"""
-    server.set_my_select_2(myselect_2)
-    # Wait 2 seconds after setting the carriers
-    time.sleep(1)
-    
-def set_filter_lf(filter_lf,server):
-    """Sets the  lower filter on the XML-RPC server"""
-    server.set_filter_lf(filter_lf)
-    time.sleep(1)
-    
-def set_filter_hf(filter_hf,server):
-    """Sets the higer filter on the XML-RPC server"""
-    server.set_filter_hf(filter_hf)
-    time.sleep(1)                   
-
-def set_f_sig(f_sig, server):
-    """Sets the signal in meg on the XML-RPC server"""
-    server.set_f_sig(f_sig)
-    # Wait 5 seconds after setting the sample rate
-    time.sleep(1)
-def set_f_sig2(f_sig2, server):
-    """Sets the signal in meg on the XML-RPC server"""
-    server.set_f_sig(f_sig2)
-    # Wait 5 seconds after setting the sample rate
-    time.sleep(1)
-    
 def set_config_param(command, params, servers=None):
     """Sets the given parameter on the XML-RPC servers"""
 
     # Define the command functions
-    
-    # Check if the command is 'add_server_connection'
-    if command == 'add_server_connection':
-        # Call the function without specifying any servers
-        command_functions[command](*params)
-        return
     
     # Send command to all servers if no server is specified
     if servers is None:
@@ -104,13 +59,7 @@ def set_config_param(command, params, servers=None):
 
 
 command_functions = {
-    'set_my_select_1': set_my_select_1, #selection carriers in tx 0 = low 1 = high 2 = mixed
-    'set_my_select_2': set_my_select_2, #selection carries in rx. tx 0 = low 1 = high 2 = mixed
-    'set_filter_lf': set_filter_lf, # Set Low Filter
-    'set_filter_hf': set_filter_hf, # Set High Filter
-    'set_f_sig': set_f_sig, #Set F Sig in Meg
-    'set_f_sig2': set_f_sig2, #Set F Sig in Meg
-    'add_server_connection': add_server_connection, # add a new server connection dont use wip might break stuff again. 
+    'set_path_select': set_patch_select, #sets between oc high vs oc low| 0=high 1=low
     'set_fn': set_fn, # Set File Name
 }
 
