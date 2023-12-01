@@ -17,11 +17,17 @@ server_list = ['http://' + '10.1.1.2' + ':8080',  'http://' + '10.1.1.3' + ':808
 
 
 
+def set_gain_factor_tx(gain_factor_tx, server):
+    """Sets the file name on the XML-RPC server"""
+    server.sset_gain_factor_tx(gain_factor_tx)
+    time.sleep(2)
+
+
 def set_fn(file_name, server):
     """Sets the file name on the XML-RPC server"""
     server.set_fn(file_name)
     time.sleep(2)
-
+    
 def set_patch_select(patch_select, server):
     """Sets the carriers in use on the XML-RPC server tx"""
     server.set_patch_select(patch_select)
@@ -61,6 +67,7 @@ def set_config_param(command, params, servers=None):
 command_functions = {
     'set_path_select': set_patch_select, #sets between oc high vs oc low| 0=high 1=low
     'set_fn': set_fn, # Set File Name
+    'set_gain_factor_tx': set_gain_factor_tx, # sets the gain factor on tx
 }
 
 param_types = {

@@ -1,30 +1,30 @@
 #!/bin/bash
 
-# Define the path select values you want to loop through
-path_select_values=(0 1)
+# Define arrays for different flags
+flag1_values=(value1a value1b value1c) # Replace with actual values for flag1
+flag2_values=(value2a value2b)         # Replace with actual values for flag2
+# Add more arrays for additional flags if needed
 
-# Define an array of unique file names for each test scenario
-file_names=("config1" "config2" "config3") # Add more names as needed
+# Iterate through combinations of flag values
+for val1 in "${flag1_values[@]}"; do
+    for val2 in "${flag2_values[@]}"; do
+        # Add loops for more flags if needed
 
-# Loop through each path select value
-for path_select in "${path_select_values[@]}"; do
-  # Loop through each file name for the current path select value
-  for file_name in "${file_names[@]}"; do
+        # Generate a unique filename for this combination of flag values
+        filename="data_${val1}_${val2}_$(date +%s).dat"
 
-    # Set the path select
-    echo "Setting path select to $path_select..."
-    ./your_script.py set_path_select $path_select
-    
-    # Wait a bit to make sure the command has been processed
-    sleep 2
+        # Call the first GNU Radio flowgraph with the current combination of flag values
+        python path/to/gnuradio_flowgraph.py --flag1 "$val1" --flag2 "$val2" # Add more flags as needed
 
-    # Rename the file
-    echo "Renaming file to $file_name..."
-    ./your_script.py set_fn $file_name
+        # Optional: Wait for the flowgraph to process and transmit data
+        sleep 5
 
-    # Wait for 10 seconds before the next iteration
-    sleep 10
-  done
+        # Call your Python XML-RPC script to set file name on the always-running second flowgraph
+        python AFRL_Control_April_Autodata_Collection.py set_fn "$filename"
+
+        # Optional: Add delay or additional commands if needed
+        sleep 1
+    done
 done
 
-echo "All configurations have been set."
+
