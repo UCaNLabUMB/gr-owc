@@ -1,0 +1,102 @@
+id: owc_OWC_Channel_relative_cplus
+label: OWC Channel (Relative-C++)
+category: '[owc]/Channel Models'
+
+templates:
+  imports: from gnuradio import owc
+  make: owc.OWC_Channel_relative_cplus(${num_inputs}, ${num_outputs}, ${emission_angle_array}, ${acceptance_angle_array}, ${distance_array}, ${lambertian_order_array}, ${photosensor_area_array}, ${optical_filter_transmittance_array}, ${refractive_index_array}, ${concentrator_FOV_array}, ${E2O_conversion_factor_array}, ${O2E_conversion_factor_array})
+  callbacks:
+    - set_emission_angle_array(${emission_angle_array})
+    - set_acceptance_angle_array(${acceptance_angle_array})
+    - set_distance_array(${distance_array})
+    - set_lambertian_order_array(${lambertian_order_array})
+
+parameters:
+- id: num_inputs
+  label: Number of Tx
+  dtype: int
+  default: '1'
+  
+- id: num_outputs
+  label: Number of Rx
+  dtype: int
+  default: '1'
+
+- id: emission_angle_array
+  label: Emission Angle Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: acceptance_angle_array
+  label: Acceptance Angle Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: distance_array
+  label: Distance Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: lambertian_order_array
+  label: Lambertian Order Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: photosensor_area_array
+  label: Photosensor Area Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: optical_filter_transmittance_array
+  label: Optical Filter Transmittance Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: refractive_index_array
+  label: Refractive Index Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: concentrator_FOV_array
+  label: Concentrator FOV Array
+  default: [90]
+  dtype: float_vector
+  
+- id: E2O_conversion_factor_array
+  label: E2O Conversion Factor Array
+  default: [1.0]
+  dtype: float_vector
+  
+- id: O2E_conversion_factor_array
+  label: O2E Conversion Factor Array
+  default: [1.0]
+  dtype: float_vector
+  
+inputs:
+- label: in
+  domain: stream
+  dtype: float
+  multiplicity: ${num_inputs}
+  
+outputs:
+- label: out
+  domain: stream
+  dtype: float
+  multiplicity: ${num_outputs}
+  
+asserts:
+- ${num_inputs > 0}
+- ${num_outputs > 0}
+- ${all(0 <= x <= 90 for x in concentrator_FOV_array)}
+- ${len(emission_angle_array) == (num_inputs * num_outputs)}
+- ${len(acceptance_angle_array) == (num_inputs * num_outputs)}
+- ${len(distance_array) == (num_inputs * num_outputs)}
+- ${len(lambertian_order_array) == num_inputs}
+- ${len(photosensor_area_array) == num_outputs}
+- ${len(optical_filter_transmittance_array) == num_outputs}
+- ${len(refractive_index_array) == num_outputs}
+- ${len(concentrator_FOV_array) == num_outputs}
+- ${len(E2O_conversion_factor_array) == num_inputs}
+- ${len(O2E_conversion_factor_array) == num_outputs}
+
+file_format: 1
