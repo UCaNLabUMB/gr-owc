@@ -5,27 +5,35 @@ GNURadio out-ot-tree (OOT) module for optical wireless communications.
 
 <a href="https://zenodo.org/badge/latestdoi/323626297"><img src="https://zenodo.org/badge/323626297.svg" alt="DOI"></a>
 
+`gr-owc` is a GNU Radio Out-Of-Tree (OOT) module designed for Optical Wireless Communication (OWC). It provides a comprehensive suite of signal processing blocks designed to enable efficient experimentation, research, and development of optical wireless systems within the GNU Radio. The ‘gr-owc’ module covers OWC channel simulation, modulation and demodulation techniques, and other essential components. We describe how these blocks can also be implemented in physical systems using Software Defined Radio (SDR) hardware. 
 
+**Note:** gr-owc is compatible with GNU Radio v3.10. For GNU Radio v3.8, refer to [gr-owc_v3.8](https://github.com/UCaNLabUMB/gr-owc/releases/tag/v1.1.0). 
+
+# Directory Structure
+* **Documentation:** Contains documentation of gr-owc blocks and chapters; offers a step-by-step overview of gr-owc.
+* **examples:** Example GNURadio flowgraphs for demonstrating gr-owc usage.
+* **grc:** .yml files of gr-owc blocks.
+* **lib, include:** C++ and C++ w/ Volk implemeted gr-owc blocks
+* **python:** Python implemented gr-owc blocks and QA test code.
+* **Install_gr-owc.sh:** Script file to install gr-owc in GNURadio Companion.
 
 # Installation
-**NOTE:** gr-owc is currently only compatible with GNURadio 3.8 version.
 
-This installation guide assumes that GNURadio has been installed using PyBOMBS. With a PyBOMBS installation, gr-owc can be installed using either of the following methods:
-* **Install via PyBOMBS:** Since gr-owc is available in [CGRAN](https://www.cgran.org/), PyBOMBS can be used to directly add the gr-owc library to an existing GNURadio prefix.
+This installation guide assumes that GNURadio v3.10 has been installed. gr-owc can be installed using either of the following methods:
+* **Install via Install_gr-owc.sh:** Automates installation of gr-owc in GNURadio.
 * **Basic Installation:** Download this repository and use _make_ to install the gr-owc library in an existing GNURadio prefix.
 
 
 
-## Install via PyBOMBS (SUGGESTED)
-As part of the Comprehensive GNURadio Archive Network (CGRAN), gr-owc can be installed directly into the desired GNURadio prefix using PyBOMBS. For this, follow the steps below:
+## Install via Install_gr-owc.sh (SUGGESTED)
+For this, follow the steps below:
 
-1. In a terminal, configure PyBOMBS for default configuration with `pybombs auto-config`
-1. Point PyBOMBS to the recipes for installing OOT modules. You can use `pybombs recipes add-defaults` (adds gr-recipes and gr-etcetra) 
-1. Move to the desired GNURadio prefix folder with `cd <prefix directory>` 
-1. Install gr-owc using PyBOMBS with `pybombs install gr-owc`
-1. Open `gnuradio-comapanion` and you should find a module for gr-owc
-   * (Make sure you have sourced the prefix for the GNURadio Installation where gr-owc was added)
-
+1. Download **only** the [Install_gr-owc.sh](https://github.com/UCaNLabUMB/gr-owc/blob/main/Install_gr-owc.sh)
+2. In the downloaed script directory, open terminal. Give executable permission for script file `chmod +x ./Install_gr-owc.sh`
+3. Execute scrpit file `./Install_gr-owc.sh`
+   * (There should be no failure displayed)
+4. Open `gnuradio-comapanion` and you should find a module for gr-owc
+   
 
 
 ## Basic Installation
@@ -46,15 +54,43 @@ Alternatively, to download the repository and install, follow the steps below:
 
 
 
-# Documentation
-The documentation provided in the chapters below offers a step-by-step overview of gr-owc and how it can be used to deploy a multi-cell/multi-user OWC testbed.
+# gr-owc Blocks
 
-| Chapter | Topic | Image | Summary 
-| --- | --- | --- | --- |
-| 1 | [Introduction](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/Chapters/Overview.md)           | ADD IMAGE | Introduction to gr-owc channel blocks and modulators/demodulators
-| 2 | [Hardware Setup](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/Chapters/Hardware.md)         | ADD IMAGE | Overview of setup procedure for over-the-air OWC transmission with USRPs
-| 3 | [Data Collection](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/Chapters/Data_Collection.md) | ADD IMAGE | Overview of examples for packet error rate analysis and automated data collection
-| 4 | [Multi-User OWC](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/Chapters/MultiUser_OWC.md)    | ADD IMAGE | Setup process for multi-user configuration with DCO-OFDMA
-| 5 | [Multi-Cell OWC](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/Chapters/MultiCell_OWC.md)    | ADD IMAGE | Hardware description and configuration for multiple transmitter setup in multi-cell/multi-user OWC networks
+The `gr-owc` module includes the following implemented blocks:
 
+| Sl No. | Block Name                    | Description                                                                                               |
+|--------|--------------------------------|-----------------------------------------------------------------------------------------------------------|
+| 1      | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/Documentation/Blocks/OWC_Channel_Model(Relative).md)    | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
+| 2      | [OWC_Channel_Block(Absolute)]()    | Models the optical channel using absolute coordinates of the transmitter and receiver, considering DC channel gain from transmitter to receiver. |
+| 3      | [OOK_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/Documentation/Blocks/OOK_Modulator.md)                  | Implements On-Off Keying (OOK) baseband modulation scheme.                                                |
+| 4      | [OOK_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/Documentation/Blocks/OOK_Demodulator.md)                | Demodulates On-Off Keying (OOK) baseband signals and defines the binary outcome.                          |
 
+---
+
+# Chapters
+
+| Chapter | Topic                | Summary                                                                                                               |
+|---------|-----------------------|-----------------------------------------------------------------------------------------------------------------------|
+| 1       | Background            | Overview of Software Defined Radio and an introduction to `gr-owc`, including its motivation and role in OWC.         |
+| 2       | Channel Modeling      | Different channel modeling approaches for OWC, including their characteristics, types, and applications in various OWC scenarios. |
+| 3       | SDR; OWC Hardware     | Detailed analysis of hardware components and their characteristics used for OWC, such as Transmitter, Receiver, USRP, and their suitability for OWC. |
+| 4       | Modulator & Demodulator | Modulation and demodulation techniques supported by `gr-owc`, along with their applications and implementation considerations. |
+
+---
+
+# Principal Investigator
+
+- **Name**: Dr. Michael B Rahaim  
+- **Title/Position**: Associate Professor  
+- **University**: University of Massachusetts Boston  
+- **Email**: michael.rahaim@umb.edu  
+
+---
+
+# Developer
+
+- **Name**: Kunal P Sangurmath  
+- **University**: University of Massachusetts Boston  
+- **Email**: sangurmathkunal@gmail.com / k.sangurmath001@umb.edu  
+
+**Note**: This work is an extension of the original code developed by Arsalan Ahmed(<arsalanqasimahmed@gmail.com>) for GNURadio v3.8.
