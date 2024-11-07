@@ -1,6 +1,7 @@
-gr-owc OOT module for optical wireless communications. 
+gr-owc OOT module for optical wireless communications.
+gr-owc is compatible with GNU Radio v3.10
 
-Copyright 2021 Arsalan Ahmed from The Ubiquitous Communications and Networking (UCAN) Lab, University of Massachusetts, Boston.
+Copyright 2024 Ubiquitous Communications and Networking (UCAN) Lab, University of Massachusetts, Boston.
 
 This is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
