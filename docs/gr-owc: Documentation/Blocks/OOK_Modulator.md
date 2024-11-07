@@ -30,21 +30,12 @@ The `OOK_Modulator` block provides a effective way to implement binary amplitude
 (Comming soon)
 
 # gr-owc
-* Blocks:
+* [gr-owc](https://github.com/UCaNLabUMB/gr-owc/tree/main)
+*  Blocks:
   
 | Sl No. | Block Name                    | Description                                                                                               |
 |--------|--------------------------------|-----------------------------------------------------------------------------------------------------------|
-| 1      | [OWC_Channel_Block(Relative)](https://github.com/kunal2431/gr-owc/blob/main/Documentation/OWC_Channel_Model(Relative).md)   | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
-| 2      | [OWC_Channel_Block(Absolute)](https://github.com/kunal2431/gr-owc/blob/main/Documentation/OWC_Channel_Block(Absolute).md)    | Models the optical channel using absolute coordinates of the transmitter and receiver, considering DC channel gain from transmitter to receiver. |
+| 1      | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Model(Relative).md)   | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
+| 2      | [OWC_Channel_Block(Absolute)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Block(Absolute).md)    | Models the optical channel using absolute coordinates of the transmitter and receiver, considering DC channel gain from transmitter to receiver. |
 | 3      | OOK_Modulator                  | Implements On-Off Keying (OOK) baseband modulation scheme.                                                |
-| 4      | [OOK_Demodulator](https://github.com/kunal2431/gr-owc/blob/main/Documentation/OOK_Demodulator.md)                | Demodulates On-Off Keying (OOK) baseband signals and defines the binary outcome.                          |
-
-
-* Chapters:
-  
-| Chapter | Topic                | Summary                                                                                                               |
-|---------|-----------------------|-----------------------------------------------------------------------------------------------------------------------|
-| 1       | Background            | Overview of Software Defined Radio and an introduction to `gr-owc`, including its motivation and role in OWC.         |
-| 2       | Channel Modeling      | Different channel modeling approaches for OWC, including their characteristics, types, and applications in various OWC scenarios. |
-| 3       | SDR; OWC Hardware     | Detailed analysis of hardware components and their characteristics used for OWC, such as Transmitter, Receiver, USRP, and their suitability for OWC. |
-| 4       | Modulator & Demodulator | Modulation and demodulation techniques supported by `gr-owc`, along with their applications and implementation considerations. |
+| 4      | [OOK_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OOK_Demodulator.md)                | Demodulates On-Off Keying (OOK) baseband signals and defines the binary outcome.                          |
