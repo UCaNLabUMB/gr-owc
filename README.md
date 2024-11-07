@@ -52,6 +52,8 @@ Alternatively, to download the repository and install, follow the steps below:
 1. Configure your linker/debugger with `sudo ldconfig`
 1. Open gnuradio-companion and you should find a module for gr-owc
 
+The gr-owc blocks will be available under the `owc` drop down in the block library:
+![gr-owc in GRC](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Images/gr-owc_in_GRC.png)
 
 
 # gr-owc Blocks
