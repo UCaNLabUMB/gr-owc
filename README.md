@@ -10,9 +10,9 @@ GNURadio out-ot-tree (OOT) module for optical wireless communications.
 **Note:** gr-owc is compatible with GNU Radio v3.10. For GNU Radio v3.8, refer to [gr-owc_v3.8](https://github.com/UCaNLabUMB/gr-owc/releases/tag/v1.1.0). 
 
 # Directory Structure
-* **Documentation:** Contains documentation of gr-owc blocks and chapters; offers a step-by-step overview of gr-owc.
+* **docs/gr-owc:Documentation:** Contains documentation of gr-owc blocks and chapters; offers a step-by-step overview of gr-owc.
 * **examples:** Example GNURadio flowgraphs for demonstrating gr-owc usage.
-* **grc:** .yml files of gr-owc blocks.
+* **grc:** .yml files of gr-owc blocks. It allows interconnection of OWC blocks within the GRC environment.
 * **lib, include:** C++ and C++ w/ Volk implemeted gr-owc blocks
 * **python:** Python implemented gr-owc blocks and QA test code.
 * **Install_gr-owc.sh:** Script file to install gr-owc in GNURadio Companion.
@@ -29,7 +29,7 @@ This installation guide assumes that GNURadio v3.10 has been installed. gr-owc c
 For this, follow the steps below:
 
 1. Download **only** the [Install_gr-owc.sh](https://github.com/UCaNLabUMB/gr-owc/blob/main/Install_gr-owc.sh)
-2. In the downloaed script directory, open terminal. Give executable permission for script file `chmod +x ./Install_gr-owc.sh`
+2. In the downloaded script directory, open terminal. Give executable permission for script file `chmod +x ./Install_gr-owc.sh`
 3. Execute scrpit file `./Install_gr-owc.sh`
    * (There should be no failure displayed)
 4. Open `gnuradio-comapanion` and you should find a module for gr-owc
@@ -60,10 +60,10 @@ The `gr-owc` module includes the following implemented blocks:
 
 | Sl No. | Block Name                    | Description                                                                                               |
 |--------|--------------------------------|-----------------------------------------------------------------------------------------------------------|
-| 1      | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/Documentation/Blocks/OWC_Channel_Model(Relative).md)    | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
-| 2      | [OWC_Channel_Block(Absolute)]()    | Models the optical channel using absolute coordinates of the transmitter and receiver, considering DC channel gain from transmitter to receiver. |
-| 3      | [OOK_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/Documentation/Blocks/OOK_Modulator.md)                  | Implements On-Off Keying (OOK) baseband modulation scheme.                                                |
-| 4      | [OOK_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/Documentation/Blocks/OOK_Demodulator.md)                | Demodulates On-Off Keying (OOK) baseband signals and defines the binary outcome.                          |
+| 1      | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Model(Relative).md)   | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
+| 2      | [OWC_Channel_Block(Absolute)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Block(Absolute).md)    | Models the optical channel using absolute coordinates of the transmitter and receiver, considering DC channel gain from transmitter to receiver. |
+| 3      | [OOK_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OOK_Modulator.md)                  | Implements On-Off Keying (OOK) baseband modulation scheme.                                                |
+| 4      | [OOK_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OOK_Demodulator.md)                | Demodulates On-Off Keying (OOK) baseband signals and defines the binary outcome.                          |                      |
 
 ---
 
