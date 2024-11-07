@@ -32,7 +32,7 @@ The `OWC_Channel_Model(Absolute)` block is designed with the following configura
 
 The `OWC_Channel_Model(Absolute)` block calculates the emission, acceptance angles, and distances between transmitters and receivers based on the provided 3D coordinates and orientation vectors. 
 
-The remaining calculations for channel gain and other related logic follow the same methodology as outlined in the OWC_Channel_model(Relative) block. For full details on the channel gain computations functions, refer to [OWC_Channel_Block(Relative)](https://github.com/kunal2431/gr-owc/blob/main/Documentation/OWC_Channel_Model(Relative).md).
+The remaining calculations for channel gain and other related logic follow the same methodology as outlined in the OWC_Channel_model(Relative) block. For full details on the channel gain computations functions, refer to [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Model(Relative).md).
 
 ## Summary
 The `OWC_Channel_Model(Absolute)` block simulates the optical wireless communication channel based on the spatial and angular configuration of transmitters and receivers. Using 3D coordinates and orientations, it dynamically calculates emission and acceptance angles, providing a tool for optical channel modeling.
@@ -46,7 +46,7 @@ The `OWC_Channel_Model(Absolute)` block simulates the optical wireless communica
   
 | Sl No. | Block Name                    | Description                                                                                               |
 |--------|--------------------------------|-----------------------------------------------------------------------------------------------------------|
-| 1      | [OWC_Channel_Block(Relative)](https://github.com/kunal2431/gr-owc/blob/main/Documentation/OWC_Channel_Model(Relative).md)   | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
+| 1      | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Model(Relative).md)   | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
 | 2      | OWC_Channel_Block(Absolute)    | Models the optical channel using absolute coordinates of the transmitter and receiver, considering DC channel gain from transmitter to receiver. |
-| 3      | [OOK_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/Documentation/Blocks/OOK_Modulator.md)                  | Implements On-Off Keying (OOK) baseband modulation scheme.                                                |
-| 4      | [OOK_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/Documentation/Blocks/OOK_Demodulator.md)                | Demodulates On-Off Keying (OOK) baseband signals and defines the binary outcome.  
+| 3      | [OOK_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OOK_Modulator.md)                  | Implements On-Off Keying (OOK) baseband modulation scheme.                                                |
+| 4      | [OOK_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OOK_Demodulator.md)                | Demodulates On-Off Keying (OOK) baseband signals and defines the binary outcome.  
