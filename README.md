@@ -1,5 +1,5 @@
 # gr-owc
-GNURadio out-ot-tree (OOT) module for optical wireless communications. 
+GNURadio out-of-tree (OOT) module for optical wireless communications. 
 
 * **Contact:** Dr. Michael Rahaim (<Michael.Rahaim@umb.edu>) from The Ubiquitous Communications and Networking Lab ([UCaN Lab](https://www.umb.edu/ucanlab)), University of Massachusetts, Boston.
 
