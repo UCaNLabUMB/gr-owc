@@ -53,3 +53,5 @@ GR_ADD_TEST(qa_OOK_Demodulator_cpvolk ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURC
 GR_ADD_TEST(qa_OWC_Channel_absolute_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_OWC_Channel_absolute_cplus.py)
 GR_ADD_TEST(qa_OWC_Channel_absolute_cvolk ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_OWC_Channel_absolute_cvolk.py)
 GR_ADD_TEST(qa_OWC_Channel_absolute_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_OWC_Channel_absolute_python.py)
+GR_ADD_TEST(qa_PAM_Modulator_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PAM_Modulator_cplus.py)
+GR_ADD_TEST(qa_VPPM_Modulator_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_VPPM_Modulator_cplus.py)

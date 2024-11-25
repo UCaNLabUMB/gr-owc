@@ -17,5 +17,7 @@ install(FILES
     OOK_Demodulator_cplus.h
     OOK_Demodulator_cpvolk.h
     OWC_Channel_absolute_cplus.h
-    OWC_Channel_absolute_cvolk.h DESTINATION include/gnuradio/owc
+    OWC_Channel_absolute_cvolk.h
+    PAM_Modulator_cplus.h
+    VPPM_Modulator_cplus.h DESTINATION include/gnuradio/owc
 )
