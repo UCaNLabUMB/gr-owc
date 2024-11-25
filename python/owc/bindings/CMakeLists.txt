@@ -35,7 +35,9 @@ list(APPEND owc_python_files
     OOK_Demodulator_cplus_python.cc
     OOK_Demodulator_cpvolk_python.cc
     OWC_Channel_absolute_cplus_python.cc
-    OWC_Channel_absolute_cvolk_python.cc python_bindings.cc)
+    OWC_Channel_absolute_cvolk_python.cc
+    PAM_Modulator_cplus_python.cc
+    VPPM_Modulator_cplus_python.cc python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(owc
    ../../..

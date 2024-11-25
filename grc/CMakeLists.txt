@@ -16,5 +16,7 @@ install(FILES
     owc_OOK_Demodulator_cpvolk.block.yml
     owc_OWC_Channel_absolute_cplus.block.yml
     owc_OWC_Channel_absolute_cvolk.block.yml
-    owc_OWC_Channel_absolute_python.block.yml DESTINATION share/gnuradio/grc/blocks
+    owc_OWC_Channel_absolute_python.block.yml
+    owc_PAM_Modulator_cplus.block.yml
+    owc_VPPM_Modulator_cplus.block.yml DESTINATION share/gnuradio/grc/blocks
 )
