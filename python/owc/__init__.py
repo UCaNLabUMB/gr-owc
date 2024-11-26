@@ -24,5 +24,7 @@ from .OWC_Channel_relative_python import OWC_Channel_relative_python
 from .OOK_Modulator_Python import OOK_Modulator_Python
 from .OOK_Demodulator_Python import OOK_Demodulator_Python
 from .OWC_Channel_absolute_python import OWC_Channel_absolute_python
+from .PAM_Modulator_python import PAM_Modulator_python
+from .VPPM_Modulator_python import VPPM_Modulator_python
 
 #
