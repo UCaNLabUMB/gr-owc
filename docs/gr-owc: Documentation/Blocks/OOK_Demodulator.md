@@ -37,7 +37,7 @@ The `OOK_Demodulator` block provides a way to recover binary data from an OOK-mo
   
 | Sl No. | Block Name                    | Description                                                                                               |
 |--------|--------------------------------|-----------------------------------------------------------------------------------------------------------|
-| 1      | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Block(Relative).md)   | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
+| 1      | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Model(Relative).md)   | Models the optical channel, considering DC channel gain from transmitter to receiver.                     |
 | 2      | [OWC_Channel_Block(Absolute)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OWC_Channel_Block(Absolute).md)    | Models the optical channel using absolute coordinates of the transmitter and receiver, considering DC channel gain from transmitter to receiver. |
 | 3      | [OOK_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/OOK_Modulator.md)                  | Implements On-Off Keying (OOK) baseband modulation scheme.                                                |
 | 4      | OOK_Demodulator               | Demodulates On-Off Keying (OOK) baseband signals and defines the binary outcome.                          |
