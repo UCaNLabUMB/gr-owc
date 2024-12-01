@@ -30,6 +30,7 @@ namespace py = pybind11;
     void bind_OWC_Channel_absolute_cvolk(py::module& m);
     void bind_PAM_Modulator_cplus(py::module& m);
     void bind_VPPM_Modulator_cplus(py::module& m);
+    void bind_PPM_Modulator_cplus(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
 
 
@@ -67,5 +68,6 @@ PYBIND11_MODULE(owc_python, m)
     bind_OWC_Channel_absolute_cvolk(m);
     bind_PAM_Modulator_cplus(m);
     bind_VPPM_Modulator_cplus(m);
+    bind_PPM_Modulator_cplus(m);
     // ) END BINDING_FUNCTION_CALLS
 }

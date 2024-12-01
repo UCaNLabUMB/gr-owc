@@ -19,5 +19,6 @@ install(FILES
     OWC_Channel_absolute_cplus.h
     OWC_Channel_absolute_cvolk.h
     PAM_Modulator_cplus.h
-    VPPM_Modulator_cplus.h DESTINATION include/gnuradio/owc
+    VPPM_Modulator_cplus.h
+    PPM_Modulator_cplus.h DESTINATION include/gnuradio/owc
 )

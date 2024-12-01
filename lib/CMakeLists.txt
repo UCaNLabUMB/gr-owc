@@ -21,6 +21,7 @@ list(APPEND owc_sources
     OWC_Channel_absolute_cvolk_impl.cc
     PAM_Modulator_cplus_impl.cc
     VPPM_Modulator_cplus_impl.cc
+    PPM_Modulator_cplus_impl.cc
 )
 
 set(owc_sources "${owc_sources}" PARENT_SCOPE)
