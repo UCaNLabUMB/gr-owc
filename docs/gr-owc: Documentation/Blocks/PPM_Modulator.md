@@ -37,9 +37,12 @@ The `PPM_Modulator` generates a signal with:
 
 The `PPM_Modulator` block relies on the `Chunk to Symbols` block to preprocess input data. The `Chunk to Symbols` block maps input bits into integer symbols (ranging from $\( 0 \)$ to $\( M-1 \))$, which the `PPM_Modulator` then uses to determine pulse positions.
 
+## Summary
+
 PPM efficiently encodes data by using pulse positions instead of amplitude or frequency variations. The block allows users to control the total symbol duration (`samples_per_symbol`), pulse width (`samples_per_pulse`), and modulation order (`modulation_order`).
 
-
+## Examples
+(Comming soon)
 
 # gr-owc
 * [gr-owc](https://github.com/UCaNLabUMB/gr-owc/tree/main)
