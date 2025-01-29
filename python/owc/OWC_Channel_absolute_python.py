@@ -14,7 +14,7 @@ class OWC_Channel_absolute_python(gr.sync_block):
     """
     docstring for block OWC_Channel_absolute_python
     """
-    def __init__(self, num_inputs=1,num_outputs=1,tx_coordinates_array=[2.0,2.0,2.0],tx_orientation_array=[0,0,-1.0],rx_coordinates_array=[1.0,1.0,1.0],rx_orientation_array=[0,0,1.0],tx_lambertian_order_array=[1.0],rx_photosensor_area_array=[1.0],optical_filter_transmittance_array=[1.0],refractive_index_array=[1.0],concentrator_FOV_array=[1.0],E2O_conversion_factor_array=[1.0],O2E_conversion_factor_array=[1.0]):
+    def __init__(self, num_inputs=1,num_outputs=1,tx_coordinates_array=[1.0,2.0,5.0],tx_orientation_array=[0.0,0.0,-1.0],rx_coordinates_array=[2.0,2.0,0.0],rx_orientation_array=[0.0,0.0,1.0],tx_lambertian_order_array=[2.0],rx_photosensor_area_array=[1.0],optical_filter_transmittance_array=[1.0],refractive_index_array=[1.0],concentrator_FOV_array=[90],E2O_conversion_factor_array=[1.0],O2E_conversion_factor_array=[1.0]):
         gr.sync_block.__init__(self,
             name="OWC_Channel_absolute_python",
             in_sig=[np.float32] * num_inputs,
@@ -155,13 +155,16 @@ class OWC_Channel_absolute_python(gr.sync_block):
         for i in range(0, len(self.rx_coordinates_array), 3):
             rx_x, rx_y, rx_z = self.rx_coordinates_array[i:i + 3]
             for j in range(0, len(self.tx_coordinates_array), 3):
+                angle = 0
                 tx_x, tx_y, tx_z = self.tx_coordinates_array[j:j + 3]
                 u_vector = np.array([rx_x - tx_x, rx_y - tx_y, rx_z - tx_z])
                 v_vector = np.array(self.tx_orientation_array[j:j + 3])
                 u_mag = np.linalg.norm(u_vector)
                 v_mag = np.linalg.norm(v_vector)
-                cos_theta = np.dot(u_vector, v_vector) / (u_mag * v_mag)
-                angle = np.arccos(cos_theta) * (180 / np.pi)
+                if u_mag != 0:
+                    cos_theta = np.dot(u_vector, v_vector) / (u_mag * v_mag)
+                    cos_theta = np.clip(cos_theta, -1.0, 1.0)
+                    angle = np.arccos(cos_theta) * (180 / np.pi)
                 self.emission_angle_array.append(angle)
         self.set = True
 
@@ -174,12 +177,15 @@ class OWC_Channel_absolute_python(gr.sync_block):
             rx_x, rx_y, rx_z = self.rx_coordinates_array[i:i + 3]
             v_vector = np.array(self.rx_orientation_array[i:i + 3])
             for j in range(0, len(self.tx_coordinates_array), 3):
+                angle = 0
                 tx_x, tx_y, tx_z = self.tx_coordinates_array[j:j + 3]
                 u_vector = np.array([tx_x - rx_x, tx_y - rx_y, tx_z - rx_z])
                 u_mag = np.linalg.norm(u_vector)
                 v_mag = np.linalg.norm(v_vector)
-                cos_theta = np.dot(u_vector, v_vector) / (u_mag * v_mag)
-                angle = np.arccos(cos_theta) * (180 / np.pi)
+                if u_mag != 0:
+                    cos_theta = np.dot(u_vector, v_vector) / (u_mag * v_mag)
+                    cos_theta = np.clip(cos_theta, -1.0, 1.0)
+                    angle = np.arccos(cos_theta) * (180 / np.pi)
                 self.acceptance_angle_array.append(angle)
         self.set = True
 
@@ -191,7 +197,7 @@ class OWC_Channel_absolute_python(gr.sync_block):
             for j in range(nin):
                 Gt = 0
                 Gr = 0
-                H = 0
+                H = 1
                 
                 index = x * nin + j
                 emission_angle = self.get_emission_angle_array()[index]
@@ -205,9 +211,10 @@ class OWC_Channel_absolute_python(gr.sync_block):
                 E2O_conversion_factor = self.get_E2O_conversion_factor_array()[j]
                 O2E_conversion_factor = self.get_O2E_conversion_factor_array()[x]
                 
-                Gt = (lambertian_order + 1) / (2 * np.pi) * np.power(np.cos(np.radians(emission_angle)), lambertian_order) if emission_angle <= 90 else 0
-                Gr = photosensor_area * optical_filter_transmittance * (refractive_index ** 2 / np.sin(np.radians(concentrator_FOV)) ** 2) * np.cos(np.radians(acceptance_angle)) if acceptance_angle <= concentrator_FOV and acceptance_angle >= 0 else 0
-                H = E2O_conversion_factor * (Gt * Gr / (distance ** 2)) * O2E_conversion_factor
+                if distance != 0:
+                    Gt = (lambertian_order + 1) / (2 * np.pi) * np.power(np.cos(np.radians(emission_angle)), lambertian_order) if emission_angle <= 90 else 0
+                    Gr = photosensor_area * optical_filter_transmittance * (refractive_index ** 2 / np.sin(np.radians(concentrator_FOV)) ** 2) * np.cos(np.radians(acceptance_angle)) if acceptance_angle <= concentrator_FOV and acceptance_angle >= 0 else 0
+                    H = E2O_conversion_factor * (Gt * Gr / (distance ** 2)) * O2E_conversion_factor if distance != 0 else 0
                 
                 self.channel_model_values.append(H)
         self.set = False

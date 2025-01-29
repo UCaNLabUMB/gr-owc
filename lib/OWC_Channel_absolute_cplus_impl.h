@@ -50,26 +50,29 @@ private:
             float Gr = 0;
             float g = 0;
             int index = x * nin + j;
-                
-            if (emission_angle_array()[index] <= 90)
-            {
+            float H = 1;
+
+            if(distance_array()[index] != 0){
+                if (emission_angle_array()[index] <= 90)
+                {
                 Gt = ((tx_lambertian_order_array()[j] + 1)/(2*M_PI))*pow(cos(emission_angle_array()[index]*(M_PI/180)),tx_lambertian_order_array()[j]);
-            }
+                }
             
-            if ((acceptance_angle_array()[index] >= 0) && (acceptance_angle_array()[index] <= concentrator_FOV_array()[x])){
-                float Ts = optical_filter_transmittance_array()[x];
-                float refractive_index_squared = refractive_index_array()[x]*refractive_index_array()[x]; 
-                float sin_of_concentrator_FOV_squared = sin(concentrator_FOV_array()[x]*(M_PI/180))*sin(concentrator_FOV_array()[x]*(M_PI/180));
-                g = refractive_index_squared/sin_of_concentrator_FOV_squared;
-                Gr = rx_photosensor_area_array()[x]*Ts*g*cos(acceptance_angle_array()[index]*(M_PI/180)); 
-            }
+                if ((acceptance_angle_array()[index] >= 0) && (acceptance_angle_array()[index] <= concentrator_FOV_array()[x])){
+                    float Ts = optical_filter_transmittance_array()[x];
+                    float refractive_index_squared = refractive_index_array()[x]*refractive_index_array()[x]; 
+                    float sin_of_concentrator_FOV_squared = sin(concentrator_FOV_array()[x]*(M_PI/180))*sin(concentrator_FOV_array()[x]*(M_PI/180));
+                    g = refractive_index_squared/sin_of_concentrator_FOV_squared;
+                    Gr = rx_photosensor_area_array()[x]*Ts*g*cos(acceptance_angle_array()[index]*(M_PI/180)); 
+                }
             
-            float distance_squared = distance_array()[index] * distance_array()[index];
+                float distance_squared = distance_array()[index] * distance_array()[index];
         
-            float Ct = E2O_conversion_factor_array()[j];
-            float Cr = O2E_conversion_factor_array()[x];
+                float Ct = E2O_conversion_factor_array()[j];
+                float Cr = O2E_conversion_factor_array()[x];
         
-            float H = Ct*((Gt*Gr)/distance_squared)*Cr;
+                H = Ct*((Gt*Gr)/distance_squared)*Cr;
+            }
             channel_model_values.push_back(H);
           }
         }
@@ -137,11 +140,14 @@ private:
                 float vz_squared = vz*vz;
                 
                 float v_mag = sqrt(vx_squared + vy_squared + vz_squared);
+                float angle = 0;
                 
-                float numerator= (ux*vx)+(uy*vy)+(uz*vz);
-                float denominator =u_mag*v_mag;
+                if(u_mag != 0){
+                    float numerator= (ux*vx)+(uy*vy)+(uz*vz);
+                    float denominator = u_mag*v_mag;
                 
-                float angle = acos((numerator/denominator))*(180/M_PI);
+                    angle = acos((numerator/denominator))*(180/M_PI);
+                }
                 
                 d_emission_angle_array.push_back(angle);
                 }
@@ -184,10 +190,14 @@ private:
                 
                 float v_mag = sqrt(vx_squared + vy_squared + vz_squared);
                 
-                float numerator= (ux*vx)+(uy*vy)+(uz*vz);
-                float denominator =u_mag*v_mag;
+                float angle = 0;
                 
-                float angle = acos(numerator/denominator)*(180/M_PI); 
+                if(u_mag != 0){
+                    float numerator= (ux*vx)+(uy*vy)+(uz*vz);
+                    float denominator = u_mag*v_mag;
+                
+                    angle = acos((numerator/denominator))*(180/M_PI);
+                }
                 
                 d_acceptance_angle_array.push_back(angle);
                 }
