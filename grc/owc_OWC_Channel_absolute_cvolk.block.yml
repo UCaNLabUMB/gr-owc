@@ -28,7 +28,7 @@ parameters:
 
 - id: tx_coordinates_array
   label: Tx Coordinates Array
-  default: [2.0,2.0,2.0]
+  default: [1.0,2.0,5.0]
   dtype: float_vector
   
 - id: tx_orientation_array
@@ -38,17 +38,17 @@ parameters:
   
 - id: rx_coordinates_array
   label: Rx Coordinates Array
-  default: [1.0,1.0,1.0]
+  default: [2.0,2.0,0.0]
   dtype: float_vector
   
 - id: rx_orientation_array
   label: Rx Orientation Array
-  default: [0,0,1.0]
+  default: [0.0,0.0,1.0]
   dtype: float_vector
   
 - id: tx_lambertian_order_array
   label: Tx Lambertian Order Array
-  default: [1.0]
+  default: [2.0]
   dtype: float_vector
   
 - id: rx_photosensor_area_array
@@ -68,7 +68,7 @@ parameters:
   
 - id: concentrator_FOV_array
   label: Concentrator FOV Array
-  default: [1.0]
+  default: [90.0]
   dtype: float_vector
   
 - id: E2O_conversion_factor_array
@@ -99,7 +99,9 @@ asserts:
 - ${len(tx_coordinates_array) == (num_inputs * 3)}
 - ${len(rx_coordinates_array) == (3 * num_outputs)}
 - ${len(tx_orientation_array) == (num_inputs * 3)}
+- ${all(any(tx_orientation_array[j] != 0 for j in range(i*3, i*3+3)) for i in range(num_inputs))}
 - ${len(rx_orientation_array) == (3 * num_outputs)}
+- ${all(any(rx_orientation_array[j] != 0 for j in range(i*3, i*3+3)) for i in range(num_outputs))}
 - ${len(tx_lambertian_order_array) == num_inputs}
 - ${len(rx_photosensor_area_array) == num_outputs}
 - ${len(optical_filter_transmittance_array) == num_outputs}

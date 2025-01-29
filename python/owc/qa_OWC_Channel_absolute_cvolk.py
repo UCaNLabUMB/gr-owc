@@ -97,6 +97,15 @@ class qa_OWC_Channel_absolute_cvolk(gr_unittest.TestCase):
         op = OWC_Channel_absolute_cvolk(2,2,[10,10,10,8,8,8],[0,0,-1,0,-1,-1],[2,2,2,3,4,4],[0,0,1,1,0,1],[2,3],[1,2],[1,1],[1,1],[90,90],[1,1],[1,1])
         self.help3_ff((src1_data, src2_data), (expected_result1, expected_result2), op)
 
+    def test_004_Channel_absolute(self):
+        src1_data = (1.0,  2.0, 3.0, 4.0, 5.0)
+        src2_data = (1.0, 2.0, 3.0, 4.0, 5.0)
+        expected_result1 = (1.0,  2.0, 3.0, 4.0, 5.0)
+        expected_result2 = ((1*(0.0020))+(1*(0.0079)),(2*(0.0020))+(2*(0.0079)),(3*(0.0020))+(3*(0.0079)),(4*(0.0020))+(4*(0.0079)),(5*(0.0020))+(5*(0.0079)))
+        
+        op = OWC_Channel_absolute_cvolk(2,2,[10,10,10,8,8,8],[0,0,-1,0,-1,-1],[10,10,10,3,4,4],[0,0,1,1,0,1],[2,3],[1,2],[1,1],[1,1],[90,90],[1,1],[1,1])
+        self.help3_ff((src1_data, src2_data), (expected_result1, expected_result2), op)
+
 
 if __name__ == '__main__':
     gr_unittest.run(qa_OWC_Channel_absolute_cvolk)
