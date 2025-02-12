@@ -72,35 +72,31 @@ int OWC_Channel_relative_cpvolk_impl::work(int noutput_items,
                                            gr_vector_const_void_star& input_items,
                                            gr_vector_void_star& output_items)
 {
-    unsigned int alignment = volk_get_alignment();
-
     int ninputs = input_items.size();
     int noutputs = output_items.size();
 
-    if(set == true){
+    if (set) {
         calculate_channel_model_values();
     }
 
-    for (int i = 0; i < noutput_items; i++) {
-        for (int x = 0; x < noutputs; x++) {
-            float received_power = 0.0f;
-            float* temp_results = (float*)volk_malloc(ninputs * sizeof(float), alignment);
+    float* temp_results = (float*)volk_malloc(noutput_items * sizeof(float), volk_get_alignment());
 
-            for (int j = 0; j < ninputs; j++) {
-                temp_results[j] = ((const float*)input_items[j])[i];
-            }
-
-            volk_32f_x2_multiply_32f(temp_results, temp_results, &channel_model_values[x * ninputs], ninputs);
-
-
-            volk_32f_accumulator_s32f(&received_power, temp_results, ninputs);
-
-            ((float*)output_items[x])[i] = received_power;
-            volk_free(temp_results);
+    for (int x = 0; x < noutputs; x++) {
+        float* output_buffer = (float*)output_items[x];
+        
+        volk_32f_s32f_multiply_32f(output_buffer, output_buffer, 0.0f, noutput_items);
+        
+        for (int j = 0; j < ninputs; j++) {
+            int index = x * ninputs + j;
+            const float* input_buffer = (const float*)input_items[j];
+            float channel_value = channel_model_values[index];
+            
+            volk_32f_s32f_multiply_32f(temp_results, input_buffer, channel_value, noutput_items);
+            volk_32f_x2_add_32f(output_buffer, output_buffer, temp_results, noutput_items);
         }
     }
-        
-    
+
+    volk_free(temp_results);
     return noutput_items;
 }
 
