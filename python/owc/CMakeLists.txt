@@ -62,3 +62,4 @@ GR_ADD_TEST(qa_PAM_Modulator_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_
 GR_ADD_TEST(qa_VPPM_Modulator_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_VPPM_Modulator_python.py)
 GR_ADD_TEST(qa_PPM_Modulator_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PPM_Modulator_cplus.py)
 GR_ADD_TEST(qa_PPM_Modulator_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PPM_Modulator_python.py)
+GR_ADD_TEST(qa_LED_Nonlinearity ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_LED_Nonlinearity.py)

@@ -22,6 +22,7 @@ list(APPEND owc_sources
     PAM_Modulator_cplus_impl.cc
     VPPM_Modulator_cplus_impl.cc
     PPM_Modulator_cplus_impl.cc
+    LED_Nonlinearity_impl.cc
 )
 
 set(owc_sources "${owc_sources}" PARENT_SCOPE)

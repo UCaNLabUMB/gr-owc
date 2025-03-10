@@ -19,14 +19,14 @@ class qa_OWC_Channel_absolute_python(gr_unittest.TestCase):
         self.tb = None
 
     def test_instance(self):
-        instance = OWC_Channel_absolute_python(1,1,[1,2,5],[0,0,-1],[2,2,0],[0,0,1],[2],[1],[1],[1],[90],[1],[1])
+        instance = OWC_Channel_absolute_python(1,1,[1,2,5],[0,0,-1],[2,2,0],[0,0,1],[2],[1],[1],[1],True,True,1000,1,[90],[1],[1])
 
     def test_001_Channel_absolute(self):
         src_data = (1.0,2.0,3.0,4.0,5.0)
         expected_result = (0.0173,2*0.0173,3*0.0173,4*0.0173,5*0.0173)
         
         src = blocks.vector_source_f(src_data)      
-        blk = OWC_Channel_absolute_python(1,1,[1,2,5],[0,0,-1],[2,2,0],[0,0,1],[2],[1],[1],[1],[90],[1],[1])
+        blk = OWC_Channel_absolute_python(1,1,[1,2,5],[0,0,-1],[2,2,0],[0,0,1],[2],[1],[1],[1],False,True,1000,1,[90],[1],[1])
         dst = blocks.vector_sink_f()
         
         self.tb.connect(src, blk)
@@ -42,7 +42,7 @@ class qa_OWC_Channel_absolute_python(gr_unittest.TestCase):
         expected_result = (0.0017,2*0.0017,3*0.0017,4*0.0017,5*0.0017)
         
         src = blocks.vector_source_f(src_data)      
-        blk = OWC_Channel_absolute_python(1,1,[10,10,10],[-1,0,-1],[4,4,4],[0,0,1],[2],[1],[1],[1],[90],[1],[1])
+        blk = OWC_Channel_absolute_python(1,1,[10,10,10],[-1,0,-1],[4,4,4],[0,0,1],[2],[1],[1],[1],True,False,1000,1,[90],[1],[1])
         dst = blocks.vector_sink_f()
         
         self.tb.connect(src, blk)
@@ -84,7 +84,7 @@ class qa_OWC_Channel_absolute_python(gr_unittest.TestCase):
         expected_result1 = ((1*(0.00047858))+(1*(0.0019)),(2*(0.00047858))+(2*(0.0019)),(3*(0.00047858))+(3*(0.0019)),(4*(0.00047858))+(4*(0.0019)),(5*(0.00047858))+(5*(0.0019)))
         expected_result2 = ((1*(0.0020))+(1*(0.0079)),(2*(0.0020))+(2*(0.0079)),(3*(0.0020))+(3*(0.0079)),(4*(0.0020))+(4*(0.0079)),(5*(0.0020))+(5*(0.0079)))
         
-        op = OWC_Channel_absolute_python(2,2,[10,10,10,8,8,8],[0,0,-1,0,-1,-1],[2,2,2,3,4,4],[0,0,1,1,0,1],[2,3],[1,2],[1,1],[1,1],[90,90],[1,1],[1,1])
+        op = OWC_Channel_absolute_python(2,2,[10,10,10,8,8,8],[0,0,-1,0,-1,-1],[2,2,2,3,4,4],[0,0,1,1,0,1],[2,3],[1,2],[1,1],[1,1],True,False,1000,1,[90,90],[1,1],[1,1])
         self.help3_ff((src1_data, src2_data), (expected_result1, expected_result2), op)
 
     def test_004_Channel_absolute(self):
@@ -93,8 +93,40 @@ class qa_OWC_Channel_absolute_python(gr_unittest.TestCase):
         expected_result1 = (1.0,  2.0, 3.0, 4.0, 5.0)
         expected_result2 = ((1*(0.0020))+(1*(0.0079)),(2*(0.0020))+(2*(0.0079)),(3*(0.0020))+(3*(0.0079)),(4*(0.0020))+(4*(0.0079)),(5*(0.0020))+(5*(0.0079)))
         
-        op = OWC_Channel_absolute_python(2,2,[10,10,10,8,8,8],[0,0,-1,0,-1,-1],[10,10,10,3,4,4],[0,0,1,1,0,1],[2,3],[1,2],[1,1],[1,1],[90,90],[1,1],[1,1])
+        op = OWC_Channel_absolute_python(2,2,[10,10,10,8,8,8],[0,0,-1,0,-1,-1],[10,10,10,3,4,4],[0,0,1,1,0,1],[2,3],[1,2],[1,1],[1,1],True,True,1000,1,[90,90],[1,1],[1,1])
         self.help3_ff((src1_data, src2_data), (expected_result1, expected_result2), op)
+
+    def test_005_Channel_absolute(self):
+        src_data = (-2.0,-1.4,1.0,2.0,3.0,4.0,5.0,-0.001)
+        expected_result = (0.0,0.0,0.0017,2*0.0017,3*0.0017,4*0.0017,5*0.0017,0.0)
+        
+        src = blocks.vector_source_f(src_data)      
+        blk = OWC_Channel_absolute_python(1,1,[10,10,10],[-1,0,-1],[4,4,4],[0,0,1],[2],[1],[1],[1],True,False,1000,1,[90],[1],[1])
+        dst = blocks.vector_sink_f()
+        
+        self.tb.connect(src, blk)
+        self.tb.connect(blk, dst)
+        self.tb.run()
+        
+        result_data = dst.data()
+
+        self.assertFloatTuplesAlmostEqual(expected_result, result_data, 2)
+
+    def test_006_Channel_absolute(self):
+        src_data = (-2.0,-1.4,1.0,2.0,3.0,4.0,5.0,-0.001)
+        expected_result = (-2*0.0017,-1.4*0.0017,0.0017,2*0.0017,3*0.0017,4*0.0017,5*0.0017,-0.001*0.0017)
+        
+        src = blocks.vector_source_f(src_data)      
+        blk = OWC_Channel_absolute_python(1,1,[10,10,10],[-1,0,-1],[4,4,4],[0,0,1],[2],[1],[1],[1],False,False,1000,1,[90],[1],[1])
+        dst = blocks.vector_sink_f()
+        
+        self.tb.connect(src, blk)
+        self.tb.connect(blk, dst)
+        self.tb.run()
+        
+        result_data = dst.data()
+
+        self.assertFloatTuplesAlmostEqual(expected_result, result_data, 2)
 
 if __name__ == '__main__':
     gr_unittest.run(qa_OWC_Channel_absolute_python)
