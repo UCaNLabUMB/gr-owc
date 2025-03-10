@@ -9,6 +9,9 @@
 #define INCLUDED_OWC_OWC_CHANNEL_ABSOLUTE_CVOLK_IMPL_H
 
 #include <gnuradio/owc/OWC_Channel_absolute_cvolk.h>
+#include <random>
+#include <algorithm>
+#include <cmath>
 
 namespace gr {
 namespace owc {
@@ -28,6 +31,10 @@ private:
     
     std::vector<float> d_optical_filter_transmittance_array;
     std::vector<float> d_refractive_index_array;
+    bool d_clip_neg;
+    bool d_shot_noise;
+    float d_sample_rate;
+    float d_responsivity;
     std::vector<float> d_concentrator_FOV_array;
     std::vector<float> d_E2O_conversion_factor_array;
     std::vector<float> d_O2E_conversion_factor_array;
@@ -38,6 +45,7 @@ private:
     std::vector<float> d_rx_orientation_array;
     std::vector<float> channel_model_values;
     bool set = true;
+    std::mt19937 gen;
 
     void calculate_channel_model_values()
       {
@@ -78,9 +86,16 @@ private:
           }
      }
      set = false;
-  }
+    }
 
-  void set_distance_array()
+    float calculate_shot_noise(float P_avg) {
+        const float q = 1.60217663e-19;
+        float S_shot = 2 * q * responsivity() * P_avg;
+        float variance = S_shot * sample_rate();
+        return std::sqrt(variance);
+    }
+
+    void set_distance_array()
         {           
             d_distance_array.clear();
             for (int i = 0; i < 3*r_num_outputs(); i+=3)
@@ -208,7 +223,7 @@ private:
         }
 
 public:
-    OWC_Channel_absolute_cvolk_impl(int num_inputs, int num_outputs, const std::vector<float>& tx_coordinates_array, const std::vector<float>& tx_orientation_array, const std::vector<float>& rx_coordinates_array, const std::vector<float>& rx_orientation_array, const std::vector<float>& tx_lambertian_order_array, const std::vector<float>& rx_photosensor_area_array, const std::vector<float>& optical_filter_transmittance_array, const std::vector<float>& refractive_index_array, const std::vector<float>& concentrator_FOV_array, const std::vector<float>& E2O_conversion_factor_array, const std::vector<float>& O2E_conversion_factor_array);
+    OWC_Channel_absolute_cvolk_impl(int num_inputs, int num_outputs, const std::vector<float>& tx_coordinates_array, const std::vector<float>& tx_orientation_array, const std::vector<float>& rx_coordinates_array, const std::vector<float>& rx_orientation_array, const std::vector<float>& tx_lambertian_order_array, const std::vector<float>& rx_photosensor_area_array, const std::vector<float>& optical_filter_transmittance_array, const std::vector<float>& refractive_index_array, bool clip_neg, bool shot_noise, float sample_rate, float responsivity, const std::vector<float>& concentrator_FOV_array, const std::vector<float>& E2O_conversion_factor_array, const std::vector<float>& O2E_conversion_factor_array);
     ~OWC_Channel_absolute_cvolk_impl();
 
     void set_num_inputs(int num_inputs){d_num_inputs = num_inputs; set = true;}
@@ -240,6 +255,18 @@ public:
       
     void set_refractive_index_array(std::vector<float> refractive_index_array){d_refractive_index_array = refractive_index_array; set = true;}
     std::vector<float> refractive_index_array() {return d_refractive_index_array;}
+
+    void set_clip_neg(bool clip_neg){d_clip_neg = clip_neg;}
+    bool get_clip_neg(){return d_clip_neg;}
+
+    void set_shot_noise(bool shot_noise){d_shot_noise = shot_noise;}
+    bool get_shot_noise(){return d_shot_noise;}
+
+    void set_sample_rate(float sample_rate){d_sample_rate = sample_rate;}
+    float sample_rate() {return d_sample_rate;}
+
+    void set_responsivity(float responsivity){d_responsivity = responsivity;}
+    float responsivity() {return d_responsivity;}
       
     void set_concentrator_FOV_array(std::vector<float> concentrator_FOV_array){d_concentrator_FOV_array = concentrator_FOV_array; set = true;}
     std::vector<float> concentrator_FOV_array() {return d_concentrator_FOV_array;}

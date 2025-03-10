@@ -26,14 +26,14 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         self.tb = None
 
     def test_instance(self):
-        instance = OWC_Channel_relative_python(1,1,[1],[1],[1],[1],[1],[1],[1],[90],[1],[1])
+        instance = OWC_Channel_relative_python(1,1,[1],[1],[1],[1],[1],[1],[1], True, True, 1000,1,[90],[1],[1])
 
     def test_001_channel_module(self):
         src_data = (1.0,2.0,3.0,4.0,5.0)
         expected_result = (0.3182,2*0.3182,3*0.3182,4*0.3182,5*0.3182)
         
-        src = blocks.vector_source_f(src_data)   	
-        res = OWC_Channel_relative_python(1, 1,[1.0],[1.0],[1.0],[1.0],[1.0],[1.0],[1.0],[90],[1.0],[1.0])
+        src = blocks.vector_source_f(src_data)      
+        res = OWC_Channel_relative_python(1, 1,[1.0],[1.0],[1.0],[1.0],[1.0],[1.0],[1.0], True, True,10000,1,[90],[1.0],[1.0])
         dst = blocks.vector_sink_f()
         
         self.tb.connect(src, res)
@@ -41,7 +41,6 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         self.tb.run()
         
         result_data = dst.data()
-        
 
         self.assertFloatTuplesAlmostEqual(expected_result, result_data, 3)
 
@@ -50,7 +49,7 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         expected_result = (20*0.0064,20*2*0.0064,20*3*0.0064,20*4*0.0064,20*5*0.0064)
         
         src = blocks.vector_source_f(src_data)      
-        blk = OWC_Channel_relative_python(1,1,[45],[45],[5],[1],[1],[1],[1],[90],[5],[4])
+        blk = OWC_Channel_relative_python(1,1,[45],[45],[5],[1],[1],[1],[1], True, False, 10000,1,[90],[5],[4])
         dst = blocks.vector_sink_f()
         
         self.tb.connect(src, blk)
@@ -58,9 +57,9 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         self.tb.run()
         
         result_data = dst.data()
-
-        self.assertFloatTuplesAlmostEqual(expected_result, result_data, 2)
         
+        self.assertFloatTuplesAlmostEqual(expected_result, result_data, 2)
+
         
     def help3_ff(self, src_data, exp_data, op):
         for s in zip(list(range(len(src_data))), src_data):
@@ -87,7 +86,7 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         src2_data = (1.0, 2.0, 3.0, 4.0, 5.0)
         expected_result1 = ((1*(0.0841))+(1*(0.0192)),(2*(0.0841))+(2*(0.0192)),(3*(0.0841))+(3*(0.0192)),(4*(0.0841))+(4*(0.0192)),(5*(0.0841))+(5*(0.0192)))
         expected_result2 = ((1*(0.0075))+(1*(0.0001533)),(2*(0.0075))+(2*(0.0001533)),(3*(0.0075))+(3*(0.0001533)),(4*(0.0075))+(4*(0.0001533)),(5*(0.0075))+(5*(0.0001533)))
-        op = OWC_Channel_relative_python(2,2,[30,45,60,75],[20,40,60,80],[2,3,4,5],[2,3],[1,2],[1,1],[1,1],[90,90],[1,1],[1,1])
+        op = OWC_Channel_relative_python(2,2,[30,45,60,75],[20,40,60,80],[2,3,4,5],[2,3],[1,2],[1,1],[1,1],False, True,10000,1,[90,90],[1,1],[1,1])
         self.help3_ff((src1_data, src2_data), (expected_result1, expected_result2), op)
         
         
@@ -96,7 +95,7 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         expected_result = (0,0,0,0,0)
         
         src = blocks.vector_source_f(src_data)      
-        blk = OWC_Channel_relative_python(1,1,[45],[45],[5],[1],[1],[1],[1],[40],[5],[4])
+        blk = OWC_Channel_relative_python(1,1,[45],[45],[5],[1],[1],[1],[1],True,False,10000,1,[40],[5],[4])
         dst = blocks.vector_sink_f()
         
         self.tb.connect(src, blk)
@@ -112,7 +111,7 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         expected_result = (0,0,0,0,0)
         
         src = blocks.vector_source_f(src_data)      
-        blk = OWC_Channel_relative_python(1,1,[95],[35],[5],[1],[1],[1],[1],[40],[5],[4])
+        blk = OWC_Channel_relative_python(1,1,[95],[35],[5],[1],[1],[1],[1],False,True,10000,1,[40],[5],[4])
         dst = blocks.vector_sink_f()
         
         self.tb.connect(src, blk)
@@ -129,7 +128,7 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         expected_result1 = (0, 0, 0, 0, 0)
         
         src = blocks.vector_source_f(src_data)      
-        blk = OWC_Channel_relative_python(1,1,[45],[45],[5],[1],[1],[1],[1],[90],[5],[4])
+        blk = OWC_Channel_relative_python(1,1,[45],[45],[5],[1],[1],[1],[1],False,True,10000,1,[90],[5],[4])
         blk.set_emission_angle_array([95])
         dst = blocks.vector_sink_f()
         
@@ -146,7 +145,7 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         expected_result = (20*0.0064,20*2*0.0064,20*3*0.0064,20*4*0.0064,20*5*0.0064)
         
         src = blocks.vector_source_f(src_data)      
-        blk = OWC_Channel_relative_python(1,1,[-45],[45],[5],[1],[1],[1],[1],[90],[5],[4])
+        blk = OWC_Channel_relative_python(1,1,[-45],[45],[5],[1],[1],[1],[1],True,False,10000,1,[90],[5],[4])
         dst = blocks.vector_sink_f()
         
         self.tb.connect(src, blk)
@@ -157,12 +156,12 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         
         self.assertFloatTuplesAlmostEqual(expected_result, result_data, 2)
 
-    def test_007_channel_module(self):
+    def test_008_channel_module(self):
         src_data = (1.0,2.0,3.0,4.0,5.0)
         expected_result = (0, 0, 0, 0, 0)
         
         src = blocks.vector_source_f(src_data)      
-        blk = OWC_Channel_relative_python(1,1,[-45],[45],[5],[1],[1],[1],[1],[90],[5],[4])
+        blk = OWC_Channel_relative_python(1,1,[-45],[45],[5],[1],[1],[1],[1],True,True,10000,1,[90],[5],[4])
         blk.set_acceptance_angle_array([-95])
         dst = blocks.vector_sink_f()
         
@@ -174,6 +173,45 @@ class qa_OWC_Channel_relative_python(gr_unittest.TestCase):
         
         self.assertFloatTuplesAlmostEqual(expected_result, result_data, 2)
 
+    def test_009_channel_module(self):
+        src_data = (-2.0,-1.4,1.0,2.0,3.0,4.0,5.0,-0.0014)
+        expected_result = (0.0,0.0,20*0.0064,20*2*0.0064,20*3*0.0064,20*4*0.0064,20*5*0.0064,0.0)
+        
+        src = blocks.vector_source_f(src_data)      
+        blk = OWC_Channel_relative_python(1,1,[45],[45],[5],[1],[1],[1],[1],True,False,10000,1,[90],[5],[4])
+        dst = blocks.vector_sink_f()
+        
+        self.tb.connect(src, blk)
+        self.tb.connect(blk, dst)
+        self.tb.run()
+        
+        result_data = dst.data()
+        
+        self.assertFloatTuplesAlmostEqual(expected_result, result_data, 2)
+
+    def test_010_channel_module(self):
+        src_data = (-2.0,-1.4,1.0,2.0,3.0,4.0,5.0,-0.0014)
+        expected_result = (20*-2.0*0.0064,20*-1.4*0.0064,20*0.0064,20*2*0.0064,20*3*0.0064,20*4*0.0064,20*5*0.0064,20*-0.0014*0.0064)
+        
+        src = blocks.vector_source_f(src_data)      
+        blk = OWC_Channel_relative_python(1,1,[45],[45],[5],[1],[1],[1],[1],False,False,10000,1,[90],[5],[4])
+        dst = blocks.vector_sink_f()
+        
+        self.tb.connect(src, blk)
+        self.tb.connect(blk, dst)
+        self.tb.run()
+        
+        result_data = dst.data()
+
+        print ("expected_result: ")
+        print (str(expected_result).strip('[]'))
+        print ("result_data")
+        print (str(result_data).strip('[]'))
+        
+        self.assertFloatTuplesAlmostEqual(expected_result, result_data, 2)
+
+    
+    
 
 if __name__ == '__main__':
     gr_unittest.run(qa_OWC_Channel_relative_python)

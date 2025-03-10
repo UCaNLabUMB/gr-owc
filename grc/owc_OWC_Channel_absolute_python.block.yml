@@ -4,7 +4,7 @@ category: '[owc]/Channel Models'
 
 templates:
   imports: from gnuradio import owc
-  make: owc.OWC_Channel_absolute_python(${num_inputs}, ${num_outputs}, ${tx_coordinates_array}, ${tx_orientation_array}, ${rx_coordinates_array}, ${rx_orientation_array}, ${tx_lambertian_order_array}, ${rx_photosensor_area_array}, ${optical_filter_transmittance_array}, ${refractive_index_array}, ${concentrator_FOV_array}, ${E2O_conversion_factor_array}, ${O2E_conversion_factor_array})
+  make: owc.OWC_Channel_absolute_python(${num_inputs}, ${num_outputs}, ${tx_coordinates_array}, ${tx_orientation_array}, ${rx_coordinates_array}, ${rx_orientation_array}, ${tx_lambertian_order_array}, ${rx_photosensor_area_array}, ${optical_filter_transmittance_array}, ${refractive_index_array}, ${clip_neg}, ${shot_noise}, ${sample_rate}, ${responsivity}, ${concentrator_FOV_array}, ${E2O_conversion_factor_array}, ${O2E_conversion_factor_array})
   callbacks:
     - set_tx_coordinates_array(${tx_coordinates_array})
     - set_tx_orientation_array(${tx_orientation_array})
@@ -48,7 +48,7 @@ parameters:
   
 - id: tx_lambertian_order_array
   label: Tx Lambertian Order Array
-  default: [2.0]
+  default: [1.0]
   dtype: float_vector
   
 - id: rx_photosensor_area_array
@@ -65,6 +65,28 @@ parameters:
   label: Refractive Index Array
   default: [1.0]
   dtype: float_vector
+
+- id: clip_neg
+  label: Clip Negative Power
+  default: True
+  dtype: bool
+  options: ["True", "False"]
+
+- id: shot_noise
+  label: Add Shot Noise
+  default: False
+  dtype: bool
+  options: ["True", "False"]
+
+- id: sample_rate
+  label: Sample Rate
+  default: samp_rate
+  dtype: float
+
+- id: responsivity
+  label: Responsivity
+  default: 1.0
+  dtype: float
   
 - id: concentrator_FOV_array
   label: Concentrator FOV Array
@@ -107,6 +129,7 @@ asserts:
 - ${len(rx_photosensor_area_array) == num_outputs}
 - ${len(optical_filter_transmittance_array) == num_outputs}
 - ${len(refractive_index_array) == num_outputs}
+- ${responsivity >= 0}
 - ${len(concentrator_FOV_array) == num_outputs}
 - ${len(E2O_conversion_factor_array) == num_inputs}
 - ${len(O2E_conversion_factor_array) == num_outputs}

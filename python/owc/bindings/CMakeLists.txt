@@ -38,7 +38,8 @@ list(APPEND owc_python_files
     OWC_Channel_absolute_cvolk_python.cc
     PAM_Modulator_cplus_python.cc
     VPPM_Modulator_cplus_python.cc
-    PPM_Modulator_cplus_python.cc python_bindings.cc)
+    PPM_Modulator_cplus_python.cc
+    LED_Nonlinearity_python.cc python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(owc
    ../../..

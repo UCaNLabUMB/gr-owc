@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Free Software Foundation, Inc.
+ * Copyright 2025 Free Software Foundation, Inc.
  *
  * This file is part of GNU Radio
  *
@@ -16,7 +16,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0) */
 /* BINDTOOL_USE_PYGCCXML(0) */
 /* BINDTOOL_HEADER_FILE(OWC_Channel_absolute_cplus.h) */
-/* BINDTOOL_HEADER_FILE_HASH(2d5f2fb5c4ee041af52d831c2d6d8e3b) */
+/* BINDTOOL_HEADER_FILE_HASH(16dba3a02945d0e9aac2f52b7eb57df9) */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -44,7 +44,9 @@ void bind_OWC_Channel_absolute_cplus(py::module &m) {
            py::arg("tx_lambertian_order_array"),
            py::arg("rx_photosensor_area_array"),
            py::arg("optical_filter_transmittance_array"),
-           py::arg("refractive_index_array"), py::arg("concentrator_FOV_array"),
+           py::arg("refractive_index_array"), py::arg("clip_neg"),
+           py::arg("shot_noise"), py::arg("sample_rate"),
+           py::arg("responsivity"), py::arg("concentrator_FOV_array"),
            py::arg("E2O_conversion_factor_array"),
            py::arg("O2E_conversion_factor_array"),
            D(OWC_Channel_absolute_cplus, make))

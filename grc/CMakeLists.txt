@@ -22,5 +22,6 @@ install(FILES
     owc_PAM_Modulator_python.block.yml
     owc_VPPM_Modulator_python.block.yml
     owc_PPM_Modulator_cplus.block.yml
-    owc_PPM_Modulator_python.block.yml DESTINATION share/gnuradio/grc/blocks
+    owc_PPM_Modulator_python.block.yml
+    owc_LED_Nonlinearity.block.yml DESTINATION share/gnuradio/grc/blocks
 )

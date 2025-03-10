@@ -1,0 +1,34 @@
+id: owc_LED_Nonlinearity
+label: LED_Non-Linearity
+category: '[owc]/LED'
+
+templates:
+  imports: from gnuradio import owc
+  make: owc.LED_Nonlinearity(${L}, ${k}, ${x0})
+
+parameters:
+- id: L
+  label: Max
+  dtype: float
+  default: 0.5
+  
+- id: k
+  label: Steepness
+  dtype: float
+  default: 1.0
+
+- id: x0
+  label: Inflextion Point
+  dtype: float
+  default: 0.0
+
+inputs:
+- label: in
+  dtype: float
+  
+outputs:
+- label: out
+  dtype: float
+  
+
+file_format: 1
