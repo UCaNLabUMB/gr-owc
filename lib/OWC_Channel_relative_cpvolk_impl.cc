@@ -137,6 +137,7 @@ int OWC_Channel_relative_cpvolk_impl::work(int noutput_items,
     volk_free(temp_results);
     volk_free(noise_values);
     volk_free(clipped_inputs);
+    volk_free(clip);
     return noutput_items;
 }
 
