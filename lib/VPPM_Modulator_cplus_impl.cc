@@ -68,38 +68,36 @@ int VPPM_Modulator_cplus_impl::work(int noutput_items,
   const float *in = (const float *) input_items[0];
   float *out = (float *) output_items[0];
 
+  int symbol_len = samples_per_symbol();
+  int pulse_len = samples_per_pulse();
+  int rest_len = symbol_len - pulse_len;
+
+  std::vector<float> case1(symbol_len);
+  std::vector<float> case2(symbol_len);
+
+  for (int j = 0; j < symbol_len; j++) {
+    if (j < pulse_len)
+      case1[j] = max_magnitude();
+    else
+      case1[j] = min_magnitude();
+
+    if (j < rest_len)
+      case2[j] = min_magnitude();
+    else
+      case2[j] = max_magnitude();
+  }
+
   int i = 0;
   int z = 0;
-      
-  while(i < noutput_items) {
-    for (int j = 0; j < samples_per_symbol(); j++){
-      if (in[z] == 0) 
-        {
-          if (j < samples_per_pulse())
-            {
-              out[i++] = max_magnitude();
-            }
-            else
-            {
-              out[i++] = min_magnitude();
-            }
-          }
-            
-      else 
-        {
-          if (j >= samples_per_symbol() - samples_per_pulse())
-            {
-              out[i++] = max_magnitude();
-            }
-            else
-            {
-              out[i++] = min_magnitude();
-            }
-        }
-            
-    }
+
+  while (i < noutput_items) {
+    const float *symbol_ptr = (in[z] == 0) ? case1.data() : case2.data();
+    std::memcpy(out + i, symbol_ptr, sizeof(float) * symbol_len);
+
+    i += symbol_len;
     z++;
   }
+
 
   // Tell runtime system how many output items we produced.
   return noutput_items;

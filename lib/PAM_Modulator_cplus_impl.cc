@@ -53,6 +53,7 @@ PAM_Modulator_cplus_impl::PAM_Modulator_cplus_impl(int modulation_order,
       set_min_magnitude(min_magnitude);
       set_samples_per_symbol(samples_per_symbol);
       set_symbol_array(modulation_order);
+      set_level_array();
     }
 
 /*
@@ -73,23 +74,21 @@ int PAM_Modulator_cplus_impl::work(int noutput_items,
       
   int i = 0;
   int z = 0;
-      
-  set_level_array();
- 
-  while(i < noutput_items) {
-    int decimal =   in[z];  
-    for (int j = 0; j < samples_per_symbol(); j++){
-      for (int m = 0; m < max_symbol; m++)
-      {
-        if (decimal == symbol_array()[m])
-        {symbol_index = m;
-        break;}
+
+  while (i < noutput_items) {
+    int decimal = in[z];
+
+    for (int m = 0; m < max_symbol; m++) {
+      if (decimal == d_symbol_array[m]) {
+        symbol_index = m;
+        break;
       }
-            
-      out[i++] = level_array()[symbol_index];
-            
     }
-    z++;
+
+    std::fill_n(out + i, d_samples_per_symbol, d_level_array[symbol_index]);
+
+    i += d_samples_per_symbol;
+    ++z;
     symbol_index = 0;
   }
 

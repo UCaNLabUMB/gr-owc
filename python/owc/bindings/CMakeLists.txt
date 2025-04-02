@@ -27,7 +27,6 @@ include(GrPybind)
 ########################################################################
 # Python Bindings
 ########################################################################
-
 list(APPEND owc_python_files
     OWC_Channel_relative_cplus_python.cc
     OWC_Channel_relative_cpvolk_python.cc
@@ -39,7 +38,8 @@ list(APPEND owc_python_files
     PAM_Modulator_cplus_python.cc
     VPPM_Modulator_cplus_python.cc
     PPM_Modulator_cplus_python.cc
-    LED_Nonlinearity_python.cc python_bindings.cc)
+    LED_Nonlinearity_python.cc
+    python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(owc
    ../../..
