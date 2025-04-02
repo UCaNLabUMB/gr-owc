@@ -21,5 +21,6 @@ install(FILES
     PAM_Modulator_cplus.h
     VPPM_Modulator_cplus.h
     PPM_Modulator_cplus.h
-    LED_Nonlinearity.h DESTINATION include/gnuradio/owc
+    LED_Nonlinearity.h
+    DESTINATION include/gnuradio/owc
 )

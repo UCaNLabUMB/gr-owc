@@ -10,7 +10,6 @@
 # Setup library
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
-
 list(APPEND owc_sources
     OWC_Channel_relative_cplus_impl.cc
     OWC_Channel_relative_cpvolk_impl.cc
@@ -23,7 +22,7 @@ list(APPEND owc_sources
     VPPM_Modulator_cplus_impl.cc
     PPM_Modulator_cplus_impl.cc
     LED_Nonlinearity_impl.cc
-)
+    )
 
 set(owc_sources "${owc_sources}" PARENT_SCOPE)
 if(NOT owc_sources)
