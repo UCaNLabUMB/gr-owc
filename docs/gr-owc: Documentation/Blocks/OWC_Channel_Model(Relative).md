@@ -10,20 +10,24 @@ The `OWC_Channel_Model(Relative)` block in the `gr-owc` module simulates the opt
 
 The `OWC_Channel_Model(Relative)` block is designed with the following configurable parameters to simulate the optical channel effectively:
 
-| Parameter Name                   | Description                                                                                          | Default Value       | Data Type           | Example Input                            |
-|----------------------------------|------------------------------------------------------------------------------------------------------|---------------------|---------------------|------------------------------------------|
-| `num_inputs`                     | Number of Transmitter(s)                                                                             | 1                   | `Integer`           | `2`                                      |
-| `num_outputs`                    | Number of Receiver(s)                                                                                | 1                   | `Integer`           | `3`                                      |
-| `acceptance_angle_array`         | Array specifying the acceptance angles $\( \psi_{ij} \)$ of the receivers (in degrees)                 | `[1.0]`             | `Float array/vector` | For $\ \psi_{11} = 20.0, \psi_{12} = 25.0 \$: `[20.0, 25.0]` |
-| `emission_angle_array`        | Array specifying the emission angles $\( \phi_{ij} \)$ from transmitters(i) to receivers(j) (in degrees) | [1.0]               | `Float array/vector`    | For $\ \phi_{11} = 20.0, \phi_{12} = 25.0 \$: `[20.0, 25.0]` |
-| `distance_array`                 | Array specifying the distances $\ d_{ij}$ between transmitters(i) and receivers(j)                       | `[1.0]`             | `Float array/vector` | For $\ d_{11} = 2.0,  d_{12} = 2.5 \$: `[2.0, 2.5]` |
-| `lambertian_order_array`         | Array specifying the Lambertian orders $\( m \)$                                                       | `[1.0]`             | `Float array/vector` |  For Tx₁ = 1.0 & Tx₂ = 2.0 : <br> `[1.0, 2.0]` |
-| `photosensor_area_array`         | Array specifying the photosensor areas $\( A_T \)$ at the receivers                                    | `[1.0]`             | `Float array/vector` | For Rx₁ = 0.5, Rx₂ = 1.0: <br> `[0.5, 1.0]` |
-| `optical_filter_transmittance_array` | Array specifying the optical filter transmittances $\( T_s \)$                                   | `[1.0]`             | `Float array/vector` | For Rx₁ = 1.0, Rx₂ = 1.5: <br> `[1.0, 1.5]` |
-| `refractive_index_array`         | Array specifying the refractive index $\( n \)$ of the concentrator lens                               | `[1.0]`             | `Float array/vector` | For Rx₁ = 1.0, Rx₂ = 1.5: <br> `[1.0, 1.5]` |
-| `concentrator_FOV_array`         | Array specifying the field-of-view (FOV) $\( \Psi_C \)$ of the concentrator lens                       | `[90]`              | `Float array/vector` | For $\ \Psi_{C1} = 60, \Psi_{C2} = 45 \$: `[60, 45]` |
-| `E2O_conversion_factor_array`    | Array specifying the electrical-to-optical conversion factors $\( C_T \)$                              | `[1.0]`             | `Float array/vector` | For Tx₁ = 1.0 & Tx₂ = 2.0 : <br> `[1.0, 2.0]` |
-| `O2E_conversion_factor_array`    | Array specifying the optical-to-electrical conversion factors $\( C_R \)$                              | `[1.0]`             | `Float array/vector` | For Rx₁ = 1.0, Rx₂ = 1.5: <br> `[1.0, 1.5]` |
+| Parameter Name                   | Description                                                                                          | Default Value       | Data Type           | Example Input                            | Condition                                      |
+|----------------------------------|------------------------------------------------------------------------------------------------------|---------------------|---------------------|------------------------------------------|-------------------------------------------------|
+| `num_inputs`                     | Number of Transmitter(s)                                                                             | `1`                 | Integer              | `2`                                      | > 0                                             |
+| `num_outputs`                    | Number of Receiver(s)                                                                                | `1`                 | Integer              | `3`                                      | > 0                                             |
+| `acceptance_angle_array`         | Acceptance angles $\( \psi_{ij} \)$ of the receivers (degrees)                                         | `[1.0]`             | Float array          | `[20.0, 25.0]`                           | len = num_inputs × num_outputs                 |
+| `emission_angle_array`           | Emission angles $\( \phi_{ij} \)$ from transmitters to receivers (degrees)                            | `[1.0]`             | Float array          | `[20.0, 25.0]`                           | len = num_inputs × num_outputs                 |
+| `distance_array`                 | Distances $\( d_{ij} \)$ between transmitter-receiver pairs                                           | `[1.0]`             | Float array          | `[2.0, 2.5]`                             | len = num_inputs × num_outputs                 |
+| `lambertian_order_array`         | Lambertian emission orders $\( m \)$                                                                   | `[1.0]`             | Float array          | `[1.0, 2.0]`                             | len = num_inputs                               |
+| `photosensor_area_array`         | Photosensor areas $\( A_T \)$                                                                          | `[1.0]`             | Float array          | `[0.5, 1.0]`                             | len = num_outputs                              |
+| `optical_filter_transmittance_array` | Optical filter transmittances $\( T_s \)$                                                        | `[1.0]`             | Float array          | `[1.0, 1.5]`                             | len = num_outputs                              |
+| `refractive_index_array`         | Refractive index $\( n \)$ of the concentrator lens                                                  | `[1.0]`             | Float array          | `[1.0, 1.5]`                             | len = num_outputs                              |
+| `clip_neg`                       | Clip negative received optical power values                                                          | `True`              | Bool                 | `True`                                   | —                                               |
+| `shot_noise`                     | Enable shot noise simulation                                                                         | `False`             | Bool                 | `False`                                  | —                                               |
+| `sample_rate`                    | Sample rate of the system                                                                            | `samp_rate`         | Float                | `1e6`                                    | —                                               |
+| `responsivity`                   | Photodiode responsivity $\( R \)$ (A/W)                                                               | `1.0`               | Float                | `0.8`                                    | ≥ 0                                             |
+| `concentrator_FOV_array`         | Field-of-view $\( \Psi_C \)$ of the concentrator lens                                                 | `[90]`              | Float array          | `[60, 45]`                               | 0 ≤ values ≤ 90, len = num_outputs             |
+| `E2O_conversion_factor_array`    | Electrical-to-optical conversion factors $\( C_T \)$                                                 | `[1.0]`             | Float array          | `[1.0, 2.0]`                             | len = num_inputs                               |
+| `O2E_conversion_factor_array`    | Optical-to-electrical conversion factors $\( C_R \)$                                                 | `[1.0]`             | Float array          | `[1.0, 1.5]`                             | len = num_outputs                              |
 
 
 ## Description
@@ -80,6 +84,10 @@ $$
 
 where $\( x(t) \)$ is the transmitted signal.
 
+### Shot Noise Modeling
+When `shot_noise = True`, the block simulates **photon shot noise** by adding random noise proportional to the received signal power. This provides a more realistic model of optical receptions.
+
+
 ## Summary
 The `OWC_Channel_Model(Relative)` block in the `gr-owc` module provides a detailed simulation of the optical channel by focusing on the dominant LOS path and modeling its impact using DC channel gain and angle-dependent gain functions. This block helps in understanding and predicting the behavior of optical wireless communication systems in various scenarios.
 
@@ -99,3 +107,5 @@ The `OWC_Channel_Model(Relative)` block in the `gr-owc` module provides a detail
 | 5      | [PAM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/PAM_Modulator.md)                | Implements Pulse Amplitude Modulation (PAM), assigning varying amplitude levels based on symbols.           |
 | 6      | [VPPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/VPPM_Modulator.md)                | Implements Variable Pulse Position Modulation (VPPM).                          |
 | 7      | [PPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/PPM_Modulator.md)                | Implements Pulse Position Modulation (PPM), varying the position of pulse(s) within a symbol.                          |
+| 8      | [LED_Nonlinearity](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/LED_Nonlinearity.md)            | Models the non-linear function of an LED  |
+| 9      | [Hermitian Symmetry (Same Vec Size I/O)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/Hermitian_Symmetry_i_o_same_vec_size.md) | Ensures Hermitian symmetry in complex-valued FFT vectors, keeping input and output vector sizes equal.    |
