@@ -14,12 +14,12 @@ This block works with the `Chunk to Symbols` block, which maps input data (typic
 
 The `PAM_Modulator` block is designed with the following configurable parameters to simulate the PAM effectively:
 
-| Parameter Name         | Description                                                                 | Default Value | Data Type       | Example Input |
-|------------------------|-----------------------------------------------------------------------------|---------------|-----------------|---------------|
-| `modulation_order`     | Number of distinct amplitude levels.  | `2`           | `Integer`       | `4`           |
-| `max_magnitude`        | Maximum amplitude of the modulated signal.                                  | `1.0`         | `Float`         | `2.0`         |
-| `min_magnitude`        | Minimum amplitude of the modulated signal.                                  | `0.0`         | `Float`         | `-1.0`        |
-| `samples_per_symbol`   | Number of output samples per symbol (symbol duration).                      | `1`           | `Integer`       | `4`           |
+| Parameter Name        | Description                                                                 | Default Value | Data Type   | Example Input | Condition                        |
+|------------------------|-----------------------------------------------------------------------------|---------------|-------------|----------------|-----------------------------------|
+| `modulation_order`     | Number of distinct amplitude levels                                         | `2`           | `Integer`   | `4`            | —                                 |
+| `max_magnitude`        | Maximum amplitude of the modulated signal                                   | `1.0`         | `Float`     | `2.0`          | `max_magnitude > min_magnitude`  |
+| `min_magnitude`        | Minimum amplitude of the modulated signal                                   | `0.0`         | `Float`     | `-1.0`         | —                                 |
+| `samples_per_symbol`   | Number of output samples per symbol (symbol duration)                       | `1`           | `Integer`   | `4`            | `samples_per_symbol > 0`         |
 
 ---
 
@@ -54,3 +54,5 @@ The `PAM_Modulator` block generates Pulse Amplitude Modulation (PAM) signals by 
 | 5      | PAM_Modulator               | Implements Pulse Amplitude Modulation (PAM), assigning varying amplitude levels based on symbols.           |
 | 6      | [VPPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/VPPM_Modulator.md)                | Implements Variable Pulse Position Modulation (VPPM).                          |
 | 7      | [PPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/PPM_Modulator.md)                | Implements Pulse Position Modulation (PPM), varying the position of pulse(s) within a symbol.                          |
+| 8      | [LED_Nonlinearity](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/LED_Nonlinearity.md)            | Models the non-linear function of an LED  |
+| 9      | [Hermitian Symmetry (Same Vec Size I/O)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/Hermitian_Symmetry_i_o_same_vec_size.md) | Ensures Hermitian symmetry in complex-valued FFT vectors, keeping input and output vector sizes equal.    |
