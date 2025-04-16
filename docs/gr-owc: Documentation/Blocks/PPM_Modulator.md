@@ -8,21 +8,17 @@ The `PPM_Modulator` block in the `gr-owc` module implements **Pulse Position Mod
 
 This block is designed to work with the `Chunk to Symbols` block, which preprocesses input data into integer symbols. The output of the `Chunk to Symbols` block is directly connected to the input of the `PPM_Modulator`, enabling the modulation process.
 
----
-
 ## Parameters
 
 The `PPM_Modulator` block is designed with the following configurable parameters to simulate the PPM effectively
 
-| Parameter Name         | Description                                                                 | Default Value | Data Type       | Example Input |
-|------------------------|-----------------------------------------------------------------------------|---------------|-----------------|---------------|
-| `modulation_order`     | Number of pulse positions       | `2`           | `Integer`       | `4`           |
-| `max_magnitude`        | Magnitude of the pulse (signal high level).                                | `1.0`         | `Float`         | `2.0`         |
-| `min_magnitude`        | Magnitude of the base signal (signal low level).                           | `0.0`         | `Float`         | `-1.0`        |
-| `samples_per_symbol`   | Total number of samples in each symbol period.                             | `8`           | `Integer`       | `16`          |
-| `samples_per_pulse`    | Number of consecutive samples representing the pulse(High level).                      | `1`           | `Integer`       | `4`           |
-
----
+| Parameter Name        | Description                                                                 | Default Value | Data Type   | Example Input | Condition                                     |
+|------------------------|-----------------------------------------------------------------------------|---------------|-------------|----------------|-----------------------------------------------|
+| `modulation_order`     | Number of pulse positions                                                   | `2`           | `Integer`   | `4`            | —                                             |
+| `max_magnitude`              | Magnitude of the pulse (signal high level)                                  | `1.0`         | `Float`     | `2.0`          | `max_mag > min_mag`                           |
+| `min_magnitu`              | Magnitude of the base signal (signal low level)                             | `0.0`         | `Float`     | `-1.0`         | —                                             |
+| `samples_per_symbol`   | Total number of samples in each symbol period                               | `8`           | `Integer`   | `16`           | `> 0`                                         |
+| `samples_per_pulse`    | Number of consecutive samples representing the pulse (high level)           | `1`           | `Integer`   | `4`            | `> 0 and < samples_per_symbol`               |
 
 ## Description
 
@@ -57,3 +53,5 @@ PPM efficiently encodes data by using pulse positions instead of amplitude or fr
 | 5      | [PAM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/PAM_Modulator.md)                | Implements Pulse Amplitude Modulation (PAM), assigning varying amplitude levels based on symbols.           |
 | 6      | [VPPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/VPPM_Modulator.md)                | Implements Variable Pulse Position Modulation (VPPM).                          |
 | 7      | PPM_Modulator             | Implements Pulse Position Modulation (PPM), varying the position of pulse(s) within a symbol.                          |
+| 8      | [LED_Nonlinearity](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/LED_Nonlinearity.md)            | Models the non-linear function of an LED  |
+| 9      | [Hermitian Symmetry (Same Vec Size I/O)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/Hermitian_Symmetry_i_o_same_vec_size.md) | Ensures Hermitian symmetry in complex-valued FFT vectors, keeping input and output vector sizes equal.    |
