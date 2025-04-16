@@ -10,10 +10,10 @@ The `OOK_Demodulator` block implements On-Off Keying (OOK) demodulation, a metho
 
 The `OOK_Demodulator` block has the following configurable parameters:
 
-| Parameter Name        | Description                                             | Default Value   | Data Type   |
-|-----------------------|---------------------------------------------------------|-----------------|-------------|
-| `threshold`           | Threshold value used for binary decision (0 or 1)       | 0.5             | `Float`     |
-| `samples_per_symbol`  | Number of samples per symbol                            | 1               | `Integer`   |
+| Parameter Name        | Description                                             | Default Value   | Data Type   | Condition           |
+|-----------------------|---------------------------------------------------------|-----------------|-------------|----------------------|
+| `threshold`           | Threshold value used for binary decision (0 or 1)       | `0.5`           | `Float`     | —                    |
+| `samples_per_symbol`  | Number of samples per symbol                            | `1`             | `Integer`   | `> 0`                |
 
 ## Description
 ### OOK: Demodulation Process
@@ -44,3 +44,5 @@ The `OOK_Demodulator` block provides a way to recover binary data from an OOK-mo
 | 5      | [PAM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/PAM_Modulator.md)                | Implements Pulse Amplitude Modulation (PAM), assigning varying amplitude levels based on symbols.           |
 | 6      | [VPPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/VPPM_Modulator.md)                | Implements Variable Pulse Position Modulation (VPPM).                          |
 | 7      | [PPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/PPM_Modulator.md)                | Implements Pulse Position Modulation (PPM), varying the position of pulse(s) within a symbol.                          |
+| 8      | [LED_Nonlinearity](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/LED_Nonlinearity.md)            | Models the non-linear function of an LED  |
+| 9      | [Hermitian Symmetry (Same Vec Size I/O)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/Hermitian_Symmetry_i_o_same_vec_size.md) | Ensures Hermitian symmetry in complex-valued FFT vectors, keeping input and output vector sizes equal.    |
