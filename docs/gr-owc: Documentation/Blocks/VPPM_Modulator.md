@@ -14,12 +14,12 @@ The `VPPM_Modulator` block is designed to process discrete symbols and generate 
 
 The `VPPM_Modulator`  block is designed with the following configurable parameters to simulate the VPPM effectively:
 
-| Parameter Name         | Description                                                                 | Default Value | Data Type       | Example Input |
-|------------------------|-----------------------------------------------------------------------------|---------------|-----------------|---------------|
-| `max_magnitude`        | Magnitude of the pulse (signal high level).                                | `1.0`         | `Float`         | `2.0`         |
-| `min_magnitude`        | Magnitude of the base signal (signal low level).                           | `0.0`         | `Float`         | `-1.0`        |
-| `samples_per_symbol`   | Total number of samples in each symbol period.                             | `8`           | `Integer`       | `16`          |
-| `samples_per_pulse`    | Number of consecutive samples representing the pulse width.                | `4`           | `Integer`       | `8`           |
+| Parameter Name         | Description                                                                 | Default Value | Data Type   | Example Input | Condition                                      |
+|------------------------|-----------------------------------------------------------------------------|---------------|-------------|----------------|------------------------------------------------|
+| `max_magnitude`        | Magnitude of the pulse (signal high level).                                | `1.0`         | `Float`     | `2.0`          | `max_magnitude > min_magnitude`               |
+| `min_magnitude`        | Magnitude of the base signal (signal low level).                           | `0.0`         | `Float`     | `-1.0`         | —                                              |
+| `samples_per_symbol`   | Total number of samples in each symbol period.                             | `8`           | `Integer`   | `16`           | `> 0`                                          |
+| `samples_per_pulse`    | Number of consecutive samples representing the pulse width.                | `4`           | `Integer`   | `8`            | `> 0 and < samples_per_symbol`                |
 
 ---
 
@@ -60,3 +60,5 @@ The `VPPM_Modulator` block generates Variable Pulse Position Modulation (VPPM) s
 | 5      | [PAM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/PAM_Modulator.md)                | Implements Pulse Amplitude Modulation (PAM), assigning varying amplitude levels based on symbols.           |
 | 6      | VPPM_Modulator              | Implements Variable Pulse Position Modulation (VPPM).                          |
 | 7      | [PPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/PPM_Modulator.md)                | Implements Pulse Position Modulation (PPM), varying the position of pulse(s) within a symbol.                          |
+| 8      | [LED_Nonlinearity](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/LED_Nonlinearity.md)            | Models the non-linear function of an LED  |
+| 9      | [Hermitian Symmetry (Same Vec Size I/O)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%3A%20Documentation/Blocks/Hermitian_Symmetry_i_o_same_vec_size.md) | Ensures Hermitian symmetry in complex-valued FFT vectors, keeping input and output vector sizes equal.    |
