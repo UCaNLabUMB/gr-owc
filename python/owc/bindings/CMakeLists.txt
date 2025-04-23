@@ -39,7 +39,8 @@ list(APPEND owc_python_files
     VPPM_Modulator_cplus_python.cc
     PPM_Modulator_cplus_python.cc
     LED_Nonlinearity_python.cc
-    python_bindings.cc)
+    Hermitian_Symmetry_i_o_same_vec_size_cplus_python.cc
+    Hermitian_Symmetry_i_o_same_vec_size_cpvolk_python.cc python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(owc
    ../../..
