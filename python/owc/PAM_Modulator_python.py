@@ -94,14 +94,14 @@ class PAM_Modulator_python(gr.interp_block):
     def get_samples_per_symbol(self):
         return self.samples_per_symbol
 
+
     def work(self, input_items, output_items):
         in0 = input_items[0]
         out = output_items[0]
 
         log_2_M = int(np.floor(np.log2(self.modulation_order)))
         max_symbol = int(2**log_2_M)
-        symbol_index = 0
-
+    
         i = 0
         z = 0
 
@@ -109,16 +109,17 @@ class PAM_Modulator_python(gr.interp_block):
 
         while i < len(out):
             decimal = int(in0[z])
-            
-            for j in range(self.samples_per_symbol):
-                for m in range(max_symbol):
-                    if decimal == self.d_symbol_array[m]:
-                        symbol_index = m
-                        break
-                out[i] = self.d_level_array[symbol_index]
-                i += 1
 
+
+            for m in range(max_symbol):
+                if decimal == self.d_symbol_array[m]:
+                    symbol_index = m
+                    break
+
+
+            out[i:i+self.samples_per_symbol] = [self.d_level_array[symbol_index]] * self.samples_per_symbol
+
+            i += self.samples_per_symbol
             z += 1
-            symbol_index = 0
 
         return len(output_items[0])

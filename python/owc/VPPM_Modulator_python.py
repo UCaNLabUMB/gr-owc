@@ -39,28 +39,29 @@ class VPPM_Modulator_python(gr.interp_block):
         self.min_mag = min_mag
         self.samples_per_symbol = samples_per_symbol
         self.samples_per_pulse = samples_per_pulse
-
+        
 
     def work(self, input_items, output_items):
         in0 = input_items[0]
         out = output_items[0]
 
+        symbol_len = self.samples_per_symbol
+        pulse_len = self.samples_per_pulse
+        rest_len = symbol_len - pulse_len
+
+        case1 = np.array([self.max_mag if j < pulse_len else self.min_mag for j in range(symbol_len)], dtype=float)
+        case2 = np.array([self.min_mag if j < rest_len else self.max_mag for j in range(symbol_len)], dtype=float)
+
         i = 0
         z = 0
 
         while i < len(out):
-            for j in range(self.samples_per_symbol):
-                if in0[z] == 0:
-                    if j < self.samples_per_pulse:
-                        out[i] = self.max_mag
-                    else:
-                        out[i] = self.min_mag
-                else:
-                    if j >= self.samples_per_symbol - self.samples_per_pulse:
-                        out[i] = self.max_mag
-                    else:
-                        out[i] = self.min_mag
-                i += 1
+            if in0[z] == 0:
+                out[i:i+symbol_len] = case1
+            else:
+                out[i:i+symbol_len] = case2
+
+            i += symbol_len
             z += 1
 
         return len(output_items[0])
