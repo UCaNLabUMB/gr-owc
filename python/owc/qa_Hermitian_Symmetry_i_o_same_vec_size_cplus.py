@@ -50,7 +50,7 @@ class qa_Hermitian_Symmetry_i_o_same_vec_size_cplus(gr_unittest.TestCase):
 
         src = blocks.vector_source_c(src_data)
         s2v = blocks.stream_to_vector(gr.sizeof_gr_complex, 16)
-        blk = Hermitian_Symmetry_i_o_same_vec_size_cplus(16, False)
+        blk = Hermitian_Symmetry_i_o_same_vec_size_cplus(16, True)
         v2s = blocks.vector_to_stream(gr.sizeof_gr_complex*1, 16)
         dst = blocks.vector_sink_c()
         
@@ -68,7 +68,7 @@ class qa_Hermitian_Symmetry_i_o_same_vec_size_cplus(gr_unittest.TestCase):
 
         src = blocks.vector_source_c(src_data)
         s2v = blocks.stream_to_vector(gr.sizeof_gr_complex, 16)
-        blk = Hermitian_Symmetry_i_o_same_vec_size_cplus(16, True)
+        blk = Hermitian_Symmetry_i_o_same_vec_size_cplus(16, False)
         v2s = blocks.vector_to_stream(gr.sizeof_gr_complex*1, 16)
         dst = blocks.vector_sink_c()
         
@@ -86,7 +86,7 @@ class qa_Hermitian_Symmetry_i_o_same_vec_size_cplus(gr_unittest.TestCase):
 
         src = blocks.vector_source_c(src_data)
         s2v = blocks.stream_to_vector(gr.sizeof_gr_complex, 16)
-        blk = Hermitian_Symmetry_i_o_same_vec_size_cplus(16, False)
+        blk = Hermitian_Symmetry_i_o_same_vec_size_cplus(16, True)
         v2s = blocks.vector_to_stream(gr.sizeof_gr_complex*1, 16)
         dst = blocks.vector_sink_c()
         

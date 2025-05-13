@@ -77,16 +77,16 @@ int Hermitian_Symmetry_i_o_same_vec_size_cplus_impl::work(
                 out[j] = 0;
             } else if (sub_carrier_counter == middle_subcarrier) {
                 out[j] = 0;
+            } else if (use_negative_coefficients() && sub_carrier_counter < middle_subcarrier) {
+                out[j] = in[j];
             } else if (!use_negative_coefficients() && sub_carrier_counter < middle_subcarrier) {
-                out[j] = in[j];
-            } else if (!use_negative_coefficients()) {
                 out[j] = std::conj(in[mid_subcarr_index - (j - mid_subcarr_index)]);
-            } else if (use_negative_coefficients() && sub_carrier_counter > middle_subcarrier) {
+            } else if (!use_negative_coefficients() && sub_carrier_counter > middle_subcarrier) {
                 out[j] = in[j];
-            } else if (use_negative_coefficients()) {
+            } else if (use_negative_coefficients() && sub_carrier_counter > middle_subcarrier) {
                 out[j] = std::conj(in[mid_subcarr_index + (mid_subcarr_index - j)]);
             }
-        sub_carrier_counter++;
+            sub_carrier_counter++;
         }
     }
 
