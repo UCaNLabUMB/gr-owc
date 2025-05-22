@@ -65,7 +65,6 @@ int Hermitian_Symmetry_i_o_same_vec_size_cplus_impl::work(
     const gr_complex* in = (const gr_complex*)input_items[0];
     gr_complex* out = (gr_complex*)output_items[0];
 
-    int zeroth_subcarrier = 0;
     int middle_subcarrier = fft_len() / 2;
 
     for (int i = 0; i < noutput_items; i++) {
@@ -73,10 +72,10 @@ int Hermitian_Symmetry_i_o_same_vec_size_cplus_impl::work(
         int sub_carrier_counter = 0;
 
         for (int j = i * fft_len(); j < (i + 1) * fft_len(); j++) {
-            if (sub_carrier_counter == zeroth_subcarrier) {
-                out[j] = 0;
+            if (sub_carrier_counter == 0) {
+                out[j] = gr_complex(0, 0);
             } else if (sub_carrier_counter == middle_subcarrier) {
-                out[j] = 0;
+                out[j] = gr_complex(0, 0);
             } else if (use_negative_coefficients() && sub_carrier_counter < middle_subcarrier) {
                 out[j] = in[j];
             } else if (!use_negative_coefficients() && sub_carrier_counter < middle_subcarrier) {
