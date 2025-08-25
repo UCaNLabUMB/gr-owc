@@ -1,0 +1,4 @@
+Impl		 C++      C++ w/ V    Python
+"Intel Core i5" 200000000 450000000 250000
+"Intel Xenon" 450000000 1000000000 1000000
+"Raspberry Pi 5" 300000000 800000000 750000
