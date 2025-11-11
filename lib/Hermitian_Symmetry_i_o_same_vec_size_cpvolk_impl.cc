@@ -78,7 +78,7 @@ int Hermitian_Symmetry_i_o_same_vec_size_cpvolk_impl::work(
         out_vec[0] = gr_complex(0, 0);         
         out_vec[mid] = gr_complex(0, 0);       
 
-        if (use_negative_coefficients()) {
+        if (!use_negative_coefficients()) {
             volk_32fc_x2_multiply_32fc(&out_vec[1], &in_vec[1], ones.data(), (mid - 1));
             std::reverse_copy(&in_vec[1], &in_vec[mid], temp_buffer.begin());
             volk_32fc_conjugate_32fc(&out_vec[mid+1], temp_buffer.data(), mid - 1);
