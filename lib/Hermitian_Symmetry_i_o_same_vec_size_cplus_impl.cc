@@ -68,7 +68,7 @@ int Hermitian_Symmetry_i_o_same_vec_size_cplus_impl::work(
     int middle_subcarrier = fft_len() / 2;
 
     for (int i = 0; i < noutput_items; i++) {
-        int mid_subcarr_index = std::max(i * middle_subcarrier, middle_subcarrier);
+        int mid_subcarr_index = (i * fft_len()) + middle_subcarrier;
         int sub_carrier_counter = 0;
 
         for (int j = i * fft_len(); j < (i + 1) * fft_len(); j++) {
@@ -76,13 +76,13 @@ int Hermitian_Symmetry_i_o_same_vec_size_cplus_impl::work(
                 out[j] = gr_complex(0, 0);
             } else if (sub_carrier_counter == middle_subcarrier) {
                 out[j] = gr_complex(0, 0);
-            } else if (use_negative_coefficients() && sub_carrier_counter < middle_subcarrier) {
-                out[j] = in[j];
             } else if (!use_negative_coefficients() && sub_carrier_counter < middle_subcarrier) {
-                out[j] = std::conj(in[mid_subcarr_index - (j - mid_subcarr_index)]);
-            } else if (!use_negative_coefficients() && sub_carrier_counter > middle_subcarrier) {
                 out[j] = in[j];
+            } else if (!use_negative_coefficients() && sub_carrier_counter > middle_subcarrier) {
+                out[j] = std::conj(in[mid_subcarr_index - (j - mid_subcarr_index)]);
             } else if (use_negative_coefficients() && sub_carrier_counter > middle_subcarrier) {
+                out[j] = in[j];
+            } else if (use_negative_coefficients() && sub_carrier_counter < middle_subcarrier) {
                 out[j] = std::conj(in[mid_subcarr_index + (mid_subcarr_index - j)]);
             }
             sub_carrier_counter++;
