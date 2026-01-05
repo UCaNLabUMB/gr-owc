@@ -23,5 +23,6 @@ install(FILES
     PPM_Modulator_cplus.h
     LED_Nonlinearity.h
     Hermitian_Symmetry_i_o_same_vec_size_cplus.h
-    Hermitian_Symmetry_i_o_same_vec_size_cpvolk.h DESTINATION include/gnuradio/owc
+    Hermitian_Symmetry_i_o_same_vec_size_cpvolk.h
+    PAM_Demodulator_cplus.h DESTINATION include/gnuradio/owc
 )

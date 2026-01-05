@@ -25,5 +25,7 @@ install(FILES
     owc_PPM_Modulator_python.block.yml
     owc_LED_Nonlinearity.block.yml
     owc_Hermitian_Symmetry_i_o_same_vec_size_cplus.block.yml
-    owc_Hermitian_Symmetry_i_o_same_vec_size_cpvolk.block.yml DESTINATION share/gnuradio/grc/blocks
+    owc_Hermitian_Symmetry_i_o_same_vec_size_cpvolk.block.yml
+    owc_PAM_Demodulator_cplus.block.yml
+    owc_PAM_Demodulator_python.block.yml DESTINATION share/gnuradio/grc/blocks
 )
