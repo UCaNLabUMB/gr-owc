@@ -34,6 +34,7 @@ namespace py = pybind11;
     void bind_LED_Nonlinearity(py::module& m);
     void bind_Hermitian_Symmetry_i_o_same_vec_size_cplus(py::module& m);
     void bind_Hermitian_Symmetry_i_o_same_vec_size_cpvolk(py::module& m);
+    void bind_PAM_Demodulator_cplus(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
 
 
@@ -75,5 +76,6 @@ PYBIND11_MODULE(owc_python, m)
     bind_LED_Nonlinearity(m);
     bind_Hermitian_Symmetry_i_o_same_vec_size_cplus(m);
     bind_Hermitian_Symmetry_i_o_same_vec_size_cpvolk(m);
+    bind_PAM_Demodulator_cplus(m);
     // ) END BINDING_FUNCTION_CALLS
 }
