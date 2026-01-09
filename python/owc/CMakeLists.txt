@@ -29,7 +29,8 @@ GR_PYTHON_INSTALL(
     PAM_Modulator_python.py
     VPPM_Modulator_python.py
     PPM_Modulator_python.py
-    PAM_Demodulator_python.py DESTINATION ${GR_PYTHON_DIR}/gnuradio/owc
+    PAM_Demodulator_python.py
+    VPPM_Demodulator_python.py DESTINATION ${GR_PYTHON_DIR}/gnuradio/owc
 )
 
 ########################################################################
@@ -68,3 +69,5 @@ GR_ADD_TEST(qa_Hermitian_Symmetry_i_o_same_vec_size_cplus ${PYTHON_EXECUTABLE} $
 GR_ADD_TEST(qa_Hermitian_Symmetry_i_o_same_vec_size_cpvolk ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_Hermitian_Symmetry_i_o_same_vec_size_cpvolk.py)
 GR_ADD_TEST(qa_PAM_Demodulator_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PAM_Demodulator_cplus.py)
 GR_ADD_TEST(qa_PAM_Demodulator_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PAM_Demodulator_python.py)
+GR_ADD_TEST(qa_VPPM_Demodulator_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_VPPM_Demodulator_cplus.py)
+GR_ADD_TEST(qa_VPPM_Demodulator_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_VPPM_Demodulator_python.py)
