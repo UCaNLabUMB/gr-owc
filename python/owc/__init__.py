@@ -28,5 +28,6 @@ from .PAM_Modulator_python import PAM_Modulator_python
 from .VPPM_Modulator_python import VPPM_Modulator_python
 from .PPM_Modulator_python import PPM_Modulator_python
 from .PAM_Demodulator_python import PAM_Demodulator_python
+from .VPPM_Demodulator_python import VPPM_Demodulator_python
 
 #

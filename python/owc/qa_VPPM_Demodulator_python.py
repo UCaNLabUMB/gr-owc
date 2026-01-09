@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# gr-owc OOT module for optical wireless communications.
+# gr-owc is compatible with GNU Radio v3.10
+#
+# Copyright 2024 Kunal Sangurmath from Ubiquitous Communications and Networking (UCAN) Lab, University of Massachusetts, Boston.
+#
+# This is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3, or (at your option)
+# any later version.
+#
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this software; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 51 Franklin Street,
+# Boston, MA 02110-1301, USA.
+#
+#
+
+from gnuradio import gr, gr_unittest
+from gnuradio import blocks
+from gnuradio.owc import VPPM_Demodulator_python
+
+class qa_VPPM_Demodulator_python(gr_unittest.TestCase):
+
+    def setUp(self):
+        self.tb = gr.top_block()
+
+    def tearDown(self):
+        self.tb = None
+
+    def test_instance(self):
+        instance = VPPM_Demodulator_python(2, 1)
+
+    def test_001_VPPM_Demod(self):
+        src_data = (3,3,0,0,0,0,0,0,3,3)
+        expected_result = (0,1)
+        
+        src = blocks.vector_source_f(src_data)      
+        blk = VPPM_Demodulator_python(5,2)
+        dst = blocks.vector_sink_f()
+        
+        self.tb.connect(src, blk)
+        self.tb.connect(blk, dst)
+        self.tb.run()
+        
+        result_data = dst.data()
+
+        self.assertFloatTuplesAlmostEqual(expected_result, result_data, 6)
+
+    def test_002_VPPM_Demod(self):
+        src_data = (2,2,2,2,0,0,0,0,2,2,2,2,0,0,2,2,2,2)
+        expected_result = (0,1,1)
+        
+        src = blocks.vector_source_f(src_data)      
+        blk = VPPM_Demodulator_python(6,4)
+        dst = blocks.vector_sink_f()
+        
+        self.tb.connect(src, blk)
+        self.tb.connect(blk, dst)
+        self.tb.run()
+        
+        result_data = dst.data()
+
+        self.assertFloatTuplesAlmostEqual(expected_result, result_data, 6)   
+
+
+if __name__ == '__main__':
+    gr_unittest.run(qa_VPPM_Demodulator_python)
