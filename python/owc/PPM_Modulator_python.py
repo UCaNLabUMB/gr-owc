@@ -55,11 +55,12 @@ class PPM_Modulator_python(gr.interp_block):
             for j in range(self.get_samples_per_symbol()):
                 out[i + j] = self.get_min_magnitude()
 
-            pulse = decimal * (self.get_samples_per_symbol() // self.get_modulation_order())
+            if decimal >= 0 and decimal < self.get_modulation_order():
+                pulse = decimal * (self.get_samples_per_symbol() // self.get_modulation_order())
 
-            for j in range(self.get_samples_per_pulse()):
-                if pulse + j < self.get_samples_per_symbol():
-                    out[i + pulse + j] = self.get_max_magnitude()
+                for j in range(self.get_samples_per_pulse()):
+                    if pulse + j < self.get_samples_per_symbol():
+                        out[i + pulse + j] = self.get_max_magnitude()
 
             i += self.get_samples_per_symbol()
             z += 1

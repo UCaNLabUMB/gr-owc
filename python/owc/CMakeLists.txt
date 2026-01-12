@@ -30,7 +30,8 @@ GR_PYTHON_INSTALL(
     VPPM_Modulator_python.py
     PPM_Modulator_python.py
     PAM_Demodulator_python.py
-    VPPM_Demodulator_python.py DESTINATION ${GR_PYTHON_DIR}/gnuradio/owc
+    VPPM_Demodulator_python.py
+    PPM_Demodulator_python.py DESTINATION ${GR_PYTHON_DIR}/gnuradio/owc
 )
 
 ########################################################################
@@ -71,3 +72,5 @@ GR_ADD_TEST(qa_PAM_Demodulator_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE
 GR_ADD_TEST(qa_PAM_Demodulator_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PAM_Demodulator_python.py)
 GR_ADD_TEST(qa_VPPM_Demodulator_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_VPPM_Demodulator_cplus.py)
 GR_ADD_TEST(qa_VPPM_Demodulator_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_VPPM_Demodulator_python.py)
+GR_ADD_TEST(qa_PPM_Demodulator_cplus ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PPM_Demodulator_cplus.py)
+GR_ADD_TEST(qa_PPM_Demodulator_python ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PPM_Demodulator_python.py)

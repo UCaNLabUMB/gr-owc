@@ -1,0 +1,38 @@
+id: owc_PPM_Demodulator_cplus
+label: PPM_Demodulator (C++)
+category: '[owc]/Signal Processing Blocks'
+
+templates:
+  imports: from gnuradio import owc
+  make: owc.PPM_Demodulator_cplus(${samples_per_symbol}, ${samples_per_pulse}, ${modulation_order})
+
+parameters:
+- id: samples_per_symbol
+  label: Samples Per Symbol
+  dtype: int
+  default: 2
+  
+- id: samples_per_pulse
+  label: Samples Per Pulse
+  dtype: int
+  default: 1
+
+- id: modulation_order
+  label: Modulation Order
+  dtype: int
+  default: 2
+
+inputs:
+- label: in
+  dtype: float
+  
+outputs:
+- label: out
+  dtype: float
+  
+asserts:
+- ${samples_per_symbol > 0}
+- ${samples_per_pulse > 0}
+- ${samples_per_pulse < samples_per_symbol}
+
+file_format: 1
