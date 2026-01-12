@@ -25,7 +25,8 @@ list(APPEND owc_sources
     Hermitian_Symmetry_i_o_same_vec_size_cplus_impl.cc
     Hermitian_Symmetry_i_o_same_vec_size_cpvolk_impl.cc
     PAM_Demodulator_cplus_impl.cc
-    VPPM_Demodulator_cplus_impl.cc )
+    VPPM_Demodulator_cplus_impl.cc
+    PPM_Demodulator_cplus_impl.cc )
 
 set(owc_sources "${owc_sources}" PARENT_SCOPE)
 if(NOT owc_sources)

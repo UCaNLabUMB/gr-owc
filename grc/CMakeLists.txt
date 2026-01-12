@@ -29,5 +29,7 @@ install(FILES
     owc_PAM_Demodulator_cplus.block.yml
     owc_PAM_Demodulator_python.block.yml
     owc_VPPM_Demodulator_cplus.block.yml
-    owc_VPPM_Demodulator_python.block.yml DESTINATION share/gnuradio/grc/blocks
+    owc_VPPM_Demodulator_python.block.yml
+    owc_PPM_Demodulator_cplus.block.yml
+    owc_PPM_Demodulator_python.block.yml DESTINATION share/gnuradio/grc/blocks
 )
