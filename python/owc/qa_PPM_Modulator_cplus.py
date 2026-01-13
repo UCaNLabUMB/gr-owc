@@ -77,8 +77,8 @@ class qa_PPM_Modulator_cplus(gr_unittest.TestCase):
         self.assertFloatTuplesAlmostEqual(expected_result, result_data, 6)
 
     def test_003_PPM(self):
-        src_data = (0, 1)
-        expected_result = (5, 5, -3, -3, -3, -3, 5, 5)
+        src_data = (0, 1, 2, -1)
+        expected_result = (5, 5, -3, -3, -3, -3, 5, 5, 5, 5, -3, -3, 5, 5, -3, -3)
         
         src = blocks.vector_source_f(src_data)      
         blk = PPM_Modulator_cplus(5, -3, 4, 2, 2)
@@ -94,7 +94,7 @@ class qa_PPM_Modulator_cplus(gr_unittest.TestCase):
 
     def test_004_PPM(self):
         src_data = (0, 1, 2, 3, 4, 5, 6)
-        expected_result = (15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10)
+        expected_result = (15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10, 15, -10, -10, -10, -10, -10, -10, 15, 15, -10, -10, -10, -10, -10)
         
         src = blocks.vector_source_f(src_data)      
         blk = PPM_Modulator_cplus(15, -10, 6, 1, 6)

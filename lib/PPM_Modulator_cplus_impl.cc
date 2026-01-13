@@ -75,18 +75,21 @@ int PPM_Modulator_cplus_impl::work(int noutput_items,
   while (i < noutput_items) {
     int decimal = in[z];
 
+    if (decimal < 0 || decimal >= modulation_order())
+    {
+      decimal = 0;
+    }
+
     for (int j = 0; j < samples_per_symbol(); j++) {
       out[i + j] = min_magnitude();
     }
 
-    if (decimal >= 0 && decimal < modulation_order())
-    {
-      int pulse = decimal * (samples_per_symbol() / modulation_order());
+    
+    int pulse = decimal * (samples_per_symbol() / modulation_order());
 
-      for (int j = 0; j < samples_per_pulse(); j++) {
-        if (pulse + j < samples_per_symbol()) {
-          out[i + pulse + j] = max_magnitude();
-        }
+    for (int j = 0; j < samples_per_pulse(); j++) {
+      if (pulse + j < samples_per_symbol()) {
+        out[i + pulse + j] = max_magnitude();
       }
     }
 
