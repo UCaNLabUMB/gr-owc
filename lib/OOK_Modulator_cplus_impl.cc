@@ -50,12 +50,13 @@ int OOK_Modulator_cplus_impl::work(int noutput_items,
       int z = 0;
       
       while(i < noutput_items) {
-          for (int j = 0; j < samples_per_symbol(); j++){
-            if (in[z] == 0) {out[i++] = min_magnitude();}
-            else {out[i++] = max_magnitude();}
-            }
-          z++;
-        }
+        float bit = 0;
+        if (in[z] == 0) {bit = min_magnitude();}
+        else {bit = max_magnitude();}
+        std::fill_n(out + i, samples_per_symbol(), bit);
+        i += samples_per_symbol();
+        z++;
+      }
 
   return noutput_items;
 }
