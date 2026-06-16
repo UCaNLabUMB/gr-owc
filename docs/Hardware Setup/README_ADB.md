@@ -1,5 +1,3 @@
-Giovani DeOliveira
-
 Step-by-Step Process for Configuring Raspberry Pi for Analog Discovery Board Use
 
 **Installing Digilent Software**
