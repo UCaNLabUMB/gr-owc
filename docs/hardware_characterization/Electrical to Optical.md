@@ -11,7 +11,7 @@ The goal of this section is to identify the ideal operating voltage range of the
 
 **Setup** 
 
-![Figure 1: Physical setup](https://github.com/UCaNLabUMB/gr-owc/docs/hardware_characterization/Images/voltage_vs_lux.png) 
+![Figure 1](https://github.com/UCaNLabUMB/gr-owc/docs/hardware_characterization/Images/voltage_vs_lux.png) 
 
 - Find a non-reflective surface (e.g., a black surface). Use the Thorlabs mounting hardware to secure the LED panel so that it faces the cosine corrector connected to the light meter. Position the LED panel and the cosine corrector approximately **0.5 m apart**. 
 - Connect the LED panel as follows: *Male jumper wire* &rarr; *Female jumper wires and female BNC cable* &rarr; *Male-to-female BNC adapter*&rarr; *Male-to-male BNC cable* &rarr; *Male BNC dual binding posts* 
