@@ -5,22 +5,29 @@ The goal of this section is to identify the ideal operating voltage range of the
 **Components** 
 - Keysight U8002A Single Output DC Power Supply (0–30 V, 5 A)
 - ExTech Instruments Datalogging Light Meter with Cosine Corrector
-- Small LED panel (e.g., square, rectangular, etc.)
+- Small LED panel (e.g., cirlce, rectangular, etc.)
 - Male (M) BNC dual binding posts, male-to-male (M-M) BNC cable, male-to-female (M-F) BNC adapter, female (F) jumper wires, and female (F) BNC cable
 -  Other accessories (e.g., Thorlabs screws and hardware kit) 
 
 **Setup** 
 
-![](/docs/hardware_characterization/Images/voltage_vs_lux.png) 
+![Figure 1: Physical setup](/docs/hardware_characterization/Images/section1_setup.png) 
 
 - Find a non-reflective surface (e.g., a black surface). Use the Thorlabs mounting hardware to secure the LED panel so that it faces the cosine corrector connected to the light meter. Position the LED panel and the cosine corrector approximately **0.5 m apart**. 
-- Connect the LED panel as follows: *Male jumper wire* &rarr; *Female jumper wires and female BNC cable* &rarr; *Male-to-female BNC adapter*&rarr; *Male-to-male BNC cable* &rarr; *Male BNC dual binding posts* 
+
+Tx side: 
+- Connect the LED panel as follows: *Male jumper wire* &rarr; *Female jumper wires and female BNC cable* &rarr; *Male-to-female BNC adapter* &rarr; *Male-to-male BNC cable* &rarr; *Male BNC dual binding posts* &rarr; DC power supply.  
 
 - Turn on the DC power supply. Press **Output On/Off**, then select **Voltage/Current**. Adjust the voltage using the control knob according to the desired voltage range (e.g., 7.0–10.5 V with 0.05 V increments). 
 
-- Record both the applied voltage and the corresponding illuminance (lux) measured by the light meter. 
+Rx side: 
+- Turn on the light meter, record both the applied voltage and the corresponding illuminance (lux) measured by the light meter. 
 
 **Results**
+
+![Figure 2: Voltage vs Lux](/docs/hardware_characterization/Images/voltage_vs_lux.png)
+
+In this instance, we tested 2 LEDs (i.e., rectangle, circle), we can see that the turn voltage vs lux power asocciated with each LEDs is different, they both exibit specific turn on voltages, for rectangle LED it at ~7.8V, on the other hand the square LED need higher voltage ~9.5V to turn on, what we want to focus on is the liner characteristic voltage range of the 2 LEDs, which we can see based on the plot we obtain.  
 
  ## Voltage vs. Power 
 The goal of this section is to characterize the optical power response within the linear voltage range identified for the selected LED panel in the previous section. This experiment illustrates the relationship between the applied voltage and the received optical power for different LED panels. 
@@ -34,7 +41,11 @@ $$ V_{offset} = V_{max} - V_{amplitude} $$
 To compare the transmitted and received signals, observe both the original electrical input signal and the signal detected by the photodetector. Instead of using the light meter, use the **Thorlabs ADP2004A photodetector** to convert the received optical signal back into an analog electrical signal. The oscilloscope is then used to display both signals simultaneously in XY mode, where **V1** represents the transmitted input signal and **V2** represents the received signal measured by the photodetector.
 
 **Components** 
-. 
+- 
+
+**Setup** 
+
+The set up for this basically similar to what we had for Voltage vs Lux
 
 
 
