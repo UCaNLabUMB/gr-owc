@@ -29,7 +29,7 @@ Rx side:
 
 In this instance, we tested 2 LEDs (i.e., rectangle, circle), we can see that the turn voltage vs lux power associated with each LEDs is different, they both exibit specific turn on voltages, for rectangle LED it at ~7.8V, on the other hand the square LED need higher voltage ~9.5V to turn on, what we want to focus on is the liner characteristic voltage range of the 2 LEDs, which we can see based on the plot we obtain. 
 
- ## Voltage vs. Power 
+## Voltage vs. Power 
 The goal of this section is to characterize the optical power response within the linear voltage range identified for the selected LED panel in the previous section. This experiment illustrates the relationship between the applied voltage and the received optical power for different LED panels. 
 
 From the figure above, determine an appropriate DC offset voltage (e.g., **8.5 V**) and select a suitable peak-to-peak voltage amplitude (e.g., **1 Vpp**) for Channel 1 of the function generator. This ensures that the LED operates entirely within its linear operating region. For example, using an 8.5 V DC offset and a 1 V peak-to-peak signal results in a maximum voltage of **9.5 V**, which remains within the LED's linear operating range. In general, use voltage vs lux figure to determine the maximum and minimum voltages of the LED's linear operating region. These values can then be used to calculate the voltage amplitude and DC offset using the following equations: 
@@ -69,7 +69,7 @@ Tx side:
 
 Rx side: 
 - Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; oscilloscope input ch2 (output signal received). 
-- Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M$#937, press 2 &rarr; Coupling AC & Termination 1M$#937. 
+- Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M&#937, press 2 &rarr; Coupling AC & Termination 1M$#937. 
 - To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the -V_{p}). 
 - Press Acquire &rarr; XY Display &rarr; Triggered XY (i.e., X = ch1 voltage, Y = ch2 voltage); this should display a linear line if we are in the right voltage range. 
 - Press Menu (in Save/Recall setting) &rarr; Assign Save to All &rarr; Image, Waveform, and Setup &rarr; Menu Off.
@@ -77,5 +77,10 @@ Rx side:
 
 **Results** 
 
+![Figure 3: XY Display](/docs/hardware_characterization/Images/XY_Display.png)
 
+For this result, we primarily focus on the rectangular LED panel collection, examining the relationship on an XY display (where X = channel 1 voltage and Y = channel 2 voltage). In our case, channel 1 on the oscilloscope represents the input signal (a ramp signal), while channel 2 displays the same signal received by the photo-detector, which captures optical power from the LED using the same input signal as in channel 1.
 
+The results reveal two scenarios for the channel 2 signal: clipping and non-clipping. When we adjust the input signal voltage amplitude to approximately 8V, we observe clipping because the LED's turn-on voltage is not ideal at that level. Conversely, a voltage of about 8.8V is more suitable, as the LED accepts anything above 8V as its turn-on voltage (Results in Voltage vs Lux section).
+
+Additionally, the XY plot demonstrates both linear and non-linear responses for the corresponding input signal voltage amplitudes as we vary them (see the figure above). This correlates with the data we have collected and observed concerning the linear characteristics of the LED in the voltage versus lux section.
