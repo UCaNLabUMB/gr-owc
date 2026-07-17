@@ -79,8 +79,8 @@ Rx side:
 
 ![Figure 3: XY Display](/docs/hardware_characterization/Images/XY_Display.png)
 
-For this result, we primarily focus on the rectangular LED panel collection, examining the relationship on an XY display (where X = channel 1 voltage and Y = channel 2 voltage). In our case, channel 1 on the oscilloscope represents the input signal (a ramp signal), while channel 2 displays the same signal received by the photo-detector, which captures optical power from the LED using the same input signal as in channel 1.
+For this result, we primarily focus on the rectangular LED panel collection, examining the relationship on an XY display (where X = ch1 voltage and Y = ch2 voltage). In our case, ch1 on the oscilloscope represents the input signal (a ramp signal), while ch2 displays the same signal received by the photo-detector, which captures optical power from the LED using the same input signal as in ch1.
 
-The results reveal two scenarios for the channel 2 signal: clipping and non-clipping. When we adjust the input signal voltage amplitude to approximately 8V, we observe clipping because the LED's turn-on voltage is not ideal at that level. Conversely, a voltage of about 8.8V is more suitable, as the LED accepts anything above 8V as its turn-on voltage (Results in Voltage vs Lux section).
+The results reveal two scenarios for the ch2 signal: clipping and non-clipping. When we adjust the input signal voltage amplitude to approximately 8V, we observe clipping because the LED's turn-on voltage is not ideal at that level. Conversely, a voltage of about 8.8V is more suitable, as the LED accepts anything above 8V as its turn-on voltage (Results in Voltage vs Lux section).
 
 Additionally, the XY plot demonstrates both linear and non-linear responses for the corresponding input signal voltage amplitudes as we vary them (see the figure above). This correlates with the data we have collected and observed concerning the linear characteristics of the LED in the voltage versus lux section.
