@@ -6,10 +6,12 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Not titled yet
-# GNU Radio version: 3.10.5.1
+# GNU Radio version: 3.10.12.0
 
 from gnuradio import analog
 from gnuradio import blocks
+from xmlrpc.server import SimpleXMLRPCServer
+import threading
 from gnuradio import gr
 from gnuradio.filter import firdes
 from gnuradio.fft import window
@@ -18,9 +20,6 @@ import signal
 from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
-from xmlrpc.server import SimpleXMLRPCServer
-import threading
-import ad2
 
 
 
@@ -49,14 +48,12 @@ class OWC_SimpleTone(gr.top_block):
         self.xmlrpc_server_0_thread.start()
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_int*1, samp_rate,True)
         self.analog_const_source_x_0 = analog.sig_source_i(0, analog.GR_CONST_WAVE, 0, 0, sig_freq)
-        self.ad2_AD2_AnalogOut_Sine_i_0 = ad2.AD2_AnalogOut_Sine_i(0, adb_amp, 1)
 
 
         ##################################################
         # Connections
         ##################################################
         self.connect((self.analog_const_source_x_0, 0), (self.blocks_throttle_0, 0))
-        self.connect((self.blocks_throttle_0, 0), (self.ad2_AD2_AnalogOut_Sine_i_0, 0))
 
 
     def get_adb_amp(self):
@@ -90,7 +87,7 @@ class OWC_SimpleTone(gr.top_block):
 def argument_parser():
     parser = ArgumentParser()
     parser.add_argument(
-        "-n", "--adb-amp", dest="adb_amp", type=intx, default=5,
+        "-A", "--adb-amp", dest="adb_amp", type=intx, default=5,
         help="Set Analog Discovery Board Ampltiude [default=%(default)r]")
     parser.add_argument(
         "-n", "--node", dest="node", type=str, default='182',

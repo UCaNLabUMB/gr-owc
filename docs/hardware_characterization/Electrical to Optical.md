@@ -27,7 +27,7 @@ Rx side:
 
 ![Figure 2: Voltage vs Lux](/docs/hardware_characterization/Images/voltage_vs_lux.png)
 
-In this instance, we tested 2 LEDs (i.e., rectangle, circle), we can see that the turn voltage vs lux power asocciated with each LEDs is different, they both exibit specific turn on voltages, for rectangle LED it at ~7.8V, on the other hand the square LED need higher voltage ~9.5V to turn on, what we want to focus on is the liner characteristic voltage range of the 2 LEDs, which we can see based on the plot we obtain. 
+In this instance, we tested 2 LEDs (i.e., rectangle, circle), we can see that the turn voltage vs lux power associated with each LEDs is different, they both exibit specific turn on voltages, for rectangle LED it at ~7.8V, on the other hand the square LED need higher voltage ~9.5V to turn on, what we want to focus on is the liner characteristic voltage range of the 2 LEDs, which we can see based on the plot we obtain. 
 
  ## Voltage vs. Power 
 The goal of this section is to characterize the optical power response within the linear voltage range identified for the selected LED panel in the previous section. This experiment illustrates the relationship between the applied voltage and the received optical power for different LED panels. 
@@ -35,7 +35,8 @@ The goal of this section is to characterize the optical power response within th
 From the figure above, determine an appropriate DC offset voltage (e.g., **8.5 V**) and select a suitable peak-to-peak voltage amplitude (e.g., **1 Vpp**) for Channel 1 of the function generator. This ensures that the LED operates entirely within its linear operating region. For example, using an 8.5 V DC offset and a 1 V peak-to-peak signal results in a maximum voltage of **9.5 V**, which remains within the LED's linear operating range. In general, use voltage vs lux figure to determine the maximum and minimum voltages of the LED's linear operating region. These values can then be used to calculate the voltage amplitude and DC offset using the following equations: 
 
 $$ V_{amplitude} = V_{p} = \frac{V_{max} - V_{min}}{2} $$ 
-$$ V_{pp} = 2V_{p}
+
+$$ V_{pp} = 2V_{p} $$ 
 
 $$ V_{offset} = V_{max} - V_{amplitude} $$
 
@@ -56,7 +57,7 @@ The setup is similar to what we had for Voltage vs Lux (i.e., same distance for 
 The voltage amplitude, and offset for our signal, already had been discussed above, but to reiterate we want to shift our DC offset in the operating region of our LED of interest, and include the V_{amplitude} (i.e., V_{pp}), to ensure that the LED is linear characterize based on the V_{maximum} and V_{minimum} that we choose. The equations above sum up the idea, and the figure below provides another example demonstration of an instance for the rectangular LED panel. 
 
 ![Figure 2: Physical setup](/docs/hardware_characterization/Images/section2_setup.png) 
-(Note: the BNC cable and physical space setup is the same as in the Voltage vs. Lux section; thus, we will not mention the wire setup)
+ (Note: the BNC cable and physical space setup is the same as in the Voltage vs. Lux section; thus, we will not mention the wire setup)
 
 Tx side: 
 - Use the BNC cable to connect the Function Generator (FG) input Ch1 &rarr; LED male jumping wires. 
