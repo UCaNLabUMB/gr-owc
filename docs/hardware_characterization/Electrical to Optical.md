@@ -85,7 +85,31 @@ The results reveal two scenarios for the ch2 signal: clipping and non-clipping. 
 
 Additionally, the XY plot demonstrates both linear and non-linear responses for the corresponding input signal voltage amplitudes as we vary them (see the figure above). This correlates with the data we have collected and observed concerning the linear characteristics of the LED in the voltage versus lux section.
 
-## Linearty Check
+## Linearty Check [OPTIONAL]
 The goal for this section is to ensure that there is no harmonicity within the linear voltage range that we have been testing, since harmonics in the frequency domain mean our signals are clipped in the time domain (i.e., since clipped signals look like square waves, and square waves in frequency introduce harmonic spikes). For this section, we want to send a sine wave instead of a ramp, because a sine wave is a deterministic signal ideal for a real-life scenario. The experiment in this section will use the same setup with small changes to the BNC cable from the previous section, and use the math function of the Fast-Fourier-Transform (FFT) in the oscilloscope to convert our time-varying sine wave into the frequency domain.
+
+**Components**
+- [Same as Voltage vs Power] 
+- Mini-Circuits 15542 SLP-5+ Low Pass Filter (LPF) & Mini-Circuits DC Block 50&#937 BLK-89-S+
+- Other accessories (e.g., Thorlabs screws and hardware kit) 
+
+**Setup** 
+
+The setup is the same as in the Voltage vs Power section, with the addition of LPF and DC Block for the ch2 input port from the oscilloscope (for more details, visit the Voltage vs Power section). For the purpose of checking if the voltage range is consistent and does not introduce any harmonics in our frequency domain, we are sending a sine wave and using FFT mode in the math function to observe the frequency domain of the input sine wave using the same setup.
+
+![Figure 4: Physical setup](/docs/hardware_characterization/Images/section3_setup.png)
+
+Tx side: 
+- [Same as Voltage vs Power] 
+- Press on Waveforms &rarr; sine 
+- Press 1 & 2 &rarr; Output On. 
+
+Rx side: 
+- Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; LPF & DC Block &rarr; oscilloscope input ch2. 
+- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the -V_{p}). 
+- Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M&#937, press 2 &rarr; Coupling AC & Termination 1M$#937. 
+- Press Math &rarr; FFT &rarr; FFT Source &rarr; Adjust Multipurpose a knob &rarr; Change it to ch2. 
+
+**Results** 
 
  
