@@ -84,3 +84,8 @@ For this result, we primarily focus on the rectangular LED panel collection, exa
 The results reveal two scenarios for the ch2 signal: clipping and non-clipping. When we adjust the input signal voltage amplitude to approximately 8V, we observe clipping because the LED's turn-on voltage is not ideal at that level. Conversely, a voltage of about 8.8V is more suitable, as the LED accepts anything above 8V as its turn-on voltage (Results in Voltage vs Lux section).
 
 Additionally, the XY plot demonstrates both linear and non-linear responses for the corresponding input signal voltage amplitudes as we vary them (see the figure above). This correlates with the data we have collected and observed concerning the linear characteristics of the LED in the voltage versus lux section.
+
+## Linearty Check
+The goal for this section is to ensure that there is no harmonicity within the linear voltage range that we have been testing, since harmonics in the frequency domain mean our signals are clipped in the time domain (i.e., since clipped signals look like square waves, and square waves in frequency introduce harmonic spikes). For this section, we want to send a sine wave instead of a ramp, because a sine wave is a deterministic signal ideal for a real-life scenario. The experiment in this section will use the same setup with small changes to the BNC cable from the previous section, and use the math function of the Fast-Fourier-Transform (FFT) in the oscilloscope to convert our time-varying sine wave into the frequency domain.
+
+ 
