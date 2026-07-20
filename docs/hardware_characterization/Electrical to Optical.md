@@ -70,7 +70,7 @@ Tx side:
 Rx side: 
 - Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; oscilloscope input ch2 (output signal received). 
 - Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M&#937, press 2 &rarr; Coupling AC & Termination 1M$#937. 
-- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the -V_{p}). 
+- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the -V_p). 
 - Press Acquire &rarr; XY Display &rarr; Triggered XY (i.e., X = ch1 voltage, Y = ch2 voltage); this should display a linear line if we are in the right voltage range. 
 - Press Menu (in Save/Recall setting) &rarr; Assign Save to All &rarr; Image, Waveform, and Setup &rarr; Menu Off.
 - Press Save (in Save/Recall setting). 
@@ -106,10 +106,13 @@ Tx side:
 
 Rx side: 
 - Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; LPF & DC Block &rarr; oscilloscope input ch2. 
-- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the -V_{p}). 
+- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the -V_p). 
 - Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M&#937, press 2 &rarr; Coupling AC & Termination 1M$#937. 
 - Press Math &rarr; FFT &rarr; FFT Source &rarr; Adjust Multipurpose a knob &rarr; Change it to ch2. 
 
 **Results** 
 
+![Figure 5: FFT Display](/docs/hardware_characterization/Images/FFT_Display.png)
+
+The figure results feature two scenarios for different voltage amplitudes, 1V_{pp} and 3V_{pp}, with a fixed DC offset of 8.5V and a frequency of 10kHz for the rectangular LED. Using the FFT mode in the oscilloscope, we can see that at 1V_{pp}, in ch2 the photo-detector can receive a signal without clipping; this can also be viewed in the frequency domain with FFT, where there are barely any visible signs of harmonic peaks around our tone frequency 10kHz that we send for the sine wave. On the other hand, as we increase the amplitude to 3V_{pp}, the signal clipping (for more details of clipping visit Voltage vs Power section), and as the signal clip the bottom half of it look like a square waves, square wave in frequency domain have harmonic spikes around the tone frequency, thus we can see the output clearly display that harmonicity around our frequency of interest (i.e., 10kHz). This behavior comes back to the idea that our voltage range is out of range for linear characterization (Voltage vs Power); thus, we want to choose a correct voltage range when working through this, ensuring the system is Linear Time Invariance (LTI). 
  
