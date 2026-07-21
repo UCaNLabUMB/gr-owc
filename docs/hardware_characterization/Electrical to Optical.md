@@ -55,7 +55,7 @@ To compare the transmitted and received signals, observe both the original elect
 
 The setup is similar to what we had for Voltage vs Lux (i.e., same distance for LED and photo-detector with the same reflective surface). But instead of using a DC power supply and light meter, we used a function generator for signal generation and a Thorlabs photo-detector with an oscilloscope to observe the transmitted optical signal from the LED. 
 
-The voltage amplitude, and offset for our signal, already had been discussed above, but to reiterate we want to shift our DC offset in the operating region of our LED of interest, and include the $V_{amplitude}$ (i.e., V_{pp}), to ensure that the LED is linear characterize based on the V_{maximum} and V_{minimum} that we choose. The equations above sum up the idea, and the figure below provides another example demonstration of an instance for the rectangular LED panel. 
+The voltage amplitude, and offset for our signal, already had been discussed above, but to reiterate we want to shift our DC offset in the operating region of our LED of interest, and include the $V_{amplitude}$ (i.e., $V_{pp}$), to ensure that the LED is linear characterize based on the $V_{maximum}$ and $V_{minimum}$ that we choose. The equations above sum up the idea, and the figure below provides another example demonstration of an instance for the rectangular LED panel. 
 
 ![Figure 2: Physical setup](/docs/hardware_characterization/Images/section2_setup.png) 
  (Note: the BNC cable and physical space setup is the same as in the Voltage vs. Lux section; thus, we will not mention the wire setup)
@@ -64,14 +64,14 @@ Tx side:
 - Use the BNC cable to connect the Function Generator (FG) input Ch1 &rarr; LED male jumping wires. 
 - Use the BNC cabe connect FG input ch2 &rarr; oscilloscope input ch1 (input signal). 
 - Turn on FG, press 1 (for channel 1) &rarr; Output Load &rarr; Set To High Z &rarr; More &rarr; Dual Channel &rarr; Tracking &rarr; Identical &rarr; Done. 
-- Press on Parameter &rarr; change frequency (e.g., 10kHz), amplitude (e.g., 1 V_{pp}), offset (e.g., 8.5 V)
+- Press on Parameter &rarr; change frequency (e.g., 10kHz), amplitude (e.g., 1 $V_{pp}$), offset (e.g., 8.5 V)
 - Press on Waveforms &rarr; sine, ramp, etc. (i.e., in the results, we used ramp because it provides a sharper cutoff, which is more ideal to demonstrate the linearity of the LED). 
 - Press 1 & 2 &rarr; Output On. 
 
 Rx side: 
 - Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; oscilloscope input ch2 (output signal received). 
 - Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M&#937, press 2 &rarr; Coupling AC & Termination 1M$#937. 
-- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the -V_p). 
+- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the $-V_{p}$). 
 - Press Acquire &rarr; XY Display &rarr; Triggered XY (i.e., X = ch1 voltage, Y = ch2 voltage); this should display a linear line if we are in the right voltage range. 
 - Press Menu (in Save/Recall setting) &rarr; Assign Save to All &rarr; Image, Waveform, and Setup &rarr; Menu Off.
 - Press Save (in Save/Recall setting). 
@@ -107,7 +107,7 @@ Tx side:
 
 Rx side: 
 - Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; LPF & DC Block &rarr; oscilloscope input ch2. 
-- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the -V_p). 
+- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the $-V_{p}$). 
 - Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M&#937, press 2 &rarr; Coupling AC & Termination 1M$#937. 
 - Press Math &rarr; FFT &rarr; FFT Source &rarr; Adjust Multipurpose a knob &rarr; Change it to ch2. 
 
@@ -115,21 +115,21 @@ Rx side:
 
 ![Figure 5: FFT Display](/docs/hardware_characterization/Images/FFT_Display.png)
 
-The figure results feature two scenarios for different voltage amplitudes, $$ 1V_{pp} $$ and $$ 3V_{pp} $$, with a fixed DC offset of 8.5V and a frequency of 10kHz for the rectangular LED. Using the FFT mode in the oscilloscope, we can see that at 1V_{pp}, in ch2 the photo-detector can receive a signal without clipping; this can also be viewed in the frequency domain with FFT, where there are barely any visible signs of harmonic peaks around our tone frequency 10kHz that we send for the sine wave. On the other hand, as we increase the amplitude to 3V_{pp}, the signal clipping (for more details of clipping visit Voltage vs Power section), and as the signal clip the bottom half of it look like a square waves, square wave in frequency domain have harmonic spikes around the tone frequency, thus we can see the output clearly display that harmonicity around our frequency of interest (i.e., 10kHz). This behavior comes back to the idea that our voltage range is out of range for linear characterization (Voltage vs Power); thus, we want to choose a correct voltage range when working through this, ensuring the system is Linear Time Invariant (LTI). 
+The figure results feature two scenarios for different voltage amplitudes, $1V_{pp}$ and  $3V_{pp}$, with a fixed DC offset of 8.5V and a frequency of 10kHz for the rectangular LED. Using the FFT mode in the oscilloscope, we can see that at $1V_{pp}$, in ch2 the photo-detector can receive a signal without clipping; this can also be viewed in the frequency domain with FFT, where there are barely any visible signs of harmonic peaks around our tone frequency 10kHz that we send for the sine wave. On the other hand, as we increase the amplitude to $3V_{pp}$, the signal clipping (for more details of clipping visit Voltage vs Power section), and as the signal clip the bottom half of it look like a square waves, square wave in frequency domain have harmonic spikes around the tone frequency, thus we can see the output clearly display that harmonicity around our frequency of interest (i.e., 10kHz). This behavior comes back to the idea that our voltage range is out of range for linear characterization (Voltage vs Power); thus, we want to choose a correct voltage range when working through this, ensuring the system is Linear Time Invariant (LTI). 
  
 ## Frequency Response 
 The goal for this section is to characterize the frequency response of our hardware component. In other words, we want to characterize what the sine-sweep signal's frequency response looks like when we use the low-pass filter (LPF) and DC Block to capture the output from the photodetector. This gives us insight into the frequency characteristics. The setup for this section will be the same as in the previous section; one notable difference is that we will use the Radio Frequency (RF) channel on the oscilloscope to measure the frequency response. 
 
-But to intuitively understand the later observation from this section, we can trace back to signal and system concepts. Let's say our FG input sine-sweep as x(t), and the output signal received from photo-detector to be y(t), and in the process x(t) went through 3 different filters: h_1(t), h_2(t), h_3(t), to obtain y(t) where: 
+But to intuitively understand the later observation from this section, we can trace back to signal and system concepts. Let's say our FG input sine-sweep as x(t), and the output signal received from photo-detector to be y(t), and in the process x(t) went through 3 different filters: $h_1(t)$, $h_2(t)$, $h_3(t)$, to obtain y(t) where: 
 
-h_1(t): associated with the photo-detector optical lens and blue filter. 
-h_2(t): associated with the DC-Block. 
-h_3(t): associated with the LPF filter. 
+$h_1(t)$: associated with the photo-detector optical lens and blue filter. 
+$h_2(t)$: associated with the DC-Block. 
+$h_3(t)$: associated with the LPF filter. 
 
-If we convolve them in the time domain, that means when we look at the frequency response, they're multiplied by each other in the frequency domain. 
+If we **convolve** them in the time domain, that means when we look at the frequency response, they're **multiplied** by each other in the frequency domain. 
 
 $$ x(t) * h_1(t) * h_2(t) * h_3(t) = y(t) $$ 
-$$ X[n] H_1[n] * H_2[n] H_3[n] = Y[n] $$ 
+$$ X[n] H_1[n] H_2[n] H_3[n] = Y[n] $$ 
 
 
 
