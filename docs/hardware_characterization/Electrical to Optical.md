@@ -118,12 +118,14 @@ Rx side:
 The figure results feature two scenarios for different voltage amplitudes, $1V_{pp}$ and  $3V_{pp}$, with a fixed DC offset of 8.5V and a frequency of 10kHz for the rectangular LED. Using the FFT mode in the oscilloscope, we can see that at $1V_{pp}$, in ch2 the photo-detector can receive a signal without clipping; this can also be viewed in the frequency domain with FFT, where there are barely any visible signs of harmonic peaks around our tone frequency 10kHz that we send for the sine wave. On the other hand, as we increase the amplitude to $3V_{pp}$, the signal clipping (for more details of clipping visit Voltage vs Power section), and as the signal clip the bottom half of it look like a square waves, square wave in frequency domain have harmonic spikes around the tone frequency, thus we can see the output clearly display that harmonicity around our frequency of interest (i.e., 10kHz). This behavior comes back to the idea that our voltage range is out of range for linear characterization (Voltage vs Power); thus, we want to choose a correct voltage range when working through this, ensuring the system is Linear Time Invariant (LTI). 
  
 ## Frequency Response 
-The goal for this section is to characterize the frequency response of our hardware component. In other words, we want to characterize what the sine-sweep signal's frequency response looks like when we use the low-pass filter (LPF) and DC Block to capture the output from the photodetector. This gives us insight into the frequency characteristics. The setup for this section will be the same as in the previous section; one notable difference is that we will use the Radio Frequency (RF) channel on the oscilloscope to measure the frequency response. 
+The goal for this section is to characterize the frequency response of our hardware component. In other words, we want to characterize what the sine-sweep signal's frequency response looks like when we use the low-pass filter (LPF) and DC Block to capture the output from the photo-detector. This gives us insight into the frequency characteristics. The setup for this section will be the same as in the previous section; one notable difference is that we will use the Radio Frequency (RF) channel on the oscilloscope to measure the frequency response. 
 
 But to intuitively understand the later observation from this section, we can trace back to signal and system concepts. Let's say our FG input sine-sweep as x(t), and the output signal received from photo-detector to be y(t), and in the process x(t) went through 3 different filters: $h_1(t)$, $h_2(t)$, $h_3(t)$, to obtain y(t) where: 
 
 $h_1(t)$: associated with the photo-detector optical lens and blue filter. 
+
 $h_2(t)$: associated with the DC-Block. 
+
 $h_3(t)$: associated with the LPF filter. 
 
 If we **convolve** them in the time domain, that means when we look at the frequency response, they're **multiplied** by each other in the frequency domain. 
@@ -131,6 +133,21 @@ If we **convolve** them in the time domain, that means when we look at the frequ
 $$ x(t) * h_1(t) * h_2(t) * h_3(t) = y(t) $$ 
 $$ X[n] H_1[n] H_2[n] H_3[n] = Y[n] $$ 
 
+![Figure 6: signal process](/docs/hardware_characterization/Images/signal_process.png)
+
+Because we are sending the same 8.5V $DC_{offset}$ and $1V_{pp}$ or $ 0.5 V_{p} $ (i.e., Voltage and Power) for the sine sweep, our input signal is: 
+
+$$ x(t) = 8.5 + 0.5sin(2pift) $$ 
+
+The optical lens and blue filter will not be mentioned, since they're physical filter components that help capture the optical wavelength more easily for power efficiency. 
+
+On the other hand, the DC Block, as the name suggests, blocks the DC signal; we want it purely AC because we don't want the DC to introduce **distortion** and **interference**. Thus in our case, we can think of it's as a charging capacitor (i.e., DC Block have a capacitor component), when fully charged the total voltage inside the DC block reach to its steady state and is equal to the input voltage, in our case 8.5 $DC_{offset}$, thus the two cancel out and blocked the 8.5 $DC_{offset}$. 
+
+In addition, since higher frequencies just appear to have white noise, we filtered our signal using an LPF, the LPF we used in this section has a cutoff frequency at ~5 MHz, thus when we observed the output signal, it is:
+
+$$ y(t) = 0.5sin(2pift) $$
+
+The images above sum up the frequency response as well as the signal-in-time characteristics that we mentioned. 
 
 
 **Components** 
