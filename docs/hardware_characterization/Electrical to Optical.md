@@ -1,4 +1,4 @@
-# Electrical to Optical Connection 
+# Electrical to Optical  
 ## Voltage vs. Flux 
 The goal of this section is to identify the ideal operating voltage range of the LED panel by driving it with a DC power supply and measuring the resulting illuminance (lux) using a light meter. This experiment characterizes the linear operating voltage range of the LED panel. Operating within this range ensures that the optical wireless communication (OWC) system behaves as a linear time-invariant (LTI) system during later experiments. 
 
@@ -29,6 +29,7 @@ Rx side:
 
 In this instance, we tested 2 LEDs (i.e., rectangle, circle), we can see that the turn voltage vs lux power associated with each LEDs is different, they both exibit specific turn on voltages, for rectangle LED it at ~7.8V, on the other hand the square LED need higher voltage ~9.5V to turn on, what we want to focus on is the liner characteristic voltage range of the 2 LEDs, which we can see based on the plot we obtain. 
 
+# Optical to Electrical 
 ## Voltage vs. Power 
 The goal of this section is to characterize the optical power response within the linear voltage range identified for the selected LED panel in the previous section. This experiment illustrates the relationship between the applied voltage and the received optical power for different LED panels. 
 
@@ -54,7 +55,7 @@ To compare the transmitted and received signals, observe both the original elect
 
 The setup is similar to what we had for Voltage vs Lux (i.e., same distance for LED and photo-detector with the same reflective surface). But instead of using a DC power supply and light meter, we used a function generator for signal generation and a Thorlabs photo-detector with an oscilloscope to observe the transmitted optical signal from the LED. 
 
-The voltage amplitude, and offset for our signal, already had been discussed above, but to reiterate we want to shift our DC offset in the operating region of our LED of interest, and include the V_{amplitude} (i.e., V_{pp}), to ensure that the LED is linear characterize based on the V_{maximum} and V_{minimum} that we choose. The equations above sum up the idea, and the figure below provides another example demonstration of an instance for the rectangular LED panel. 
+The voltage amplitude, and offset for our signal, already had been discussed above, but to reiterate we want to shift our DC offset in the operating region of our LED of interest, and include the $V_{amplitude}$ (i.e., V_{pp}), to ensure that the LED is linear characterize based on the V_{maximum} and V_{minimum} that we choose. The equations above sum up the idea, and the figure below provides another example demonstration of an instance for the rectangular LED panel. 
 
 ![Figure 2: Physical setup](/docs/hardware_characterization/Images/section2_setup.png) 
  (Note: the BNC cable and physical space setup is the same as in the Voltage vs. Lux section; thus, we will not mention the wire setup)
@@ -86,7 +87,7 @@ The results reveal two scenarios for the ch2 signal: clipping and non-clipping. 
 Additionally, the XY plot demonstrates both linear and non-linear responses for the corresponding input signal voltage amplitudes as we vary them (see the figure above). This correlates with the data we have collected and observed concerning the linear characteristics of the LED in the voltage versus lux section.
 
 ## Linearty Check [OPTIONAL]
-The goal for this section is to ensure that there is no harmonicity within the linear voltage range that we have been testing, since harmonics in the frequency domain mean our signals are clipped in the time domain (i.e., since clipped signals look like square waves, and square waves in frequency introduce harmonic spikes). For this section, we want to send a sine wave instead of a ramp, because a sine wave is a deterministic signal ideal for a real-life scenario. The experiment in this section will use the same setup with small changes to the BNC cable from the previous section, and use the math function of the Fast-Fourier-Transform (FFT) in the oscilloscope to convert our time-varying sine wave into the frequency domain.
+The goal for this section is to ensure that there is no harmonicity within the linear voltage range that we have, since harmonics in the frequency domain mean our signals are clipped in the time domain (i.e., since clipped signals look like square waves, and square waves in frequency introduce harmonic spikes), this is bad because it could lead to signal **distortion** and **interference**. For this section, we want to send a sine wave rather than a ramp wave because a sine wave is a deterministic signal ideal for a real-life scenario. The experiment in this section will use the same setup with small changes to the BNC cable from the previous section, and use the math function of the Fast-Fourier-Transform (FFT) in the oscilloscope to convert our time-varying sine wave into the frequency domain.
 
 **Components**
 - [Same as Voltage vs Power] 
@@ -95,7 +96,7 @@ The goal for this section is to ensure that there is no harmonicity within the l
 
 **Setup** 
 
-The setup is the same as in the Voltage vs Power section, with the addition of LPF and DC Block for the ch2 input port from the oscilloscope (for more details, visit the Voltage vs Power section). For the purpose of checking if the voltage range is consistent and does not introduce any harmonics in our frequency domain, we are sending a sine wave and using FFT mode in the math function to observe the frequency domain of the input sine wave using the same setup.
+The setup is the same as in the Voltage vs Power section, with the addition of an LPF and a DC Block for the ch2 input port of the oscilloscope. In this section, we do not dive into detail about the LPF and DC Block; the Frequency Response section will explain it in detail. To check whether the voltage range is consistent and does not introduce any harmonics in the frequency domain, we are sending a sine wave and using Fast-Fourier-Transform (FFT) mode in the math function to observe the input sine wave's frequency domain under the same setup.
 
 ![Figure 4: Physical setup](/docs/hardware_characterization/Images/section3_setup.png)
 
@@ -114,5 +115,23 @@ Rx side:
 
 ![Figure 5: FFT Display](/docs/hardware_characterization/Images/FFT_Display.png)
 
-The figure results feature two scenarios for different voltage amplitudes, 1V_{pp} and 3V_{pp}, with a fixed DC offset of 8.5V and a frequency of 10kHz for the rectangular LED. Using the FFT mode in the oscilloscope, we can see that at 1V_{pp}, in ch2 the photo-detector can receive a signal without clipping; this can also be viewed in the frequency domain with FFT, where there are barely any visible signs of harmonic peaks around our tone frequency 10kHz that we send for the sine wave. On the other hand, as we increase the amplitude to 3V_{pp}, the signal clipping (for more details of clipping visit Voltage vs Power section), and as the signal clip the bottom half of it look like a square waves, square wave in frequency domain have harmonic spikes around the tone frequency, thus we can see the output clearly display that harmonicity around our frequency of interest (i.e., 10kHz). This behavior comes back to the idea that our voltage range is out of range for linear characterization (Voltage vs Power); thus, we want to choose a correct voltage range when working through this, ensuring the system is Linear Time Invariance (LTI). 
+The figure results feature two scenarios for different voltage amplitudes, $$ 1V_{pp} $$ and $$ 3V_{pp} $$, with a fixed DC offset of 8.5V and a frequency of 10kHz for the rectangular LED. Using the FFT mode in the oscilloscope, we can see that at 1V_{pp}, in ch2 the photo-detector can receive a signal without clipping; this can also be viewed in the frequency domain with FFT, where there are barely any visible signs of harmonic peaks around our tone frequency 10kHz that we send for the sine wave. On the other hand, as we increase the amplitude to 3V_{pp}, the signal clipping (for more details of clipping visit Voltage vs Power section), and as the signal clip the bottom half of it look like a square waves, square wave in frequency domain have harmonic spikes around the tone frequency, thus we can see the output clearly display that harmonicity around our frequency of interest (i.e., 10kHz). This behavior comes back to the idea that our voltage range is out of range for linear characterization (Voltage vs Power); thus, we want to choose a correct voltage range when working through this, ensuring the system is Linear Time Invariant (LTI). 
  
+## Frequency Response 
+The goal for this section is to characterize the frequency response of our hardware component. In other words, we want to characterize what the sine-sweep signal's frequency response looks like when we use the low-pass filter (LPF) and DC Block to capture the output from the photodetector. This gives us insight into the frequency characteristics. The setup for this section will be the same as in the previous section; one notable difference is that we will use the Radio Frequency (RF) channel on the oscilloscope to measure the frequency response. 
+
+But to intuitively understand the later observation from this section, we can trace back to signal and system concepts. Let's say our FG input sine-sweep as x(t), and the output signal received from photo-detector to be y(t), and in the process x(t) went through 3 different filters: h_1(t), h_2(t), h_3(t), to obtain y(t) where: 
+
+h_1(t): associated with the photo-detector optical lens and blue filter. 
+h_2(t): associated with the DC-Block. 
+h_3(t): associated with the LPF filter. 
+
+If we convolve them in the time domain, that means when we look at the frequency response, they're multiplied by each other in the frequency domain. 
+
+$$ x(t) * h_1(t) * h_2(t) * h_3(t) = y(t) $$ 
+$$ X[n] H_1[n] * H_2[n] H_3[n] = Y[n] $$ 
+
+
+
+**Components** 
+
