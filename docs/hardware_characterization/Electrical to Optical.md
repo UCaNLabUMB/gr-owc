@@ -91,7 +91,7 @@ The goal for this section is to ensure that there is no harmonicity within the l
 
 **Components**
 - [Same as Voltage vs Power] 
-- Mini-Circuits 15542 SLP-5+ Low Pass Filter (LPF) & Mini-Circuits DC Block 50&#937 BLK-89-S+
+- Mini-Circuits 15542 SLP-5+ Low Pass Filter (LPF) & Mini-Circuits DC Block 50&Omega BLK-89-S+
 - Other accessories (e.g., Thorlabs screws and hardware kit) 
 
 **Setup** 
@@ -107,8 +107,8 @@ Tx side:
 
 Rx side: 
 - Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; LPF & DC Block &rarr; oscilloscope input ch2. 
-- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust their Position Push to Center &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the $-V_{p}$). 
-- Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M&#937, press 2 &rarr; Coupling AC & Termination 1M$#937. 
+- To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust small knob (in Position Push to Center) &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the $-V_{p}$). 
+- Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M&Omega, press 2 &rarr; Coupling AC & Termination 1M&Omega. 
 - Press Math &rarr; FFT &rarr; FFT Source &rarr; Adjust Multipurpose a knob &rarr; Change it to ch2. 
 
 **Results** 
@@ -130,25 +130,57 @@ $h_3(t)$: associated with the LPF filter.
 
 If we **convolve** them in the time domain, that means when we look at the frequency response, they're **multiplied** by each other in the frequency domain. 
 
-$$ x(t) * h_1(t) * h_2(t) * h_3(t) = y(t) $$ 
-$$ X[n] H_1[n] H_2[n] H_3[n] = Y[n] $$ 
+$$ y(t) = x(t) * h_1(t) * h_2(t) * h_3(t) $$ 
+$$  Y(f) = X(f) H_1(f) H_2(f) H_3(f) $$ 
 
 ![Figure 6: signal process](/docs/hardware_characterization/Images/signal_process.png)
 
-Because we are sending the same 8.5V $DC_{offset}$ and $1V_{pp}$ or $ 0.5 V_{p} $ (i.e., Voltage and Power) for the sine sweep, our input signal is: 
+Because we are sending the same $8.5V DC_{offset}$ and $1V_{pp}$ or $0.5V_{p}$ (i.e., Voltage and Power) for the sine sweep, our input signal is: 
 
-$$ x(t) = 8.5 + 0.5sin(2pift) $$ 
+$$ x(t) = 8.5 + 0.5sin(2$\pi$ft) $$ 
 
-The optical lens and blue filter will not be mentioned, since they're physical filter components that help capture the optical wavelength more easily for power efficiency. 
+The optical lens and blue filter will not be mentioned, since they are physical filter components that help capture the optical wavelength more easily for power efficiency.
 
-On the other hand, the DC Block, as the name suggests, blocks the DC signal; we want it purely AC because we don't want the DC to introduce **distortion** and **interference**. Thus in our case, we can think of it's as a charging capacitor (i.e., DC Block have a capacitor component), when fully charged the total voltage inside the DC block reach to its steady state and is equal to the input voltage, in our case 8.5 $DC_{offset}$, thus the two cancel out and blocked the 8.5 $DC_{offset}$. 
+On the other hand, the DC Block, as the name suggests, blocks the DC signal; we want it purely AC because we don't want the DC to introduce **distortion** and **interference**. We can think of it as a charging capacitor (i.e., the DC Block has a capacitor component) — when fully charged, the voltage across the capacitor reaches steady state and equals the input voltage (8.5V DC offset), so the two cancel out, blocking the DC offset. 
 
-In addition, since higher frequencies just appear to have white noise, we filtered our signal using an LPF, the LPF we used in this section has a cutoff frequency at ~5 MHz, thus when we observed the output signal, it is:
+Another way to think of it is as an RL high-pass filter, since the transfer function of an RL high-pass filter is typically: 
 
-$$ y(t) = 0.5sin(2pift) $$
+$$ |H(f)| = \left|\frac{V_o}{V_i}\right| = \frac{1}{\sqrt{1 + \left(\dfrac{R}{2\pi f L}\right)^2}} $$
+
+Our DC offset component has a frequency of 0 Hz, which results in zero gain in the transfer function.
+
+In addition, since higher frequencies appear only as white noise, we filtered the signal using an LPF with a cutoff frequency of ~5 MHz. Thus, the observed output signal is:
+
+$$ y(t) = 0.5\sin(2\pi f t) $$
 
 The images above sum up the frequency response as well as the signal-in-time characteristics that we mentioned. 
 
 
 **Components** 
+- [Same as Linearity Check] 
 
+**Setup**
+
+The setup is based on the previous Linearity Check section. But now, we disabled ch1 and ch2 and used the RF channel, which helps us determine the frequency response of the output signal. To get the frequency response, we will use the **Max Hold** function in the oscilloscope, which continuously captures and retains the maximum amplitude (power) reached at each frequency over multiple sweeps.
+
+![Figure 7: Physical setup](/docs/hardware_characterization/Images/section4_setup.png)
+
+Tx side: 
+- [Same as Voltage vs Power]
+- Press on Waveforms &rarr; sine. 
+- Press on Sweep &rarr; Start Freq (e.g., 100 Hz) &rarr; Stop Freq (e.g., 10 MHz) &rarr; Sweep Time (e.g., 10s) &rarr; Output On. 
+- Press on 1 &rarr; Output On. 
+
+Rx side: 
+- Turn on the photo-detector, with lens and filter included; use a BNC cable to connect the photo-detector output &rarr; oscilloscope input RF. 
+- Press on RF &rarr; Spectrum Traces &rarr; Normal On &rarr; Average16 Off &rarr; Max Hold On &rarr; Min Hold Off. 
+- Press on Freq/Span &rarr; adjust Center Frequency (e.g., 6.5 MHz) &rarr; adjust Span (e.g., 13 MHz) (i.e., the start should be at 0 Hz and the stop should be close to FG Stop Freq). 
+- Press Save.
+
+**Results** 
+
+![Figure 8: Frequency Response](/docs/hardware_characterization/Images/Frequency_response.png)
+
+From the figure, the result correlates with our analysis above: the low-pass filter is doing its job, with the response starting to roll off around $f_c \approx 6\text{ MHz}$. The frequency response was swept from 0 Hz to 13 MHz (CF 6.5 MHz, span 13.0 MHz, RBW 100 kHz). Beyond ~7 MHz, the trace drops into the noise floor, confirming the filter attenuates frequencies past the cutoff.
+
+We can also argue that the oscilloscope and environmental factors reduced our voltage when we look at power in dBm. In the plot, marker R reads −20.0 dBm at 2.76 MHz, and a second marker reads −49.6 dBm at 5.51 MHz — well past the point where attenuation begins.
