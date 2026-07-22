@@ -131,13 +131,13 @@ $h_3(t)$: associated with the LPF filter.
 If we **convolve** them in the time domain, that means when we look at the frequency response, they're **multiplied** by each other in the frequency domain. 
 
 $$ y(t) = x(t) * h_1(t) * h_2(t) * h_3(t) $$ 
-$$  Y(f) = X(f) H_1(f) H_2(f) H_3(f) $$ 
+$$ Y(f) = X(f) \cdot H_1(f) \cdot H_2(f) \cdot H_3(f) $$ 
 
 ![Figure 6: signal process](/docs/hardware_characterization/Images/signal_process.png)
 
 Because we are sending the same $8.5V DC_{offset}$ and $1V_{pp}$ or $0.5V_{p}$ (i.e., Voltage and Power) for the sine sweep, our input signal is: 
 
-$$ x(t) = 8.5 + 0.5sin(2$\pi$ft) $$ 
+$$ x(t) = 8.5 + 0.5\sin(2\pi f t) $$ 
 
 The optical lens and blue filter will not be mentioned, since they are physical filter components that help capture the optical wavelength more easily for power efficiency.
 
@@ -153,7 +153,7 @@ In addition, since higher frequencies appear only as white noise, we filtered th
 
 $$ y(t) = 0.5\sin(2\pi f t) $$
 
-The images above sum up the frequency response as well as the signal-in-time characteristics that we mentioned. 
+The image above sum up the frequency response as well as the signal-in-time characteristics that we mentioned. 
 
 
 **Components** 
