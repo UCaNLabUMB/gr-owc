@@ -2,7 +2,7 @@
 This document explains the process of configuring the Analog Discovery (AD) Board 2 & 3 as a transmitter and receiver for a Visible Light Positioning (VLP) system within
 our overall Optical Wireless Communication (OWC) framework.
 
-The software installation to run the AD 2 & 3 board can be found in [Hardware Setup]((https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc/docs/Hardware_Setup/README_ADB.md).
+The software installation to run the AD 2 & 3 board can be found in [Hardware Setup](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc/docs/Hardware_Setup/README_ADB.md).
 
 ## Transmitter
 The goal is to use AD2 or AD3 to transmit a floating single-tone frequency using GNU Radio, an open-source tool for software-defined radios (SDRs), along with the
