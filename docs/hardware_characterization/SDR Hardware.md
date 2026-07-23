@@ -70,4 +70,7 @@ To receive the signal on the Raspberry Pi, we used the AD2 Analog Record Source 
 
 **Results** 
 
+![Figure 4: OWC_Rx Result](/docs/hardware_characterization/Images/OWC_Rx_result.png)
+
+As discussed, when running the GNURadio flowgraph (i.e., the block diagrams above), we observe harmonic spikes at $\pm 100\text{kHz}$. This confirms that our hardware is correctly receiving the transmitted signal from the FG. 
 
