@@ -2,7 +2,7 @@
 This document explains the process of configuring the Analog Discovery (AD) Board 2 & 3 as a transmitter and receiver for a Visible Light Positioning (VLP) system within
 our overall Optical Wireless Communication (OWC) framework.
 
-The software installation to run the AD 2 & 3 board can be found in [Hardware Setup](Hardware_Setup/README_ADB.md)
+The software installation to run the AD 2 & 3 board can be found in [Hardware Setup](/docs/Hardware_Setup/README_ADB.md)
 
 ## Transmitter
 The goal is to use AD2 or AD3 to transmit a floating single-tone frequency using GNU Radio, an open-source tool for software-defined radios (SDRs), along with the
@@ -31,7 +31,7 @@ $$ V_p = A_{hw} \cdot A_{sig} \leq A_{hw} $$
 
 where $A_{hw}$ is the hardware amplitude and $A_{sig}$ is the signal source amplitude. The hardware amplitude acts as the upper limit: for example, setting the signal source to 3V with a hardware amplitude of 5V would give $3\text{V} \times 5\text{V} = 15\text{V}$, which exceeds the hardware limit and clips the sine wave, something we want to avoid. In addition, the sampling rate ($f_s$) defines the frequency band within which we can send our tone frequency, based on the Nyquist theorem:
 
-$$ f_N = \pm \frac{f_s}{2} $
+$$ f_N = \pm \frac{f_s}{2} $$
 
 ![Figure 1: OWC_RandomSignal](/docs/hardware_characterization/Images/OWC_RandomSignal.png)
 
@@ -63,6 +63,10 @@ This section describes the configuration to use AD2 or AD3 as receiver hardware.
 - Turn on FG &rarr; Press 1 (for channel 1) &rarr; Press on Parameter &rarr; change frequency (e.g., 1kHz), amplitude (e.g., 1 $V_{pp}$), offset (e.g., 0 V).
 - Press on Waveforms &rarr; sine. 
 - Press 1 &rarr; Output On. 
+
+To receive the signal on the Raspberry Pi, we used the AD2 Analog Record Source block. The range setting in the block needs to match the amplitude (e.g., $5\,V_{pp}$) set on the Function Generator (FG). In addition, since we wanted a clear visualization of the signal in the frequency domain in the GNU Radio flowgraph, we also adjusted the frequency of the sine wave to 100 kHz. To visualize this, we used a QT GUI Sink block with FFT size embedded. Since the FG sends a real sine wave signal, what we will see are mirrored spikes at $\pm 100\text{kHz}$.
+
+![Figure 3: OWC_Rx](/docs/hardware_characterization/Images/OWC_Rx.png)
 
 **Results** 
 
