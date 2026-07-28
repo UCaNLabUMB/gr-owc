@@ -79,12 +79,13 @@ The `gr-owc` module includes the following implemented blocks:
 
 # Chapters
 
-| Chapter | Topic                | Summary                                                                                                               |
-|---------|-----------------------|-----------------------------------------------------------------------------------------------------------------------|
-| 1       | Background            | Overview of Software Defined Radio and an introduction to `gr-owc`, including its motivation and role in OWC.         |
-| 2       | Channel Modeling      | Different channel modeling approaches for OWC, including their characteristics, types, and applications in various OWC scenarios. |
-| 3       | SDR; OWC Hardware     | Detailed analysis of hardware components and their characteristics used for OWC, such as Transmitter, Receiver, USRP, and their suitability for OWC. |
-| 4       | Modulator & Demodulator | Modulation and demodulation techniques supported by `gr-owc`, along with their applications and implementation considerations. |
+| Chapter | Topic | Summary |
+| --- | --- | --- |
+| 1    | [Background](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Chapters/gr_owc_Overview.md)  | Overview of Software Defined Radio and an introduction to `gr-owc`, including its motivation and role in OWC.         |
+| 2    | Setup/Installation    | Installation instructions for GNURadio and for setting up gr-owc.         |
+| 3    | Channel Modeling      | Different channel modeling approaches for OWC, including their characteristics, types, and applications in various OWC scenarios. |
+| 4    | SDR; OWC Hardware     | Detailed analysis of hardware components and their characteristics used for OWC, such as Transmitter, Receiver, USRP, and their suitability for OWC. |
+| 5    | Modulator & Demodulator | Modulation and demodulation techniques supported by `gr-owc`, along with their applications and implementation considerations. |
 
 ---
 
