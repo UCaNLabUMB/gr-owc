@@ -3,16 +3,16 @@ GNURadio out-of-tree (OOT) module for optical wireless communications.
 
 * **Contact:** Dr. Michael Rahaim (<Michael.Rahaim@umb.edu>) from The Ubiquitous Communications and Networking Lab ([UCaN Lab](https://www.umb.edu/ucanlab)), University of Massachusetts, Boston.
 
-<a href="https://zenodo.org/badge/latestdoi/323626297"><img src="https://zenodo.org/badge/323626297.svg" alt="DOI"></a>
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20025685.svg)](https://doi.org/10.5281/zenodo.20025685)
 
 `gr-owc` is a GNU Radio Out-Of-Tree (OOT) module designed for Optical Wireless Communication (OWC). It provides a comprehensive suite of signal processing blocks designed to enable efficient experimentation, research, and development of optical wireless systems within the GNU Radio. The ‘gr-owc’ module covers OWC channel simulation, modulation and demodulation techniques, and other essential components. We describe how these blocks can also be implemented in physical systems using Software Defined Radio (SDR) hardware. 
 
 **Note:** gr-owc is compatible with GNU Radio v3.10. For GNU Radio v3.8, refer to [gr-owc_v3.8](https://github.com/UCaNLabUMB/gr-owc/releases/tag/v1.1.0). 
 
 # Directory Structure
-* **docs/gr-owc:Documentation:** Contains documentation of gr-owc blocks and chapters; offers a step-by-step overview of gr-owc.
+* **docs:** Contains markdown file documentation for individual gr-owc blocks and gr-owc tutorial chapters along with default doxygen documentation from GNURadio's module creation.
 * **examples:** Example GNURadio flowgraphs for demonstrating gr-owc usage.
-* **grc:** .yml files of gr-owc blocks. It allows interconnection of OWC blocks within the GRC environment.
+* **grc:** .yml files for the gr-owc blocks (to define block representation within GNURadio Companion).
 * **lib, include:** C++ and C++ w/ Volk implemeted gr-owc blocks
 * **python:** Python implemented gr-owc blocks and QA test code.
 * **Install_gr-owc.sh:** Script file to install gr-owc in GNURadio Companion.
@@ -53,7 +53,7 @@ Alternatively, to download the repository and install, follow the steps below:
 1. Open gnuradio-companion and you should find a module for gr-owc
 
 The gr-owc blocks will be available under the `owc` drop down in the block library:
-![gr-owc in GRC](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Images/gr-owc_in_GRC.png)
+![gr-owc in GRC](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Images/gr-owc_in_GRC.png)
 
 
 # gr-owc Blocks
@@ -62,18 +62,18 @@ The `gr-owc` module includes the following implemented blocks:
 
 | Sl No. | Block Name | Description |
 |--------|------------|-------------|
-| 1 | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/OWC_Channel_Model(Relative).md) | Models the optical channel using relative positioning between transmitter and receiver. |
-| 2 | [OWC_Channel_Block(Absolute)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/OWC_Channel_Block(Absolute).md) | Models the optical channel using absolute coordinates. |
-| 3 | [OOK_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/OOK_Modulator.md) | Implements On-Off Keying (OOK) modulation. |
-| 4 | [OOK_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/OOK_Demodulator.md) | Recovers binary data from OOK signals. |
-| 5 | [PAM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/PAM_Modulator.md) | Implements Pulse Amplitude Modulation (PAM). |
-| 6 | [PAM_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/PAM_Demodulator.md) | Recovers symbols from PAM signals using amplitude detection. |
-| 7 | [VPPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/VPPM_Modulator.md) | Implements Variable Pulse Position Modulation (VPPM). |
-| 8 | [VPPM_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/VPPM_Demodulator.md) | Recovers binary symbols by detecting pulse position in VPPM signals. |
-| 9 | [PPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/PPM_Modulator.md) | Implements Pulse Position Modulation (PPM). |
-| 10 | [PPM_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/PPM_Demodulator.md) | Recovers symbols by detecting pulse position in PPM signals. |
-| 11 | [LED_Nonlinearity](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/LED_Nonlinearity.md) | Models LED non-linear behavior in optical systems. |
-| 12 | [Hermitian Symmetry (Same Vec Size I/O)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/gr-owc%20Documentation/Blocks/Hermitian_Symmetry_i_o_same_vec_size.md) | Ensures Hermitian symmetry in FFT vectors. |
+| 1 | [OWC_Channel_Block(Relative)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/OWC_Channel_Model(Relative).md) | Models the optical channel using relative positioning between transmitter and receiver. |
+| 2 | [OWC_Channel_Block(Absolute)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/OWC_Channel_Block(Absolute).md) | Models the optical channel using absolute coordinates. |
+| 3 | [OOK_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/OOK_Modulator.md) | Implements On-Off Keying (OOK) modulation. |
+| 4 | [OOK_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/OOK_Demodulator.md) | Recovers binary data from OOK signals. |
+| 5 | [PAM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/PAM_Modulator.md) | Implements Pulse Amplitude Modulation (PAM). |
+| 6 | [PAM_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/PAM_Demodulator.md) | Recovers symbols from PAM signals using amplitude detection. |
+| 7 | [VPPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/VPPM_Modulator.md) | Implements Variable Pulse Position Modulation (VPPM). |
+| 8 | [VPPM_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/VPPM_Demodulator.md) | Recovers binary symbols by detecting pulse position in VPPM signals. |
+| 9 | [PPM_Modulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/PPM_Modulator.md) | Implements Pulse Position Modulation (PPM). |
+| 10 | [PPM_Demodulator](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/PPM_Demodulator.md) | Recovers symbols by detecting pulse position in PPM signals. |
+| 11 | [LED_Nonlinearity](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/LED_Nonlinearity.md) | Models LED non-linear behavior in optical systems. |
+| 12 | [Hermitian Symmetry (Same Vec Size I/O)](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Blocks/Hermitian_Symmetry_i_o_same_vec_size.md) | Ensures Hermitian symmetry in FFT vectors. |
 
 ---
 
@@ -97,10 +97,10 @@ The `gr-owc` module includes the following implemented blocks:
 
 ---
 
-# Developer
+# Developers
 
 - **Name**: Kunal P Sangurmath  
-- **University**: University of Massachusetts Boston  
-- **Email**: sangurmathkunal@gmail.com / k.sangurmath001@umb.edu  
+- **Contributions**: Updates for GNURadio V3.10. Performance characterization and block improvements. 
 
-**Note**: This work is an extension of the original code developed by Arsalan Ahmed(<arsalanqasimahmed@gmail.com>) for GNURadio v3.8.
+- **Name**: Arsalan Ahmed  
+- **Contributions**: Initial development for GNURadio V3.8. 
