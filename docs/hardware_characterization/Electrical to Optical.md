@@ -7,7 +7,7 @@ The goal of this section is to identify the ideal operating voltage range of the
 **Components** 
 - Keysight U8002A Single Output DC Power Supply (0–30 V, 5 A)
 - ExTech Instruments Datalogging Light Meter with Cosine Corrector
-- Small LED panel (e.g., cirlce, rectangular, etc.)
+- Small LED panel (e.g., circle, rectangular, etc.)
 - Male (M) BNC dual binding posts, male-to-male (M-M) BNC cable, male-to-female (M-F) BNC adapter, female (F) jumper wires with female (F) BNC cable
 -  Other accessories (e.g., Thorlabs screws and hardware kit) 
 
@@ -49,7 +49,7 @@ To compare the transmitted and received signals, observe both the original elect
 - Tektronix MDO3014 Mixed Domain Oscilloscope
 - Keysight 33500B Series Waveform Generator 
 - Thorlabs ADP120A2 Photo-detector, optical lens & blue filter
-- Small LED panel (e.g., cirlce, rectangular, etc.)
+- Small LED panel (e.g., circle, rectangular, etc.)
 - **2 male-to-male (M-M) BNC cable**, male-to-female (M-F) BNC adapter, female (F) jumper wires with female (F) BNC cable
 - Other accessories (e.g., Thorlabs screws and hardware kit) 
 
@@ -64,7 +64,7 @@ The voltage amplitude, and offset for our signal, already had been discussed abo
 
 Tx side: 
 - Use the BNC cable to connect the Function Generator (FG) input Ch1 &rarr; LED male jumping wires. 
-- Use the BNC cabe connect FG input ch2 &rarr; oscilloscope input ch1 (input signal). 
+- Use the BNC cable connect FG input ch2 &rarr; oscilloscope input ch1 (input signal). 
 - Turn on FG, press 1 (for channel 1) &rarr; Output Load &rarr; Set To High Z &rarr; More &rarr; Dual Channel &rarr; Tracking &rarr; Identical &rarr; Done. 
 - Press on Parameter &rarr; change frequency (e.g., 10kHz), amplitude (e.g., 1 $V_{pp}$), offset (e.g., 8.5 V).
 - Press on Waveforms &rarr; sine, ramp, etc. (i.e., in the results, we used ramp because it provides a sharper cutoff, which is more ideal to demonstrate the linearity of the LED). 
@@ -88,14 +88,14 @@ The results reveal two scenarios for the ch2 signal: clipping and non-clipping. 
 
 Additionally, the XY plot demonstrates both linear and non-linear responses for the corresponding input signal voltage amplitudes as we vary them (see the figure above). This correlates with the data we have collected and observed concerning the linear characteristics of the LED in the voltage versus lux section.
 
-## Linearty Check 
+## Linearity Check 
 The goal for this section is to ensure that there is no harmonicity within the linear voltage range that we have, since harmonics in the frequency domain mean our signals are clipped in the time domain (i.e., since clipped signals look like square waves, and square waves in frequency introduce harmonic spikes), this is bad because it could lead to signal **distortion** and **interference**. For this section, we want to send a sine wave rather than a ramp wave because a sine wave is a deterministic signal ideal for a real-life scenario. The experiment in this section will use the same setup with small changes to the BNC cable from the previous section, and use the math function of the Fast-Fourier-Transform (FFT) in the oscilloscope to convert our time-varying sine wave into the frequency domain.
 
 **Components**
 - Tektronix MDO3014 Mixed Domain Oscilloscope
 - Keysight 33500B Series Waveform Generator 
 - Thorlabs ADP120A2 Photo-detector, optical lens & blue filter
-- Small LED panel (e.g., cirlce, rectangular, etc.)
+- Small LED panel (e.g., circle, rectangular, etc.)
 - **2 male-to-male (M-M) BNC cable**, male-to-female (M-F) BNC adapter, female (F) jumper wires with female (F) BNC cable, **male (M) BNC connector**, and **female (F) BNC connector** 
 - **Mini-Circuits 15542 SLP-5+ Low Pass Filter (LPF)** & **Mini-Circuits DC Block 50&Omega BLK-89-S+**
 - Other accessories (e.g., Thorlabs screws and hardware kit) 
@@ -108,7 +108,7 @@ The setup is the same as in the Voltage vs Power section, with the addition of a
 
 Tx side: 
 - Use the BNC cable to connect the Function Generator (FG) input Ch1 &rarr; LED male jumping wires. 
-- Use the BNC cabe connect FG input ch2 &rarr; oscilloscope input ch1 (input signal). 
+- Use the BNC cable connect FG input ch2 &rarr; oscilloscope input ch1 (input signal). 
 - Turn on FG, press 1 (for channel 1) &rarr; Output Load &rarr; Set To High Z &rarr; More &rarr; Dual Channel &rarr; Tracking &rarr; Identical &rarr; Done. 
 - Press on Parameter &rarr; change frequency (e.g., 10kHz), amplitude (e.g., 1 $V_{pp}$), offset (e.g., 8.5 V).
 - Press on Waveforms &rarr; sine 
@@ -118,7 +118,9 @@ Rx side:
 - Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; LPF & DC Block &rarr; oscilloscope input ch2. 
 - To ensure the 2 signals are center in oscilloscope, adjust the Scale &rarr; press 1 & 2 and adjust small knob (in Position Push to Center) &rarr; Menu (in trigger setting) &rarr; Source select 1 or 2 &rarr; Force Trig &rarr; adjust the Level knob (i.e., if Source 1, the horizontal level at the middle of ch1 signal, if Source 2, the horizontal level at the $-V_{p}$). 
 - Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M$\Omega$, press 2 &rarr; Coupling AC & Termination 1M$\Omega$. 
-- Press Math &rarr; FFT &rarr; FFT Source &rarr; Adjust Multipurpose a knob &rarr; Change it to ch2. 
+- Press Math &rarr; FFT &rarr; FFT Source &rarr; Adjust Multipurpose a knob &rarr; Change it to ch2.
+- Press Menu (in Save/Recall setting) &rarr; Assign Save to All &rarr; Image, Waveform, and Setup &rarr; Menu Off.
+- Press Save (in Save/Recall setting). 
 
 **Results** 
 
@@ -176,7 +178,7 @@ The setup is based on the previous Linearity Check section. But now, we disabled
 
 Tx side: 
 - Use the BNC cable to connect the Function Generator (FG) input Ch1 &rarr; LED male jumping wires. 
-- Use the BNC cabe connect FG input ch2 &rarr; oscilloscope input ch1 (input signal). 
+- Use the BNC cable connect FG input ch2 &rarr; oscilloscope input ch1 (input signal). 
 - Turn on FG, press 1 (for channel 1) &rarr; Output Load &rarr; Set To High Z &rarr; More &rarr; Dual Channel &rarr; Tracking &rarr; Identical &rarr; Done. 
 - Press on Parameter &rarr; change frequency (e.g., 10kHz), amplitude (e.g., 1 $V_{pp}$), offset (e.g., 8.5 V).
 - Press on Waveforms &rarr; sine. 
@@ -187,7 +189,8 @@ Rx side:
 - Turn on the photo-detector, with lens and filter included; use a BNC cable to connect the photo-detector output &rarr; oscilloscope input RF. 
 - Press on RF &rarr; Spectrum Traces &rarr; Normal On &rarr; Average16 Off &rarr; Max Hold On &rarr; Min Hold Off. 
 - Press on Freq/Span &rarr; adjust Center Frequency (e.g., 6.5 MHz) &rarr; adjust Span (e.g., 13 MHz) (i.e., the start should be at 0 Hz and the stop should be close to FG Stop Freq). 
-- Press Save.
+- Press Menu (in Save/Recall setting) &rarr; Assign Save to All &rarr; Image, Waveform, and Setup &rarr; Menu Off.
+- Press Save (in Save/Recall setting). 
 
 **Results** 
 
@@ -198,19 +201,42 @@ From the figure, the result correlates with our analysis above: the low-pass fil
 We can also argue that the oscilloscope and environmental factors reduced our voltage when we look at power in dBm. In the plot, marker R reads −20.0 dBm at 2.76 MHz, and a second marker reads −49.6 dBm at 5.51 MHz — well past the point where attenuation begins.
 
 ## Transmitter/Receiver Emission Pattern [OPTIONAL] 
-The goal for this section is to characterize the transmission and receiving emission angles from our devices (i.e., photo-detector, LED panel). By doing this, we can understand and improve the coverage of our LED and photo-detector positions, and ensure that the system we build always operates and accounts for the optimal transmission and receiving coverage. In this section, we will used the mannual rotation to record the desired angles for our setup, just like previous section, we just characterize the rectangle LED panel. 
+The goal for this section is to characterize the transmission and receiving emission angles from our devices (i.e., photo-detector, LED panel). By doing this, we can understand and improve the coverage of our LED and photo-detector positions, and ensure that the system we build always operates and accounts for the optimal transmission and receiving coverage. In this section, we will used the manual rotation to record the desired angles for our setup, just like previous section, we just characterize the rectangle LED panel. 
 
 **Components** 
 - Tektronix MDO3014 Mixed Domain Oscilloscope
 - Keysight 33500B Series Waveform Generator 
 - Thorlabs ADP120A2 Photo-detector, optical lens & blue filter
-- Small LED panel (e.g., cirlce, rectangular, etc.)
+- Small LED panel (e.g., circle, rectangular, etc.)
 - **2 male-to-male (M-M) BNC cable**, male-to-female (M-F) BNC adapter, female (F) jumper wires with female (F) BNC cable, **male (M) BNC connector**, and **female (F) BNC connector** 
 - **Mini-Circuits 15542 SLP-5+ Low Pass Filter (LPF)** & **Mini-Circuits DC Block 50&Omega BLK-89-S+**
-- Thorlabs RP005 Mannual Rotation Stages 
+- Thorlabs RP005 Manual Rotation Stages 
 - Other accessories (e.g., Thorlabs screws and hardware kit)
 
 **Setup** 
+The setup is basically the same as the previous section, with the addition of manual rotation stages that enable us to record the voltage differences for the different angles that we want to observe. The two scenarios we want to observe are the angle vs voltage at the transmitter (i.e., LED panel): what happens if the receiver is fixed and the transmitter is rotated. And when the receiver (i.e., Photo-detector) is rotated, and the transmitter is fixed. The figure below will show how we use Thorlabs equipment to connect the manual rotation stages in our already established setup from the previous section; thus, we will not include its description in the setup.
 
+![Figure 9: Physical setup](/docs/hardware_characterization/Images/section5_setup.png)
 
-Tx side: 
+Tx side:
+- Use the BNC cable to connect the Function Generator (FG) input Ch1 &rarr; LED male jumping wires. 
+- Use the BNC cable connect FG input ch2 &rarr; oscilloscope input ch1 (input signal). 
+- Turn on FG, press 1 (for channel 1) &rarr; Output Load &rarr; Set To High Z &rarr; More &rarr; Dual Channel &rarr; Tracking &rarr; Identical &rarr; Done. 
+- Press on Parameter &rarr; change frequency (e.g., 10kHz), amplitude (e.g., 1 $V_{pp}$), offset (e.g., 8.5 V).
+- Press on Waveforms &rarr; square.
+- Press on 1 & 2 &rarr; Output On. 
+- [Rotate the manual rotation stages & record the angle] 
+
+Rx side: 
+- Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; oscilloscope input ch2 (output signal received). 
+- Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1M$\Omega$, press 2 &rarr; Coupling AC & Termination 1M$\Omega$. 
+- Press Acquire &rarr; Mode &rarr; High Res. 
+- Press Measure (in Wave Inspector setting) &rarr; Add Measurement &rarr; adjust Source to ch2 &rarr; Select RMS. 
+- Adjust the Multipurpose a/b and record the $V_{p}$ & record $V_{rms}$
+- [Rotate the manual rotation stages & record the angle] 
+
+**Results** 
+
+![Figure 9: Transmitter/Receiver Emission](/docs/hardware_characterization/Images/TransmitterReceiver_Emission.png)
+
+After rotating and manually recording the angle between 0 and 100 degrees, we can see that the RMS and peak voltages are drastically decreasing for both the transmitter and receiver. This gives us the rotation angle we need to account for in our future testbed's framework setup if we incorporate the VLP into the overall system. For more interesting information, a 360-degree view could be interesting, and we can also try with different filters and lenses on the receiver (i.e., photo-detector) side.  
