@@ -7,7 +7,7 @@ GNURadio out-of-tree (OOT) module for optical wireless communications.
 
 `gr-owc` is a GNU Radio Out-Of-Tree (OOT) module designed for Optical Wireless Communication (OWC). It provides a comprehensive suite of signal processing blocks designed to enable efficient experimentation, research, and development of optical wireless systems within the GNU Radio. The ‘gr-owc’ module covers OWC channel simulation, modulation and demodulation techniques, and other essential components. We describe how these blocks can also be implemented in physical systems using Software Defined Radio (SDR) hardware. 
 
-**Note:** gr-owc is compatible with GNU Radio v3.10. For GNU Radio v3.8, refer to [gr-owc_v3.8](https://github.com/UCaNLabUMB/gr-owc/releases/tag/v1.1.0). 
+
 
 # Directory Structure
 * **docs:** Contains markdown file documentation for individual gr-owc blocks and gr-owc tutorial chapters along with default doxygen documentation from GNURadio's module creation.
@@ -19,41 +19,9 @@ GNURadio out-of-tree (OOT) module for optical wireless communications.
 
 # Installation
 
-This installation guide assumes that GNURadio v3.10 has been installed. gr-owc can be installed using either of the following methods:
-* **Install via Install_gr-owc.sh:** Automates installation of gr-owc in GNURadio.
-* **Basic Installation:** Download this repository and use _make_ to install the gr-owc library in an existing GNURadio prefix.
+**Note:** gr-owc is compatible with GNU Radio v3.10. For GNU Radio v3.8, refer to [gr-owc_v3.8](https://github.com/UCaNLabUMB/gr-owc/releases/tag/v1.1.0). 
 
-
-
-## Install via Install_gr-owc.sh (SUGGESTED)
-For this, follow the steps below:
-
-1. Download **only** the [Install_gr-owc.sh](https://github.com/UCaNLabUMB/gr-owc/blob/main/Install_gr-owc.sh)
-2. In the downloaded script directory, open terminal. Give executable permission for script file `chmod +x ./Install_gr-owc.sh`
-3. Execute scrpit file `./Install_gr-owc.sh`
-   * (There should be no failure displayed)
-4. Open `gnuradio-comapanion` and you should find a module for gr-owc
-   
-
-
-## Basic Installation
-Alternatively, to download the repository and install, follow the steps below:
-
-1. Download this repository by cloning with git clone (url)
-1. In a terminal, cd to the gr-owc directory
-1. Create a build directory with `mkdir build` and move into the directory with `cd build`
-1. Make sure to source the desired GNURadio prefix
-1. Run `cmake ../` from the build directory
-   * (the path to the sourced GNURadio installation would be found automatically)
-1. Run `make`
-1. Test the build with `make test` 
-   * (there shouldn't be any failures)
-1. Install with `make install`
-1. Configure your linker/debugger with `sudo ldconfig`
-1. Open gnuradio-companion and you should find a module for gr-owc
-
-The gr-owc blocks will be available under the `owc` drop down in the block library:
-![gr-owc in GRC](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Images/gr-owc_in_GRC.png)
+If you're already familiar with GNURadio, you can jump directly to the [Installation Instructions](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Chapters/gr_owc_Install.md).
 
 
 # gr-owc Blocks
@@ -82,7 +50,7 @@ The `gr-owc` module includes the following implemented blocks:
 | Chapter | Topic | Summary |
 | --- | --- | --- |
 | 1    | [Background](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Chapters/gr_owc_Overview.md)  | Overview of Software Defined Radio and an introduction to `gr-owc`, including its motivation and role in OWC.         |
-| 2    | Setup/Installation    | Installation instructions for GNURadio and for setting up gr-owc.         |
+| 2    | [Setup and Installation](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Chapters/gr_owc_Install.md)     | Installation instructions for GNURadio and gr-owc.         |
 | 3    | Channel Modeling      | Different channel modeling approaches for OWC, including their characteristics, types, and applications in various OWC scenarios. |
 | 4    | SDR; OWC Hardware     | Detailed analysis of hardware components and their characteristics used for OWC, such as Transmitter, Receiver, USRP, and their suitability for OWC. |
 | 5    | Modulator & Demodulator | Modulation and demodulation techniques supported by `gr-owc`, along with their applications and implementation considerations. |
