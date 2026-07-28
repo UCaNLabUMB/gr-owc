@@ -1,7 +1,7 @@
-# gr-owc Background
+# gr-owc SDR Hardware
 
 ## Overview
-This chapter provides a brief introduction to Software Defined Radio (SDR) and Optical Wireless Communications (OWC) along with some motivation for applying SDR tools and techniques to the field of OWC.
+This chapter provides an introduction to the SDR hardware used with `gr-owc`, including platform considerations, interfaces, and practical deployment aspects for optical wireless experiments.
 
 **Tutorial Video:** _Coming Soon_
 
@@ -10,11 +10,11 @@ This chapter provides a brief introduction to Software Defined Radio (SDR) and O
 _Coming Soon_
 
 
-## Software Defined Radio (SDR)
+## SDR Platforms
 _Coming Soon_
 
 
-## Optical Wireless Communications (OWC)
+## Hardware Integration
 _Coming Soon_
 
 

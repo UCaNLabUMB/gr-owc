@@ -1,7 +1,7 @@
-# gr-owc Background
+# gr-owc Hardware Characterization
 
 ## Overview
-This chapter provides a brief introduction to Software Defined Radio (SDR) and Optical Wireless Communications (OWC) along with some motivation for applying SDR tools and techniques to the field of OWC.
+This chapter describes the hardware characterization process for OWC systems, including measurement methods, analysis of system performance, and considerations for validating SDR-based implementations.
 
 **Tutorial Video:** _Coming Soon_
 
@@ -10,11 +10,11 @@ This chapter provides a brief introduction to Software Defined Radio (SDR) and O
 _Coming Soon_
 
 
-## Software Defined Radio (SDR)
+## Measurement Setup
 _Coming Soon_
 
 
-## Optical Wireless Communications (OWC)
+## Characterization Metrics
 _Coming Soon_
 
 

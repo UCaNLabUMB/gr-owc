@@ -1,7 +1,7 @@
-# gr-owc Background
+# gr-owc Channel Model
 
 ## Overview
-This chapter provides a brief introduction to Software Defined Radio (SDR) and Optical Wireless Communications (OWC) along with some motivation for applying SDR tools and techniques to the field of OWC.
+This chapter introduces the optical channel modeling concepts used in gr-owc, including propagation effects, noise, and the role of channel models in Optical Wireless Communications (OWC) system design.
 
 **Tutorial Video:** _Coming Soon_
 
@@ -10,11 +10,11 @@ This chapter provides a brief introduction to Software Defined Radio (SDR) and O
 _Coming Soon_
 
 
-## Software Defined Radio (SDR)
+## Channel Modeling Concepts
 _Coming Soon_
 
 
-## Optical Wireless Communications (OWC)
+## OWC Channel Considerations
 _Coming Soon_
 
 
