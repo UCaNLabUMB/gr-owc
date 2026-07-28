@@ -3,10 +3,10 @@ This document explains the process of understanding how we convert an analog sig
 
 In the sections below, even where not explicitly mentioned, we can explore different alternative scenarios, such as:
 
-Different LEDs
-Half optical filter (lens only)
-Blue filter only
-Rotating the photodetector or LED panel through a full 360° field of view
+- Different LEDs
+- Half optical filter (lens only)
+- Blue filter only
+- Rotating the photodetector or LED panel through a full 360° field of view
 
 
 ## Voltage vs. Flux 
