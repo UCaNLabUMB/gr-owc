@@ -5,11 +5,11 @@ GNURadio out-of-tree (OOT) module for optical wireless communications.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20025685.svg)](https://doi.org/10.5281/zenodo.20025685)
 
-`gr-owc` is a GNU Radio Out-Of-Tree (OOT) module designed for Optical Wireless Communication (OWC). It provides a comprehensive suite of signal processing blocks designed to enable efficient experimentation, research, and development of optical wireless systems within the GNU Radio. The ‘gr-owc’ module covers OWC channel simulation, modulation and demodulation techniques, and other essential components. We describe how these blocks can also be implemented in physical systems using Software Defined Radio (SDR) hardware. 
+`gr-owc` is a GNU Radio Out-Of-Tree (OOT) module designed for Optical Wireless Communication (OWC). It provides a comprehensive suite of signal processing blocks designed to enable efficient experimentation, research, and development of optical wireless systems within the GNU Radio. The 'gr-owc' module covers OWC channel simulation, modulation and demodulation techniques, and other essential components. We describe how these blocks can also be implemented in physical systems using Software Defined Radio (SDR) hardware. 
 
 
 
-# Directory Structure
+### Directory Structure
 * **docs:** Contains markdown file documentation for individual gr-owc blocks and gr-owc tutorial chapters along with default doxygen documentation from GNURadio's module creation.
 * **examples:** Example GNURadio flowgraphs for demonstrating gr-owc usage.
 * **grc:** .yml files for the gr-owc blocks (to define block representation within GNURadio Companion).
@@ -17,14 +17,15 @@ GNURadio out-of-tree (OOT) module for optical wireless communications.
 * **python:** Python implemented gr-owc blocks and QA test code.
 * **Install_gr-owc.sh:** Script file to install gr-owc in GNURadio Companion.
 
-# Installation
+### Installation
 
 **Note:** gr-owc is compatible with GNU Radio v3.10. For GNU Radio v3.8, refer to [gr-owc_v3.8](https://github.com/UCaNLabUMB/gr-owc/releases/tag/v1.1.0). 
 
 If you're already familiar with GNURadio, you can jump directly to the [Installation Instructions](https://github.com/UCaNLabUMB/gr-owc/blob/main/docs/GitHub_Documentation/Chapters/gr_owc_Install.md).
 
+---
 
-# gr-owc Blocks
+## gr-owc Blocks
 
 The `gr-owc` module includes the following implemented blocks:
 
@@ -45,7 +46,7 @@ The `gr-owc` module includes the following implemented blocks:
 
 ---
 
-# Chapters
+## Chapters
 
 | Chapter | Topic | Summary |
 | --- | --- | --- |
@@ -57,19 +58,17 @@ The `gr-owc` module includes the following implemented blocks:
 
 ---
 
-# Principal Investigator
+## Principal Investigator
 
 - **Name**: Dr. Michael B Rahaim  
 - **Title/Position**: Associate Professor  
 - **University**: University of Massachusetts Boston  
-- **Email**: michael.rahaim@umb.edu  
+- **Email**: Michael.Rahaim@umb.edu  
 
----
+## Developers
 
-# Developers
-
-- **Name**: Kunal P Sangurmath  
+- **Name**: Kunal P Sangurmath 
 - **Contributions**: Updates for GNURadio V3.10. Performance characterization and block improvements. 
 
-- **Name**: Arsalan Ahmed  
+- **Name**: Arsalan Ahmed 
 - **Contributions**: Initial development for GNURadio V3.8. 
