@@ -1,6 +1,5 @@
 # Analog Discovery Board 2 & 3
-This document explains the process of configuring the Analog Discovery (AD) Board 2 & 3 as a transmitter and receiver for a Visible Light Positioning (VLP) system within
-our overall Optical Wireless Communication (OWC) framework.
+This document explains the process of configuring the Analog Discovery (AD) Board 2 & 3 as a transmitter and receiver for a Visible Light Positioning (VLP) system within our overall Optical Wireless Communication (OWC) framework.
 
 The software installation to run the AD 2 & 3 board can be found in [Hardware Setup](/docs/Hardware_Setup/README_ADB.md)
 
