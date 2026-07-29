@@ -13,7 +13,7 @@ _Coming Soon_
 ## SDR Platforms
 The software installation to run the AD 2 & 3 board can be found in [Hardware Setup](/docs/Hardware_Setup/README_ADB.md)
 
-## Transmitter
+# Transmitter
 The goal is to use AD2 or AD3 to transmit a floating single-tone frequency using GNU Radio, an open-source tool for software-defined radios (SDRs), along with the
 `gr-ad2` repository, which contains all the necessary packages for the AD2 and AD3. This, in turn, verifies that the AD2 or AD3 can be used as a transmitting device, which later helps in the OWC development.
 
@@ -53,7 +53,7 @@ $$ f_N = \pm \frac{f_s}{2} $$
 
 When we observe the oscilloscope, we can see the sine wave signal that we remotely command the Pi to activate. The peak-to-peak voltage ($V_{pp}$) and peak voltage ($V_{p}$) match our expectations, measuring 5 $V_{pp}$ and 2.5 $V_{p}$. Additionally, by using the FFT mode in the Math function, we can analyze the frequency domain for the sine wave. In this case, based on the 12.5 kHz/div, we can see our peak around 1 kHz, which verifies that our transmitter is functioning correctly.
 
-## Receiver
+# Receiver
 This section describes the configuration to use AD2 or AD3 as receiver hardware. The process is similar to the transmitter, a few modifications need to be made inside the GNURadio block to make this work.
 
 **Components**

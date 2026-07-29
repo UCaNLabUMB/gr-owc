@@ -11,7 +11,7 @@ _Coming Soon_
 
 
 ## Measurement Setup
-## Voltage vs. Flux 
+# Voltage vs. Flux 
 The goal of this section is to identify the ideal operating voltage range of the LED panel by driving it with a DC power supply and measuring the resulting illuminance (lux) using a light meter. This experiment characterizes the linear operating voltage range of the LED panel. Operating within this range ensures that the optical wireless communication (OWC) system behaves as a linear time-invariant (LTI) system during later experiments. 
 
 **Components** 
@@ -41,8 +41,7 @@ Rx side:
 
 In this instance, we tested 2 LEDs (i.e., rectangle, circle), we can see that the turn voltage vs lux power associated with each LEDs is different, they both exibit specific turn on voltages, for rectangle LED it at ~7.8V, on the other hand the square LED need higher voltage ~9.5V to turn on, what we want to focus on is the liner characteristic voltage range of the 2 LEDs, which we can see based on the plot we obtain. 
 
-# Optical to Electrical 
-## Voltage vs. Power 
+# Voltage vs. Power 
 The goal of this section is to characterize the optical power response within the linear voltage range identified for the selected LED panel in the previous section. This experiment illustrates the relationship between the applied voltage and the received optical power for different LED panels. 
 
 From the figure above, determine an appropriate DC offset voltage (e.g., **8.5 V**) and select a suitable peak-to-peak voltage amplitude (e.g., **1 Vpp**) for Channel 1 of the function generator. This ensures that the LED operates entirely within its linear operating region. For example, using an 8.5 V DC offset and a 1 V peak-to-peak signal results in a maximum voltage of **9.5 V**, which remains within the LED's linear operating range. In general, use voltage vs lux figure to determine the maximum and minimum voltages of the LED's linear operating region. These values can then be used to calculate the voltage amplitude and DC offset using the following equations: 
@@ -98,7 +97,7 @@ The results reveal two scenarios for the ch2 signal: clipping and non-clipping. 
 
 Additionally, the XY plot demonstrates both linear and non-linear responses for the corresponding input signal voltage amplitudes as we vary them (see the figure above). This correlates with the data we have collected and observed concerning the linear characteristics of the LED in the voltage versus lux section.
 
-## Linearity Check 
+# Linearity Check 
 The goal for this section is to ensure that there is no harmonicity within the linear voltage range that we have, since harmonics in the frequency domain mean our signals are clipped in the time domain (i.e., since clipped signals look like square waves, and square waves in frequency introduce harmonic spikes), this is bad because it could lead to signal **distortion** and **interference**. For this section, we want to send a sine wave rather than a ramp wave because a sine wave is a deterministic signal ideal for a real-life scenario. The experiment in this section will use the same setup with small changes to the BNC cable from the previous section, and use the math function of the Fast-Fourier-Transform (FFT) in the oscilloscope to convert our time-varying sine wave into the frequency domain.
 
 **Components**
@@ -138,7 +137,7 @@ Rx side:
 
 The figure results feature two scenarios for different voltage amplitudes, $1V_{pp}$ and  $3V_{pp}$, with a fixed DC offset of 8.5V and a frequency of 10kHz for the rectangular LED. Using the FFT mode in the oscilloscope, we can see that at $1V_{pp}$, in ch2 the photo-detector can receive a signal without clipping; this can also be viewed in the frequency domain with FFT, where there are barely any visible signs of harmonic peaks around our tone frequency 10kHz that we send for the sine wave. On the other hand, as we increase the amplitude to $3V_{pp}$, the signal clipping (for more details of clipping visit Voltage vs Power section), and as the signal clip the bottom half of it look like a square waves, square wave in frequency domain have harmonic spikes around the tone frequency, thus we can see the output clearly display that harmonicity around our frequency of interest (i.e., 10kHz). This behavior comes back to the idea that our voltage range is out of range for linear characterization (Voltage vs Power); thus, we want to choose a correct voltage range when working through this, ensuring the system is Linear Time Invariant (LTI). 
  
-## Frequency Response 
+# Frequency Response 
 The goal for this section is to characterize the frequency response of our hardware component. In other words, we want to characterize the sine-sweep signal's frequency response when using the low-pass filter (LPF) and DC Block to capture the output from the photo-detector. This gives us insight into the frequency characteristics. The setup for this section will be the same as in the previous section; we will mainly characterize the rectangular LED. One notable difference is that we will use the Radio Frequency (RF) channel on the oscilloscope to measure the frequency response. 
 
 But to intuitively understand the later observation from this section, we can trace back to signal and system concepts. Let's say our FG input sine-sweep as x(t), and the output signal received from photo-detector to be y(t), and in the process x(t) went through 3 different filters: $h_1(t)$, $h_2(t)$, $h_3(t)$, to obtain y(t) where: 
@@ -210,7 +209,7 @@ From the figure, the result correlates with our analysis above: the low-pass fil
 
 We can also argue that the oscilloscope and environmental factors reduced our voltage when we look at power in dBm. In the plot, marker R reads −20.0 dBm at 2.76 MHz, and a second marker reads −49.6 dBm at 5.51 MHz — well past the point where attenuation begins.
 
-## Transmitter/Receiver Emission Pattern [OPTIONAL] 
+# Transmitter/Receiver Emission Pattern [OPTIONAL] 
 The goal for this section is to characterize the transmission and receiving emission angles from our devices (i.e., photo-detector, LED panel). By doing this, we can understand and improve the coverage of our LED and photo-detector positions, and ensure that the system we build always operates and accounts for the optimal transmission and receiving coverage. In this section, we will used the manual rotation to record the desired angles for our setup, just like previous section, we just characterize the rectangle LED panel. 
 
 **Components** 
