@@ -240,7 +240,7 @@ Rx side:
 - Turn on the photo-detector, with lens and filter included, use a BNC cable to connect photo-detector output &rarr; oscilloscope input ch2 (output signal received). 
 - Turn on the oscilloscope, press 1 &rarr; Coupling DC & Termination 1MΩ, press 2 &rarr; Coupling AC & Termination 1MΩ. 
 - Press Acquire &rarr; Mode &rarr; High Res. 
-- Press Measure (in Wave Inspector setting) &rarr; Add Measurement &rarr; adjust Source to ch2 &rarr; Select RMS. 
+- Press Measure (in Wave Inspector setting) &rarr; Add Measurement &rarr; adjust Source to ch2 &rarr; adjust Measurement Type to RMS. 
 - Adjust the Multipurpose a/b and record the $V_{p}$ & record $V_{rms}$
 - [Rotate the manual rotation stages & record the angle] 
 
