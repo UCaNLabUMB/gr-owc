@@ -13,7 +13,7 @@ The goal is to use AD2 or AD3 to transmit a floating single-tone frequency using
 - Raspberry Pi 4 or 5 model B
 - 5V/2.1A Battery pack
 - Digilent Adapter Board Analog Discovery BNC
-- 2 male-to-male (M-M) BNC cables
+- male-to-male (M-M) BNC cables
 - USB-A to USB Type-C cable
 
 **Setup**
@@ -52,7 +52,7 @@ This section describes the configuration to use AD2 or AD3 as receiver hardware.
 - Raspberry Pi 4 or 5 model B
 - 5V/2.1A Battery pack
 - Digilent Adapter Board Analog Discovery BNC
-- 2 male-to-male (M-M) BNC cables
+- male-to-male (M-M) BNC cables
 - USB-A to USB Type-C cable
 
 **Setup**
@@ -72,4 +72,26 @@ To receive the signal on the Raspberry Pi, we used the AD2 Analog Record Source 
 ![Figure 4: OWC_Rx Result](/docs/hardware_characterization/Images/OWC_Rx_result.png)
 
 As discussed, when running the GNURadio flowgraph (i.e., the block diagrams above), we observe harmonic spikes at $\pm 100\text{kHz}$. This confirms that our hardware is correctly receiving the transmitted signal from the FG. 
+
+
+## SDR characteristic integration
+After testing the AD2 and AD3 from the above section, we will utilize the knowledge we learned from the [Hardware_Characterization](/docs/hardware_characterization/Electrical to Optical.md) and integrate it into our overall setup for modularity, since devices such as AD2 and AD3 are easy to configure using their software Waveforms or GNURadio. 
+
+**Components**
+- Keysight 33500B Series Waveform Generator
+- 2x Digilent Analog Discovery Board 2 or 3
+- 2x Raspberry Pi 4 or 5 model B
+- 2x 5V/2.1A Battery pack
+- 2x Digilent Adapter Board Analog Discovery BNC
+- 2x male-to-male (M-M) BNC cables
+- 2x USB-A to USB Type-C cable
+- **Mini-Circuits Bias-Tee ZFBT-6GW+** 
+- **Thorlabs ADP120A2 Photo-detector, optical lens & blue filter**
+- **Small LED panel (e.g., circle, rectangular, etc.)**
+- **female (F) jumper wires with female (F) BNC cable, male (M) BNC with female (F) connector**
+- **Mini-Circuits 15542 SLP-5+ Low Pass Filter (LPF)** & **Mini-Circuits DC Block 50&Omega BLK-89-S+**
+- **Other accessories (e.g., Thorlabs screws and hardware kit)**
+
+ 
+**Setup** 
 
