@@ -17,9 +17,9 @@ The goal is to use AD2 or AD3 to transmit a floating single-tone frequency using
 - USB-A to USB Type-C cable
 
 **Setup**
-- Connect the BNC adapter board → AD3 or AD2 Board.
-- Use the M-M BNC cable to connect the output (W1) on the BNC adapter board → CH1 on the oscilloscope.
-- Connect the USB-A → RPi → AD3 or AD2 Board.
+- Connect the BNC adapter board &rarr; AD3 or AD2 Board.
+- Use the M-M BNC cable to connect the output (W1) on the BNC adapter board &rarr; CH1 on the oscilloscope.
+- Connect the USB-A &rarr; RPi &rarr; AD3 or AD2 Board.
 - On the oscilloscope, press **Math**.
 
 In GNU Radio, navigate to the designated directory in the terminal and run `OWC_RandomSignal.py` (i.e., `python3 OWC_RandomSignal.py`), or open VNC Viewer directly, connect the blocks as shown in the figure below, and run it for signal transmission (see Results section).
@@ -56,9 +56,9 @@ This section describes the configuration to use AD2 or AD3 as receiver hardware.
 - USB-A to USB Type-C cable
 
 **Setup**
-- Connect the BNC adapter board → AD3 or AD2 Board.
-- Use the M-M BNC cable to connect the output (W1) on the BNC adapter board → CH1 on the Function Generator (FG).
-- Connect the USB-A → RPi → AD3 or AD2 Board.
+- Connect the BNC adapter board &rarr; AD3 or AD2 Board.
+- Use the M-M BNC cable to connect the output (W1) on the BNC adapter board &rarr; CH1 on the Function Generator (FG).
+- Connect the USB-A &rarr; RPi &rarr; AD3 or AD2 Board.
 - Turn on FG &rarr; Press 1 (for channel 1) &rarr; Press on Parameter &rarr; change frequency (e.g., 1kHz), amplitude (e.g., 1 $V_{pp}$), offset (e.g., 0 V).
 - Press on Waveforms &rarr; sine. 
 - Press 1 &rarr; Output On. 
@@ -75,7 +75,7 @@ As discussed, when running the GNURadio flowgraph (i.e., the block diagrams abov
 
 
 ## SDR characteristic integration
-After testing the AD2 and AD3 from the above section, we will utilize the knowledge we learned from the [Hardware_Characterization](/docs/hardware_characterization/Electrical to Optical.md) and integrate it into our overall setup for modularity, since devices such as AD2 and AD3 are easy to configure using their software Waveforms or GNURadio. 
+After testing the AD2 and AD3 from the above section, we will utilize the knowledge we learned from the [Hardware Characterization](/docs/hardware_characterization/Electrical to Optical.md) and integrate it into our overall setup for modularity, since devices such as AD2 and AD3 are easy to configure using their software Waveforms or GNURadio. 
 
 **Components**
 - Keysight 33500B Series Waveform Generator
@@ -92,6 +92,31 @@ After testing the AD2 and AD3 from the above section, we will utilize the knowle
 - **Mini-Circuits 15542 SLP-5+ Low Pass Filter (LPF)** & **Mini-Circuits DC Block 50&Omega BLK-89-S+**
 - **Other accessories (e.g., Thorlabs screws and hardware kit)**
 
- 
 **Setup** 
 
+Tx side: 
+- Connect the BNC adapter board &rarr; AD3 or AD2 Board.
+- Use the M-M BNC cable to connect the output (W1) on the BNC adapter board and ch1 on the oscilloscope &rarr;   Bias-Tee &rarr; LED male jumping wires.
+- Connect the USB-A &rarr; RPi &rarr; AD3 or AD2 Board.
+- Turn on FG, press 1 (for channel 1) &rarr; Output Load &rarr; Set To High Z. 
+- Press on Waveforms &rarr; More &rarr; DC (e.g., 8.5$V_{pp}$). 
+- Press 1 &rarr; Output On.
+- Open Waveforms in the RPi &rarr; Wavegen &rarr; Amplitude (e.g., 1V) &rarr; Offset (e.g., 0V). 
+- Click Run (top left). 
+
+Rx side: 
+- Connect the BNC adapter board &rarr; AD3 or AD2 Board.
+- Use the M-M BNC cable to connect the channel 1 input (CH1) on the BNC adapter board &rarr; LPF & DC Block &rarr; Photo-detector. 
+- Connect the USB-A &rarr; RPi &rarr; AD3 or AD2 Board. 
+- Open Waveforms in the RPi &rarr; Scope &rarr; Disable channel 2 (check off ch2) &rarr; Adjust the Range (e.g., 20mV/div for 1V). 
+- Click Run (top left). 
+
+In this section, instead of using GNURadio with .grc files to run the AD2 or AD3 for transmit and receive, we take a step back and use the Waveform software to send a sine wave signal and receive it at the other end. One thing to note is that because the Waveform software caps at 5V for voltage offset, we will use a **Bias-Tee**, which we can hook up to another voltage supply and supply voltage offset to the AD2 or AD3 with their already configured $V_{pp}$ to drive the LED to its associated driven voltage (i.e., linear voltage range). 
+
+![Figure 5: SDR_Integration](/docs/hardware_characterization/Images/SDR_Integration.png)
+
+**Results** 
+
+![Figure 6: SDR_Integration](/docs/hardware_characterization/Images/SDR_result.png)
+
+The figure above displays the sine wave transmitted and received in real time. There's some noise from the receiving part, and in our case, we can see that the $V_{pp}$ is about 120 mV based on the 20 mV/div scale on ch1.
